@@ -1,0 +1,91 @@
+html{
+	background:#717171;
+}
+#canvasHolder{
+	padding:11px;
+	position:absolute;
+	text-align:left;
+	z-index:2;
+	background:#dddddd;
+	overflow:hidden;
+width:1px;
+height:1px;
+}
+.canvas{
+	position:absolute;
+
+width:100px;
+height:100px;
+}
+#canvas_grey{
+	background:#ffffff;
+	z-index:3;
+}
+#canvas_white{
+	z-index:4;
+}
+#canvas_purple{
+	z-index:5;
+}
+#canvas_yellow{
+	z-index:6;
+}
+#canvas_orange{
+	z-index:7;
+}
+#canvas_green{
+	z-index:8;
+}
+#canvas_blue{
+	z-index:9;
+}
+#canvas_red{
+	z-index:10;
+}
+#canvas{
+	z-index:11;
+}
+#buttonHolder{
+	position:absolute;
+	-moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+	z-index:12;
+	top:0px;
+	left:20px;
+}
+.marker{
+	height:47px;
+	width:48px;
+	float:left;
+	cursor:pointer;
+}
+.brushsize{
+	margin:2px;
+	margin-top:5px;
+	height:38px;
+	width:38px;
+	float:left;
+	cursor:pointer;
+}
+.buttonspacer{
+	float:left;
+	height:47px;
+	width:10px;
+}
+#marker_black{background:url(../images/marker_black.png) no-repeat top left;}
+#marker_red{background:url(../images/marker_red.png) no-repeat top left;}
+#marker_blue{background:url(../images/marker_blue.png) no-repeat top left;}
+#marker_green{background:url(../images/marker_green.png) no-repeat top left;}
+#marker_orange{background:url(../images/marker_orange.png) no-repeat top left;}
+#marker_yellow{background:url(../images/marker_yellow.png) no-repeat top left;}
+#marker_purple{background:url(../images/marker_purple.png) no-repeat top left;}
+#marker_grey{background:url(../images/marker_grey.png) no-repeat top left;}
+#marker_white{background:url(../images/marker_white.png) no-repeat top left;}
+
+#brush_size_1{background:url(../images/brush_size_1.png) no-repeat top left;}
+#brush_size_2{background:url(../images/brush_size_2.png) no-repeat top left;}
+#brush_size_3{background:url(../images/brush_size_3.png) no-repeat top left;}
+#brush_size_4{background:url(../images/brush_size_4.png) no-repeat top left;}
+#brush_size_5{background:url(../images/brush_size_5.png) no-repeat top left;}
+#brush_size_6{background:url(../images/brush_size_6.png) no-repeat top left;}
