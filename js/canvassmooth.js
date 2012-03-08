@@ -17,6 +17,7 @@ preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_s
 var commandStack = [];
 var userStack = [];
 var userID="12345"
+var socket;
 
 var canvasFactor=1
 var replayStack = [];
@@ -138,6 +139,13 @@ $(window).load(function(){
 			$("#pressure").css({backgroundPosition:"top right"});
 		}
 	}
+	//set the socket
+	socket = io.connect('http://localhost:4000');
+	//set draw event for the socket
+	socket.on('draw', function(data) {
+    	commandStack.push(data)
+ 		replayStack.push(data)
+    });
 
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
@@ -663,8 +671,9 @@ if(pressure<.2){
 		var lineObj={i:replayStack.length,p:roundNumber(pressure, 5),lp:roundNumber(oldpressure,5), bc:brushColor, bs:roundNumber(modBrushSize, rounddec), uID:userID, cf:canvasFactor, lvX:roundNumber(lastMouseChangeVectorX, rounddec), lvY:roundNumber(lastMouseChangeVectorY, rounddec), vX:roundNumber(mouseChangeVectorX, rounddec), vY:roundNumber(mouseChangeVectorY, rounddec),lR:roundNumber(lastRotation,rounddec),smX: roundNumber(smoothedMouseX,rounddec),smY: roundNumber(smoothedMouseY, rounddec),lsmX:roundNumber(lastSmoothedMouseX,rounddec),lsmY:roundNumber(lastSmoothedMouseY,rounddec),lvc:lastVelocityChange,ld:lineDown,s:smoothingOn, psX:psX,psY:psY}
 		debug(lineObj)
 		//push to command and replay stack
-		commandStack.push(lineObj)	
-		replayStack.push(lineObj)
+
+		socket.emit("drawClick", lineObj);
+		//replayStack.push(lineObj)
 		userStack.push(lineObj)
 		lineDown=0;
 		lastX = curX;
