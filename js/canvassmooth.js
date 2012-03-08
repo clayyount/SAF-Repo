@@ -142,7 +142,7 @@ $(window).load(function(){
 	//set the socket
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
 	//set draw event for the socket
-	socket.on('draw', function(data) {
+	socket.on('drawClick', function(data) {
 		debug("draw listener");
 		debug(data);
     	commandStack.push(data);
