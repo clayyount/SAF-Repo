@@ -143,10 +143,10 @@ $(window).load(function(){
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
 	//set draw event for the socket
 	socket.on('draw', function(data) {
-		debug("draw listener")
-		debug(data)
-    	commandStack.push(data)
- 		replayStack.push(data)
+		debug("draw listener");
+		debug(data);
+    	commandStack.push(data);
+ 		replayStack.push(data);
     });
 
 	//Broswer specific actions
@@ -671,11 +671,9 @@ if(pressure<.2){
 		
 //write the line object...yeesh, it's getting big!
 		var lineObj={i:replayStack.length,p:roundNumber(pressure, 5),lp:roundNumber(oldpressure,5), bc:brushColor, bs:roundNumber(modBrushSize, rounddec), uID:userID, cf:canvasFactor, lvX:roundNumber(lastMouseChangeVectorX, rounddec), lvY:roundNumber(lastMouseChangeVectorY, rounddec), vX:roundNumber(mouseChangeVectorX, rounddec), vY:roundNumber(mouseChangeVectorY, rounddec),lR:roundNumber(lastRotation,rounddec),smX: roundNumber(smoothedMouseX,rounddec),smY: roundNumber(smoothedMouseY, rounddec),lsmX:roundNumber(lastSmoothedMouseX,rounddec),lsmY:roundNumber(lastSmoothedMouseY,rounddec),lvc:lastVelocityChange,ld:lineDown,s:smoothingOn, psX:psX,psY:psY}
-		debug(lineObj)
 		//push to command and replay stack
-
 		socket.emit("drawClick", lineObj);
-		debug("socket emit drawClick")
+		
 		//replayStack.push(lineObj)
 		userStack.push(lineObj)
 		lineDown=0;
