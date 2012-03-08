@@ -140,7 +140,7 @@ $(window).load(function(){
 		}
 	}
 	//set the socket
-	socket = io.connect('http://localhost:4000');
+	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
 	//set draw event for the socket
 	socket.on('draw', function(data) {
     	commandStack.push(data)
@@ -673,6 +673,7 @@ if(pressure<.2){
 		//push to command and replay stack
 
 		socket.emit("drawClick", lineObj);
+		debug("socket emit drawClick")
 		//replayStack.push(lineObj)
 		userStack.push(lineObj)
 		lineDown=0;
