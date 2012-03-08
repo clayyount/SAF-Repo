@@ -143,8 +143,6 @@ $(window).load(function(){
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
 	//set draw event for the socket
 	socket.on('draw', function(data) {
-		debug("draw listener");
-		debug(data);
     	commandStack.push(data);
  		replayStack.push(data);
     });
@@ -651,9 +649,9 @@ if(!dragging){
         {
 			pressure=1
         }
-if(pressure<.2){
-	pressure=.2
-}
+		if(pressure<.2){
+			pressure=.2
+		}
 
 		if (mouseChangeVectorX* lastMouseChangeVectorX + mouseChangeVectorY*lastMouseChangeVectorY < 0) {
 			velocityChange=1
