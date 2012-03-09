@@ -738,14 +738,14 @@ debug("drawing smooth line")
 	var lineW=(obj.bs*redrawMultiplier * obj.p)
 	if(obj.ld){
 		//brush stroke is starting, draw a straight line
-		canto(canvasid).beginPath().moveTo(obj.lsmX*redrawMultiplier,obj.lsmY*redrawMultiplier).lineTo(obj.smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW+(2/canvasFactor), lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		canto(canvasid).beginPath().moveTo(obj.lsmX*redrawMultiplier,obj.lsmY*redrawMultiplier).lineTo(obj.smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW+(2/obj.cf), lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 	}else{
 	//if (false) {
 	if (obj.vX*obj.lvX + obj.vY*obj.lvY < 0 || obj.lvc) {	
 		//quick change of velocity, draw a straight line
-		canto(canvasid).beginPath().moveTo(obj.lsmX*redrawMultiplier,obj.lsmY*redrawMultiplier).lineTo(obj.smX*redrawMultiplier, obj.smY*redrawMultiplier).stroke({lineWidth: lineW+(2/canvasFactor), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		canto(canvasid).beginPath().moveTo(obj.lsmX*redrawMultiplier,obj.lsmY*redrawMultiplier).lineTo(obj.smX*redrawMultiplier, obj.smY*redrawMultiplier).stroke({lineWidth: lineW+(2/obj.cf), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 		
-		canto(canvasid).beginPath().moveTo(obj.psX*redrawMultiplier,obj.psY*redrawMultiplier).lineTo(obj.lsmX*redrawMultiplier, obj.lsmY*redrawMultiplier).stroke({lineWidth: lineW+(2/canvasFactor), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		canto(canvasid).beginPath().moveTo(obj.psX*redrawMultiplier,obj.psY*redrawMultiplier).lineTo(obj.lsmX*redrawMultiplier, obj.lsmY*redrawMultiplier).stroke({lineWidth: lineW+(2/obj.cf), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 		
 	}else{
 		//draw a curved line
