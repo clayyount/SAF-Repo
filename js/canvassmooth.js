@@ -719,8 +719,8 @@ debug("drawing smooth line")
 	else {
 		lnR = 0;
 	}
-	lineThickness =(((obj.bs*redrawMultiplier) * obj.p)/2)
-	lastThickness = (((obj.bs*redrawMultiplier) * obj.lp)/2)
+	lineThickness =((((obj.bs/2)*redrawMultiplier) * obj.p))
+	lastThickness = ((((obj.bs/2)*redrawMultiplier) * obj.lp))
 	sin0 = Math.sin(obj.lR);
 	cos0 = Math.cos(obj.lR);
 	sin1 = Math.sin(lnR);
