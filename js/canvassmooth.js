@@ -284,7 +284,7 @@ $(window).load(function(){
 		defaultZoomLevel =(canvas.width/screenW)
 	}
 	defaultZoomLevel= defaultZoomLevel/2
-	modBrushSize=brushSize*defaultZoomLevel;
+	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
 	if(canvasRatio>screenRatio){
 		showAllZoomLevel=(canvas.width/screenW)
 	}else{
@@ -330,7 +330,7 @@ function resize(){
 		defaultZoomLevel =(canvas.width/screenW)
 	}
 	defaultZoomLevel= defaultZoomLevel/2
-	modBrushSize=brushSize*defaultZoomLevel;
+	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
 	if(canvasRatio>screenRatio){
 		showAllZoomLevel=(canvas.width/screenW)
 	}else{
@@ -529,7 +529,7 @@ function selectbrush(evt){
 		brushSize=24;
 		break;
 	}
-	modBrushSize=brushSize* defaultZoomLevel
+	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
 	$("#brushHolder").slideToggle();
 	if($("#markerHolder").css("display")!="none"){
 		$("#markerHolder").slideToggle();
