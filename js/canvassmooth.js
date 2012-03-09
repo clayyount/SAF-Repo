@@ -731,28 +731,41 @@ debug("drawing smooth line")
 	L1Cos1 = lineThickness*cos1;
 	controlVecX = 0.33*dist*sin0;
 	controlVecY = -0.33*dist*cos0;
-	controlX1 = obj.lsmX + L0Cos0 + controlVecX;
-	controlY1 = obj.lsmY + L0Sin0 + controlVecY;
-	controlX2 = obj.lsmX - L0Cos0 + controlVecX;
-	controlY2 = obj.lsmY - L0Sin0 + controlVecY;
+	controlX = obj.lsmX + controlVecX;
+	controlY = obj.lsmY + controlVecY;
+	//controlX1 = obj.lsmX + L0Cos0 + controlVecX;
+	//controlY1 = obj.lsmY + L0Sin0 + controlVecY;
+	//controlX2 = obj.lsmX - L0Cos0 + controlVecX;
+	//controlY2 = obj.lsmY - L0Sin0 + controlVecY;
 	var lineW=(obj.bs*redrawMultiplier * obj.p)
+	var lsmX=obj.lsmX
+	var lsmY=obj.lsmY
+	var smX=obj.smX
+	var smY=obj.smY
+
 	if(obj.ld){
 		//brush stroke is starting, draw a straight line
-		canto(canvasid).beginPath().moveTo(obj.lsmX*redrawMultiplier,obj.lsmY*redrawMultiplier).lineTo(obj.smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW+redrawMultiplier, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 	}else{
 	//if (false) {
 	if (obj.vX*obj.lvX + obj.vY*obj.lvY < 0 || obj.lvc) {	
 		//quick change of velocity, draw a straight line
-		canto(canvasid).beginPath().moveTo(obj.lsmX*redrawMultiplier,obj.lsmY*redrawMultiplier).lineTo(obj.smX*redrawMultiplier, obj.smY*redrawMultiplier).stroke({lineWidth: lineW+redrawMultiplier, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier, obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 		
-		canto(canvasid).beginPath().moveTo(obj.psX*redrawMultiplier,obj.psY*redrawMultiplier).lineTo(obj.lsmX*redrawMultiplier, obj.lsmY*redrawMultiplier).stroke({lineWidth: lineW+redrawMultiplier, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		canto(canvasid).beginPath().moveTo(obj.psX*redrawMultiplier,obj.psY*redrawMultiplier).lineTo(lsmX*redrawMultiplier, lsmY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 		
 	}else{
-		//draw a curved line
-		canto(canvasid).beginPath().moveTo((obj.lsmX + L0Cos0)* redrawMultiplier, (obj.lsmY + L0Sin0)* redrawMultiplier).quadraticCurveTo(controlX1* redrawMultiplier,controlY1* redrawMultiplier,(obj.smX + L1Cos1)*redrawMultiplier, (obj.smY + L1Sin1)* redrawMultiplier).lineTo((obj.smX - L1Cos1)* redrawMultiplier, (obj.smY - L1Sin1)* redrawMultiplier).quadraticCurveTo((controlX2)* redrawMultiplier, (controlY2)* redrawMultiplier, (obj.lsmX - L0Cos0)* redrawMultiplier, (obj.lsmY - L0Sin0)* redrawMultiplier).lineTo((obj.lsmX + L0Cos0)* redrawMultiplier, (obj.lsmY + L0Sin0)* redrawMultiplier).fill({lineWidth: lineW, fillStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		//draw a curved line with segments and fill
+		//canto(canvasid).beginPath().moveTo((lsmX + L0Cos0)* redrawMultiplier, (lsmY + L0Sin0)* redrawMultiplier).quadraticCurveTo(controlX1* redrawMultiplier,controlY1* redrawMultiplier,(smX + L1Cos1)*redrawMultiplier, (obj.smY + L1Sin1)* redrawMultiplier).lineTo((smX - L1Cos1)* redrawMultiplier, (obj.smY - L1Sin1)* redrawMultiplier).quadraticCurveTo((controlX2)* redrawMultiplier, (controlY2)* redrawMultiplier, (lsmX - L0Cos0)* redrawMultiplier, (lsmY - L0Sin0)* redrawMultiplier).lineTo((lsmX + L0Cos0)* redrawMultiplier, (lsmY + L0Sin0)* redrawMultiplier).fill({lineWidth: lineW, fillStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		
+		//draw a curved line with stroke
+		canto(canvasid).beginPath().moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier).quadraticCurveTo(controlX* redrawMultiplier,controlY* redrawMultiplier,(smX )*redrawMultiplier, (obj.smY)* redrawMultiplier).stroke({lineWidth:lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 
-	}	
-}
+//just in case I can't figure out the overlapping...
+//.stroke({lineWidth:0, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"})
+
+	}
+}	
 }else{
 debug("drawing unsmooth line")
 var lineW=(obj.bs*redrawMultiplier * obj.p)
