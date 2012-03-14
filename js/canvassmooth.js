@@ -371,6 +371,9 @@ function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
 	socket.emit("createGame",{userID:userID,gameID:gameID})
 }
+function getUsers(){
+	socket.emit("getUsers")
+}
 function connectToGame(gameID){
 	socket.emit("connectGame",{userID:userID,gameID:gameID})
 }
