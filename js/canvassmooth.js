@@ -379,7 +379,7 @@ function addUser(){
 }
 function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
-	socket.emit("createGame",{userID:userID,gameID:gameID})
+	socket.emit("createGame",{gameID:gameID,players[userID]})
 }
 function getUsers(){
 	debug("getting users")
