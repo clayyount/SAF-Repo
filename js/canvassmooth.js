@@ -399,7 +399,7 @@ function createGame(){
 function joinGame(){
 	gameID=$("#gameinput").val();
 	debug("gameID="+gameID);
-	socket.emit("createGame",{gameID:gameID,players:[userID]})
+	socket.emit("joinGame",{gameID:gameID, userID:userID})
 }
 function getUsers(){
 	debug("getting users")
