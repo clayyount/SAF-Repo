@@ -146,7 +146,7 @@ $(window).load(function(){
 	//set the socket
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
 	socket.emit("setUser",{userID:userID})
-	socket.emit("getAllGames");
+	
 	//set draw event for the socket
 	socket.on('connection', function(){
         debug('socket connected');
@@ -166,11 +166,6 @@ $(window).load(function(){
     	debug("connected to game");
 		debug(data);
     });
-	
-
-	
-	gameID=String(Math.round((Math.random()*1000000)))
-	socket.emit("createGame",{userID:userID,gameID:gameID})
 	socket.on('draw', function(data) {
     	commandStack.push(data);
  		replayStack.push(data);
@@ -346,6 +341,17 @@ debug(commandStack)
 	});
 */
 });
+
+function getGames(){
+	socket.emit("getAllGames");
+}
+function createGame(){
+	gameID=String(Math.round((Math.random()*1000000)))
+	socket.emit("createGame",{userID:userID,gameID:gameID})
+}
+function connectToGame(gameID){
+	socket.emit("connectGame",{userID:userID,gameID:gameID})
+}
 
 // Function to resize all the page elements based on screen height and width
 function resize(){
