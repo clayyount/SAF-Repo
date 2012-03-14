@@ -144,7 +144,11 @@ $(window).load(function(){
 		}
 	}
 	//set the socket
+	try{
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
+	}catch(e){
+		debug("socket io not running")
+	}
 	socket.emit("setUser",{userID:userID})
 	
 	//set draw event for the socket
