@@ -16,6 +16,7 @@ preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_s
 
 var commandStack = [];
 var userStack = [];
+var opponentStack = [];
 var userID="12345"
 var socket;
 
@@ -143,7 +144,7 @@ $(window).load(function(){
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
 	//set draw event for the socket
 	socket.on('draw', function(data) {
-    	commandStack.push(data);
+    	opponentStack.push(data);
  		replayStack.push(data);
     });
 
@@ -300,6 +301,7 @@ $(window).load(function(){
 	$("#page").show();
 	$("#markerHolder").slideToggle();
 	$("#brushHolder").slideToggle();
+/*
 	$.ajax({
 	  url: 'json/testopponent.json',
 	  dataType: 'json',
@@ -314,6 +316,7 @@ $(window).load(function(){
 debug(commandStack)
 		}
 	});
+*/
 });
 
 // Function to resize all the page elements based on screen height and width
@@ -593,6 +596,7 @@ function mouseup(){
 		lineDown=0;
 		drawing=false;
 		updateNavigtor()
+		socket.emit("drawClick", {strokeEnd:true, uid:userID});
 		commandStack.push({strokeEnd:true, uid:userID})
 		replayStack.push({strokeEnd:true, uid:userID})
 		userStack.push({strokeEnd:true, uid:userID})
@@ -659,7 +663,7 @@ if(!dragging){
 			velocityChange=0
 		}
 		
-		//get previous x/y if there are any for the current user. Don't trust this, beacuse with multiple users, you might not own the last object
+		//get previous x/y if there are any for the current user off the userStack.
 		var psX=null;
 		var psY=null;
 		if(userStack[userStack.length - 1] &&userStack[userStack.length-1].uID==userID){
@@ -667,10 +671,11 @@ if(!dragging){
 			(userStack[userStack.length-1].smY)? psY =userStack[userStack.length-1].smY: psY=null;
 		}
 		
-//write the line object...yeesh, it's getting big!
+		//write the line object.
 		var lineObj={i:replayStack.length,p:roundNumber(pressure, 5),lp:roundNumber(oldpressure,5), bc:brushColor, bs:roundNumber(modBrushSize, rounddec), uID:userID, cf:canvasFactor, lvX:roundNumber(lastMouseChangeVectorX, rounddec), lvY:roundNumber(lastMouseChangeVectorY, rounddec), vX:roundNumber(mouseChangeVectorX, rounddec), vY:roundNumber(mouseChangeVectorY, rounddec),lR:roundNumber(lastRotation,rounddec),smX: roundNumber(smoothedMouseX,rounddec),smY: roundNumber(smoothedMouseY, rounddec),lsmX:roundNumber(lastSmoothedMouseX,rounddec),lsmY:roundNumber(lastSmoothedMouseY,rounddec),lvc:lastVelocityChange,ld:lineDown,s:smoothingOn, psX:psX,psY:psY}
 		//push to command and replay stack
 		socket.emit("drawClick", lineObj);
+		//push your strokes directly to the stack
 		commandStack.push(lineObj)
 		replayStack.push(lineObj)
 		userStack.push(lineObj)
@@ -797,11 +802,11 @@ function redraw2(){
 }
 
 
-function popstack(){
-	if(commandStack.length>0){
+function popstack(stack){
+	if(stack.length>0){
 			var currentCommand;
 			for(i=0;i<speed;i++){
-				currentCommand=commandStack.shift();
+				currentCommand=stack.shift();
 				if(currentCommand){
 					if(currentCommand.lsmX){
 						drawSmoothLine(currentCommand)
@@ -839,7 +844,8 @@ window.requestAnimFrame = (function(){
 
 (function animloop(){
   requestAnimFrame(animloop);
-  popstack();
+  popstack(commandStack);
+  popstack(opponentStack);
 })();
 // place the rAF *before* the render() to assure as close to 
 // 60fps with the setTimeout fallback.
