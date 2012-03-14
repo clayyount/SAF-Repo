@@ -170,6 +170,12 @@ $(window).load(function(){
      	debug("game created")
 		debug(data);
     });
+	socket.on('gotUsers', function(data){
+     	debug("got users")
+		debug(data);
+    });
+	
+
 	socket.on('userSet', function(data) {
     	usersList.push(data);
     });
