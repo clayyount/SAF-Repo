@@ -127,7 +127,7 @@ $(document).ready(function(){
 })
 $(window).load(function(){
 $("#startscreen").show();
-}
+})
 function startGame(){
 $("#startscreen").hide();
 	//Check for Wacom plugin and write the plugin object if it is installed
@@ -373,7 +373,7 @@ debug(commandStack)
 		}
 	});
 */
-});
+}
 
 function getAllGames(){
 	socket.emit("getAllGames");
