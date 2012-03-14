@@ -174,6 +174,10 @@ $(window).load(function(){
      	debug("got users")
 		debug(data);
     });
+	socket.on('gotGames', function(data){
+     	debug("got games")
+		debug(data);
+    });
 	
 
 	socket.on('userSet', function(data) {
@@ -367,7 +371,7 @@ debug(commandStack)
 */
 });
 
-function getGames(){
+function getAllGames(){
 	socket.emit("getAllGames");
 }
 function addUser(){
