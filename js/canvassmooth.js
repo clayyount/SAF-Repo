@@ -16,7 +16,11 @@ preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_s
 
 var commandStack = [];
 var userStack = [];
-var userID="12345"
+var usersList = [];
+var gameList = [];
+var userID=String(Math.round((Math.random()*1000000)))
+var gameID;
+debug("userID="+userID)
 var socket;
 
 var canvasFactor=1
@@ -141,11 +145,32 @@ $(window).load(function(){
 	}
 	//set the socket
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
+	socket.emit("setUser",{userID:userID})
+	socket.emit("getAllGames");
 	//set draw event for the socket
 	socket.on('connection', function(){
         debug('socket connected');
     });
+	socket.on('userSet', function(data) {
+    	usersList.push(data);
+    });
+	socket.on('gotGames', function(data) {
+    	debug("current games");
+		debug(data);
+    });
+	socket.on('gameCreated', function(data) {
+    	debug("game created");
+		debug(data);
+    });
+	socket.on('gameConnected', function(data) {
+    	debug("connected to game");
+		debug(data);
+    });
+	
 
+	
+	gameID=String(Math.round((Math.random()*1000000)))
+	socket.emit("createGame",{userID:userID,gameID:gameID})
 	socket.on('draw', function(data) {
     	commandStack.push(data);
  		replayStack.push(data);
