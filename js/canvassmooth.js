@@ -372,6 +372,7 @@ function createGame(){
 	socket.emit("createGame",{userID:userID,gameID:gameID})
 }
 function getUsers(){
+	debug("getting users",{})
 	socket.emit("getUsers")
 }
 function connectToGame(gameID){
