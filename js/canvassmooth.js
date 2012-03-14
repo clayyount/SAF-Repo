@@ -155,6 +155,21 @@ $(window).load(function(){
 	socket.on('connection', function(){
         debug('socket connected');
     });
+	socket.on('error', function(data){
+        debug(data.error);
+    });
+	socket.on('loggedIn', function(data){
+        debug("logged in")
+		debug(data);
+    });
+	socket.on('gameJoined', function(data){
+        debug("game joined")
+		debug(data);
+    });
+	socket.on('gameCreated', function(data){
+     	debug("game created")
+		debug(data);
+    });
 	socket.on('userSet', function(data) {
     	usersList.push(data);
     });
@@ -348,6 +363,9 @@ debug(commandStack)
 
 function getGames(){
 	socket.emit("getAllGames");
+}
+function addUser(){
+	socket.emit("addUser",{userID:userID,password:"test123",screenname:"Test User 1"})
 }
 function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
