@@ -16,7 +16,6 @@ preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_s
 
 var commandStack = [];
 var userStack = [];
-var opponentStack = [];
 var userID="12345"
 var socket;
 
@@ -144,7 +143,7 @@ $(window).load(function(){
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
 	//set draw event for the socket
 	socket.on('draw', function(data) {
-    	opponentStack.push(data);
+    	commandStack.push(data);
  		replayStack.push(data);
     });
 
@@ -802,11 +801,11 @@ function redraw2(){
 }
 
 
-function popstack(stack){
-	if(stack.length>0){
+function popstack(){
+	if(commandStack.length>0){
 			var currentCommand;
 			for(i=0;i<speed;i++){
-				currentCommand=stack.shift();
+				currentCommand=commandStack.shift();
 				if(currentCommand){
 					if(currentCommand.lsmX){
 						drawSmoothLine(currentCommand)
@@ -844,8 +843,7 @@ window.requestAnimFrame = (function(){
 
 (function animloop(){
   requestAnimFrame(animloop);
-  popstack(commandStack);
-  popstack(opponentStack);
+  popstack();
 })();
 // place the rAF *before* the render() to assure as close to 
 // 60fps with the setTimeout fallback.
