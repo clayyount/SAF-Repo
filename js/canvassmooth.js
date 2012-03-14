@@ -126,27 +126,7 @@ $(document).ready(function(){
 	
 })
 $(window).load(function(){
-$("#startscreen").show();
-})
-function startGame(){
-$("#startscreen").hide();
-	//Check for Wacom plugin and write the plugin object if it is installed
-	for(i=0;i<navigator.plugins.length;i++){
-		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
-			pluginInstalled=true
-			break;
-		}
-	}
-	if(pluginInstalled){
-		$("body").append('<!--[if IE]><object style="visiblity:hidden;" id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object><![endif]--><!--[if !IE]> <--><!-- This is the Firebreath wacomtabletplugin --><object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginloaded" /></object><!--> <![endif]-->');
-		penAPI = plugin().penAPI;
-		// if the plugin is working, show the pressure button
-		if(penAPI){
-			$("#pressure").show();
-			pressureOn=true;
-			$("#pressure").css({backgroundPosition:"top right"});
-		}
-	}
+
 	//set the socket
 	try{
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
@@ -182,6 +162,10 @@ $("#startscreen").hide();
      	debug("got games")
 		debug(data);
     });
+	socket.on('gameJoined', function(data){
+     	debug("game joined")
+		debug(data);
+    });
 	
 
 	socket.on('userSet', function(data) {
@@ -204,6 +188,27 @@ $("#startscreen").hide();
  		replayStack.push(data);
     });
 
+	$("#startscreen").show();
+})
+function startGame(){
+$("#startscreen").hide();
+	//Check for Wacom plugin and write the plugin object if it is installed
+	for(i=0;i<navigator.plugins.length;i++){
+		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
+			pluginInstalled=true
+			break;
+		}
+	}
+	if(pluginInstalled){
+		$("body").append('<!--[if IE]><object style="visiblity:hidden;" id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object><![endif]--><!--[if !IE]> <--><!-- This is the Firebreath wacomtabletplugin --><object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginloaded" /></object><!--> <![endif]-->');
+		penAPI = plugin().penAPI;
+		// if the plugin is working, show the pressure button
+		if(penAPI){
+			$("#pressure").show();
+			pressureOn=true;
+			$("#pressure").css({backgroundPosition:"top right"});
+		}
+	}
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
 		$(window).resize(resize);
@@ -389,6 +394,11 @@ function deleteGames(){
 }
 function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
+	socket.emit("createGame",{gameID:gameID,players:[userID]})
+}
+function joinGame(){
+	gameID=$("#gameinput").val();
+	debug("gameID="+gameID);
 	socket.emit("createGame",{gameID:gameID,players:[userID]})
 }
 function getUsers(){
