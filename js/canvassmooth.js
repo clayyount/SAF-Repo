@@ -377,13 +377,19 @@ function getAllGames(){
 function addUser(){
 	socket.emit("addUser",{userID:userID,password:"test123",screenname:"Test User 1"})
 }
+function deleteUsers(){
+	socket.emit("deleteUsers")
+}
+function deleteGames(){
+	socket.emit("deleteGames")
+}
 function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
 	socket.emit("createGame",{gameID:gameID,players:[userID]})
 }
 function getUsers(){
 	debug("getting users")
-	socket.emit("getUsers",{})
+	socket.emit("getUsers")
 }
 function connectToGame(gameID){
 	socket.emit("connectGame",{userID:userID,gameID:gameID})
