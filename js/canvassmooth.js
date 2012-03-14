@@ -354,7 +354,7 @@ $("#startscreen").hide();
 	//set the cursor to the #2 brush
 	$("#canvas").css({cursor: "url(images/"+currentCursor+".cur) "+cursorPosition[currentCursor]+" "+cursorPosition[currentCursor]+", crosshair"})
 	//show the page and slide the brush and marker menus	
-	$("#page").show();
+	$("#gameHolder").show();
 	$("#markerHolder").slideToggle();
 	$("#brushHolder").slideToggle();
 /*
