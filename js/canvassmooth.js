@@ -867,7 +867,6 @@ if(!dragging){
 
 function drawSmoothLine(obj){
 if(obj.lsmX){
-debug("drawing line")
 	var redrawMultiplier=(canvasFactor/obj.cf);
 	canvasid="canvas"
 	curctx=ctx
@@ -884,9 +883,6 @@ curctx.globalCompositeOperation = 'destination-out';
 
 //curctx.globalCompositeOperation = 'darker';
 if(obj.s){
-debug("drawing smooth line")
-
-	
 	var dx = obj.smX - obj.lsmX;
 	var dy = obj.smY - obj.lsmY;
 	var dist = Math.sqrt(dx*dx + dy*dy);
@@ -945,14 +941,12 @@ debug("drawing smooth line")
 	}
 }	
 }else{
-debug("drawing unsmooth line")
 var lineW=(obj.bs*redrawMultiplier * obj.p)
 	if(obj.ld){
 		//brush stroke is starting, draw a straight line
 		canto(canvasid).beginPath().moveTo(obj.lsmX*redrawMultiplier,obj.lsmY*redrawMultiplier).lineTo(obj.smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW+1, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 	}else{
 		canto(canvasid).beginPath().moveTo(obj.lsmX*redrawMultiplier,obj.lsmY*redrawMultiplier).lineTo(obj.smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: (obj.bs*redrawMultiplier * obj.p), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
-		debug("drawing unsmooth line2")
 	}
 }
 }
