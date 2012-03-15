@@ -204,11 +204,7 @@ $(window).load(function(){
 		debug(data);
     });
 	socket.on('checkGame', function(data){
-		debug("checking game")
-		debug("friendList")
-		debug(friendList);
 		var gameListHtml='';
-		
 		for(var i=0;i<friendList.length;i++){
 			debug("array index="+data.players.indexOf(friendList[i].userID))
 			if(data.players.indexOf(friendList[i].userID)!=-1){
@@ -216,8 +212,6 @@ $(window).load(function(){
 			}
 		}
 		$("#gamesList").html(gameListHtml)
-		debug(gameListHtml)
-		debug(data);
     });
 	socket.on('gameleft', function(data){
         debug("game left")
@@ -232,9 +226,7 @@ $(window).load(function(){
 		debug(data);
     });
 	socket.on('gotGames', function(data){
-     	debug("got games")
 		gameList=[];
-		debug(data);
 		var gameListHtml='';
 		for(var i=0;i<data.length;i++){
 			for(var j=0;j<friendList.length;j++){
@@ -247,15 +239,13 @@ $(window).load(function(){
 				}
 			}
 		}
-		debug("friend game list");
-		debug(gameList)
-		
 		$("#gamesList").html(gameListHtml)
     });
 	socket.on('gameJoined', function(data){
      	debug("game joined")
 		debug(data);
 		currentGame=data.gameID;
+		startGame();
     });
 	
 
