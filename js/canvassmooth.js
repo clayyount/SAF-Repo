@@ -45,10 +45,13 @@ function fblogin(response) {
 			userObj={userID:userID,screenname:response.name, fb:true}
 			addUser(userObj)
 		});
-		var fqlquery=escape('SELECT uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
+		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
-				friendList.push(response.data[i].uid);
+				friendList.push({
+								userID:response.data[i].uid,
+								screenname:userID:response.data[i].first_name+" "+response.data[i].first_name
+								});
 			}
 			debug(response);
 			debug(friendList);
@@ -213,9 +216,9 @@ $(window).load(function(){
 		var gameListHtml='';
 		for(var i=0;i<data.length;i++){
 			for(var j=0;j<friendList.length;j++){
-				if(data[i].players.indexOf(friendList[j])!=-1){
+				if(data[i].players.indexOf(friendList[j].userID)!=-1){
 					gameList.push(data[i])
-					gameListHtml+='<a onclick=\'new function(){joinGame("'+data[i].gameID+'")};\'>'+friendList[j]+'</a>'
+					gameListHtml+='<a onclick=\'new function(){joinGame("'+data[i].gameID+'")};\'>Join '+friendList[j].screenname+'\'s game</a>'
 				}
 			}
 		}
