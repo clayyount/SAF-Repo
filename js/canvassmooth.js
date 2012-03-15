@@ -209,8 +209,11 @@ $(window).load(function(){
 		debug(friendList);
 		var gameListHtml='';
 		for(var i=0;i<data.length;i++){
+			debug("i="+i)
 			for(var j=0;j<friendList.length;j++){
+				debug("j="+j)
 				if(data[i].players.indexOf(friendList[j].userID)!=-1){
+					
 					gameList.push(data[i])
 					gameListHtml+='<a onclick=\'new function(){joinGame("'+data[i].gameID+'")};\'>Join '+friendList[j].screenname+'\'s game</a>'
 				}
