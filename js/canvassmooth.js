@@ -45,7 +45,7 @@ function fblogin(response) {
 			userObj={userID:userID,screenname:response.name, fb:true}
 			addUser(userObj)
 		});
-		var fqlquery=escape('SELECT uid, first_name, last_name, is_app_user FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\')');
+		var fqlquery=escape('SELECT uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
 				if(response.data[i].is_app_user){
