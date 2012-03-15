@@ -52,6 +52,7 @@ function fblogin(response) {
 					friendList.push(response.data[i]);
 				}
 			}
+			debug("friendList")
 			debug(friendList)
 			debug(response)
 		})
