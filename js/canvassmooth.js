@@ -205,6 +205,8 @@ $(window).load(function(){
     });
 	socket.on('checkGames', function(data){
 		debug("checking games")
+		debug("friendList")
+		debug(friendList);
 		var gameListHtml='';
 		for(var i=0;i<data.length;i++){
 			for(var j=0;j<friendList.length;j++){
