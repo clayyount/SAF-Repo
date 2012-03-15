@@ -22,11 +22,9 @@ window.fbAsyncInit = function() {
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
     });
-	FB.api('/me', function(user) {
-            if (user) {
-              debug(user)
-            }
-    });
+	FB.Event.subscribe('auth.authResponseChange', function(response) {
+	debug('The status of the session is: ' + response.status);
+	});
     // Additional initialization code here
   };
   // Load the SDK Asynchronously
