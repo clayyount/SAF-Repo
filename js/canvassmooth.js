@@ -45,6 +45,12 @@ function fblogin(response) {
 			userObj={userID:userID,screenname:response.name, fb:true}
 			addUser(userObj)
 		});
+		var fqlquery="SELECT uid FROM user WHERE has_added_app=1 and uid IN (SELECT uid2 FROM friend WHERE uid1 = me())"
+		FB.api('/fql?q='+fqlquery, function(response){
+			debug("fql response")
+			debug(response)
+		})
+
 		FB.api('me/friends?fields=installed',function(response){
 			debug("friends with the app installed");
 			for(var i=0;i<response.data.length;i++){
