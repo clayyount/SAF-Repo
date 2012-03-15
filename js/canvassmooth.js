@@ -52,6 +52,7 @@ function fblogin(response) {
 			}
 			debug(response);
 			debug(friendList);
+			getFriendGames();
 		});
 	} else if (response.status === 'not_authorized') {
 		debug("logged in to FB but not authorized")
@@ -428,8 +429,8 @@ debug(commandStack)
 */
 }
 
-function getAllGames(){
-	socket.emit("getAllGames");
+function getFriendGames(){
+	socket.emit("getFriendGames",friendList);
 }
 function addUser(userObj){
 	socket.emit("addUser",userObj)
