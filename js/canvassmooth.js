@@ -45,13 +45,22 @@ function fblogin(response) {
 			userObj={userID:userID,screenname:response.name, fb:true}
 			addUser(userObj)
 		});
-		var fqlquery="SELECT uid FROM user WHERE is_app_user=true and uid IN (SELECT uid2 FROM friend WHERE uid1 = me())"
+		var fqlquery="SELECT uid, first_name, last_name, is_app_user FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me())"
 		FB.api('/fql?q='+fqlquery, function(response){
 			debug("fql response")
+			debug(response)
+			for(var i=0;i<response.data.length;i++){
+				if(response.data[i].installed){
+					friendList.push(response.data[i]);
+				}
+			}
+			debug("friendList")
+			debug(friendList)
 			debug(response)
 		})
 
 		FB.api('me/friends?fields=installed',function(response){
+			/*
 			debug("friends with the app installed");
 			for(var i=0;i<response.data.length;i++){
 				if(response.data[i].installed){
@@ -61,6 +70,7 @@ function fblogin(response) {
 			debug("friendList")
 			debug(friendList)
 			debug(response)
+			*/
 		})
 	} else if (response.status === 'not_authorized') {
 		debug("logged in to FB but not authorized")
