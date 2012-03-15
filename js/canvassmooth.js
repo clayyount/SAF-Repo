@@ -49,7 +49,7 @@ function fblogin(response) {
 		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
 				friendList.push({
-								userID:response.data[i].uid,
+								userID:String(response.data[i].uid),
 								screenname:response.data[i].first_name+" "+response.data[i].last_name
 								});
 			}
