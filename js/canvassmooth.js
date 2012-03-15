@@ -43,6 +43,10 @@ function fblogin(response) {
 			debug(response);
 			addFBUser(userID,response.name)
 		});
+		FB.api('me/friends?fields=installed',function(response){
+			debug("friends with the app installed");
+			debug(response)
+		})
 	} else if (response.status === 'not_authorized') {
 		debug("logged in to FB but not authorized")
 	} else {
