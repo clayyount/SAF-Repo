@@ -215,7 +215,7 @@ $(window).load(function(){
 			for(var j=0;j<friendList.length;j++){
 				if(data[i].players.indexOf(friendList[j])!=-1){
 					gameList.push(data[i])
-					gameListHtml+='<a onclick=\'function(){joinGame(\''+data[i].gameID+'\')};\'>'+data[i].gameID+'</a>'
+					gameListHtml+='<a onclick=\'function(){joinGame(\''+data[i].gameID+'\')};\'>'+friendList[j]+'</a>'
 				}
 			}
 		}
