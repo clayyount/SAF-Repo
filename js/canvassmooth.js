@@ -1,60 +1,50 @@
+//debug function
 function debug(message){
 	if(window.console){
 		console.log(message);
 	}
 }
 
-function preload(arrayOfImages) {
-    $(arrayOfImages).each(function(){
-		$('<img src="' + this + '" />')
-        //$('<img/>')[0].src = this;
-        // Alternatively you could use:
-        // (new Image()).src = this;
-    });
-}
-
-//Facebook stuff
+// Facebook Stuff
 window.fbAsyncInit = function() {
     FB.init({
-      appId      : '239015749524254', // App ID
+      appId      : '239015749524254',
       oauth		 : true,
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true  // parse XFBML
+      status     : true,
+      cookie     : true,
+      xfbml      : true
     });
 	FB.Event.subscribe('auth.login',fblogin);
 	FB.getLoginStatus(fblogin);
-  };
+};
   // Load the SDK Asynchronously
-  (function(d){
+(function(d){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement('script'); js.id = id; js.async = true;
      js.src = "//connect.facebook.net/en_US/all.js";
      ref.parentNode.insertBefore(js, ref);
 }(document));
-
+// Facebook login function
 function fblogin(response) {
 	if (response.status === 'connected') {
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
-		debug("fbAccessToken="+ fbAccessToken)
 		FB.api('/me', function(response) {
 			debug("me");
 			debug(response);
 			userObj={userID:userID,screenname:response.name, fb:true}
 			addUser(userObj)
+			var myProfileHTML=''
+			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
+			$('.profilename').html(response.name)
+			
 		});
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
-				friendList.push({
-								userID:String(response.data[i].uid),
-								screenname:response.data[i].first_name+" "+response.data[i].last_name
-								});
+				friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
 			}
-			debug(response);
-			debug(friendList);
 			getAllGames();
 		});
 	} else if (response.status === 'not_authorized') {
@@ -63,8 +53,18 @@ function fblogin(response) {
 		debug("not logged into FB")
 	}
 }
+//END Facebook Stuff
+
+//Image preload function
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+		$('<img src="' + this + '" />')
+    });
+}
+//Preload site images
 preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_size_2.cur","images/cursor_size_3.cur","images/cursor_size_4.cur","images/cursor_size_5.cur","images/cursor_size_6.cur","images/cursor_hand.cur","images/cursor_size_6.cur"])
 
+//define global variables
 var commandStack = [];
 var userStack = [];
 var usersList = [];
@@ -72,10 +72,8 @@ var gameList = [];
 var friendList=[];
 var userID;
 var gameID;
-debug("userID="+userID)
 var socket;
 var currentGame;
-
 var canvasFactor=1
 var replayStack = [];
 var brushes=[]
@@ -107,9 +105,7 @@ var defaultSmoothingFactor=.7
 var smoothingFactor=defaultSmoothingFactor
 var rounddec=1
 var lineDown=0
-
 var smoothingOn=1;
-
 var canvasPos = {x:0.0, y:0.0};
 var canvasCenter={x:0,y:0};
 var canvasRatio;
@@ -128,17 +124,17 @@ var startX=0;
 var startY=0;
 var showAll=false;
 
-   function plugin()
-   {
-       return document.getElementById('wtPlugin');
-   }
+function plugin(){
+	return document.getElementById('wtPlugin');
+}
+
+//copy command stack to clipboard, use to write to file.
 function copyToClipboard (arr) {
 var returnStr='[';
 for(i=0;i<arr.length;i++){
 	returnStr+='{'
 	for(prop in arr[i]){
-//debug((typeof arr[i][prop]))
-returnStr+='"'+prop+'":'
+		returnStr+='"'+prop+'":'
 		if(typeof arr[i][prop]=="object"){
 			returnStr+='{'
 			
@@ -157,8 +153,6 @@ returnStr+='"'+prop+'":'
 }
 returnStr=returnStr.substr(0,returnStr.length-2)
 returnStr+=']'
-debug(arr)
-debug(returnStr)
 }
 
 $(document).ready(function(){
@@ -176,8 +170,9 @@ $(document).ready(function(){
 			}
 		});
 	$("#wheelofdeath").css({top:-300, left:($(window).width()/2)-175});
-	
 })
+
+
 $(window).load(function(){
 
 	//set the socket
