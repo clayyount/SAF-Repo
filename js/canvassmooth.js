@@ -41,7 +41,7 @@ function fblogin(response) {
 		FB.api('/me', function(response) {
 			debug("me");
 			debug(response);
-			addFBUser(userID,response.name){
+			addFBUser(userID,response.name)
 		});
 	} else if (response.status === 'not_authorized') {
 		debug("logged in to FB but not authorized")
