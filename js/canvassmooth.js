@@ -48,9 +48,7 @@ function fblogin(response) {
 		var fqlquery=escape('SELECT uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
-				if(response.data[i].is_app_user){
-					friendList.push(response.data[i].uid);
-				}
+				friendList.push(response.data[i].uid);
 			}
 			debug(response);
 			debug(friendList);
