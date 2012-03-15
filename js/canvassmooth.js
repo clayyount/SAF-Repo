@@ -74,6 +74,7 @@ var userID;
 var gameID;
 debug("userID="+userID)
 var socket;
+var currentGame;
 
 var canvasFactor=1
 var replayStack = [];
@@ -202,6 +203,10 @@ $(window).load(function(){
         debug("game joined")
 		debug(data);
     });
+	socket.on('gameleft', function(data){
+        debug("game left")
+		debug(data);
+    });
 	socket.on('gameCreated', function(data){
      	debug("game created")
 		debug(data);
@@ -234,6 +239,7 @@ $(window).load(function(){
 	socket.on('gameJoined', function(data){
      	debug("game joined")
 		debug(data);
+		currentGame=data.gameID;
     });
 	
 
@@ -467,6 +473,9 @@ function createGame(){
 }
 function joinGame(gameID){
 	socket.emit("joinGame",{gameID:gameID, userID:userID})
+}
+function leaveGame(){
+	socket.emit("leaveGame",{gameID:currentGame, userID:userID})
 }
 function getUsers(){
 	debug("getting users")
