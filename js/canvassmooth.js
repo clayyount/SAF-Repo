@@ -220,6 +220,7 @@ $(window).load(function(){
 	socket.on('gameCreated', function(data){
      	debug("game created")
 		debug(data);
+		joinGame(data.gameID);
     });
 	socket.on('gotUsers', function(data){
      	debug("got users")
