@@ -52,8 +52,9 @@ function fblogin(response) {
 					friendList.push(response.data[i].uid);
 				}
 			}
+			debug(response);
 			debug(friendList);
-		})
+		});
 	} else if (response.status === 'not_authorized') {
 		debug("logged in to FB but not authorized")
 	} else {
