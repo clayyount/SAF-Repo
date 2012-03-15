@@ -45,7 +45,7 @@ function fblogin(response) {
 			userObj={userID:userID,screenname:response.name, fb:true}
 			addUser(userObj)
 		});
-		var fqlquery="SELECT uid FROM user WHERE is_app_user=1 and uid IN (SELECT uid2 FROM friend WHERE uid1 = me())"
+		var fqlquery="SELECT uid FROM user WHERE is_app_user=true and uid IN (SELECT uid2 FROM friend WHERE uid1 = me())"
 		FB.api('/fql?q='+fqlquery, function(response){
 			debug("fql response")
 			debug(response)
