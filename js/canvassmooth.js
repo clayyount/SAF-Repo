@@ -210,16 +210,19 @@ $(window).load(function(){
 	socket.on('gotGames', function(data){
      	debug("got games")
 		debug(data);
+		var gameListHtml='';
 		for(var i=0;i<data.length;i++){
 			for(var j=0;j<friendList.length;j++){
 				if(data[i].players.indexOf(friendList[j])!=-1){
 					gameList.push(data[i])
+					gameListHtml+='<a onclick=\'function(){joinGame(\''+data[i].gameID+'\')};\'>'+data[i].gameID+'</a>'
 				}
 			}
 		}
 	debug("friend game list");
 	debug(gameList)
 		
+		$("#gamesList").html(gameListHtml)
     });
 	socket.on('gameJoined', function(data){
      	debug("game joined")
@@ -455,9 +458,7 @@ function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
 	socket.emit("createGame",{gameID:gameID,players:[userID]})
 }
-function joinGame(){
-	gameID=$("#gameinput").val();
-	debug("gameID="+gameID);
+function joinGame(gameID){
 	socket.emit("joinGame",{gameID:gameID, userID:userID})
 }
 function getUsers(){
