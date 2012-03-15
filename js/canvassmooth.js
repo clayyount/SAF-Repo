@@ -51,7 +51,7 @@ function fblogin(response) {
 			debug("fql response")
 			debug(response)
 			for(var i=0;i<response.data.length;i++){
-				if(response.data[i].installed){
+				if(response.data[i].is_app_user){
 					friendList.push(response.data[i]);
 				}
 			}
