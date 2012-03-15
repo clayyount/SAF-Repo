@@ -24,11 +24,21 @@ window.fbAsyncInit = function() {
     });
 	FB.Event.subscribe('auth.login', function(response) {
 		if(response.status=="connected"){
-			FB.api('/me', function(user) {
-	            if (user) {
-	              debug(user)
-	            }
-		    });
+			debug("auth.login response")
+			debug(response)
+		}
+	});
+	FB.getLoginStatus(function(response) {
+		if (response.status === 'connected') {
+			debug("getLoginStatus response")
+			debug(response)
+			var uid = response.authResponse.userID;
+			var accessToken = response.authResponse.accessToken;
+		} else if (response.status === 'not_authorized') {
+			// the user is logged in to Facebook, 
+			// but has not authenticated your app
+		} else {
+			// the user isn't logged in to Facebook.
 		}
 	});
 
