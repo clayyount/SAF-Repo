@@ -210,6 +210,16 @@ $(window).load(function(){
 	socket.on('gotGames', function(data){
      	debug("got games")
 		debug(data);
+		for(var i=0;i<data.length;i++){
+			for(var j=0;j<friendList.length;j++){
+				if(data[i].players.indexOf(friendList[j])!=-1){
+					gameList.push(data[i])
+				}
+			}
+		}
+	debug("friend game list");
+	debug(gameList)
+		
     });
 	socket.on('gameJoined', function(data){
      	debug("game joined")
