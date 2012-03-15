@@ -37,7 +37,8 @@ window.fbAsyncInit = function() {
 function fblogin(response) {
 	if (response.status === 'connected') {
 		userID = response.authResponse.userID;
-		//fbAccessToken = response.authResponse.accessToken;
+		fbAccessToken = response.authResponse.accessToken;
+		debug("fbAccessToken="+ fbAccessToken)
 		FB.api('/me', function(response) {
 			debug("me");
 			debug(response);
