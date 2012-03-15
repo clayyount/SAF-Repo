@@ -22,31 +22,8 @@ window.fbAsyncInit = function() {
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
     });
-	FB.Event.subscribe('auth.login', function(response) {
-		if(response.status=="connected"){
-			debug("auth.login response")
-			debug(response)
-		}
-	});
-	FB.getLoginStatus(function(response) {
-		if (response.status === 'connected') {
-			debug("getLoginStatus response")
-			debug(response)
-			var uid = response.authResponse.userID;
-			var accessToken = response.authResponse.accessToken;
-		} else if (response.status === 'not_authorized') {
-			// the user is logged in to Facebook, 
-			// but has not authenticated your app
-			debug("logged in to FB but not authorized")
-		} else {
-			// the user isn't logged in to Facebook.
-			debug("not logged into FB")
-		}
-	});
-
-	
-
-    // Additional initialization code here
+	FB.Event.subscribe('auth.login',fblogin);
+	FB.getLoginStatus(fblogin);
   };
   // Load the SDK Asynchronously
   (function(d){
@@ -55,9 +32,23 @@ window.fbAsyncInit = function() {
      js = d.createElement('script'); js.id = id; js.async = true;
      js.src = "//connect.facebook.net/en_US/all.js";
      ref.parentNode.insertBefore(js, ref);
-   }(document));
+}(document));
 
 
+function fblogin(response) {
+	if (response.status === 'connected') {
+		FB.api('/me', function(response) {
+			debug("me");
+			debug(response);
+		});
+		fbID = response.authResponse.userID;
+		fbAccessToken = response.authResponse.accessToken;
+	} else if (response.status === 'not_authorized') {
+		debug("logged in to FB but not authorized")
+	} else {
+		debug("not logged into FB")
+	}
+}
 preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_size_2.cur","images/cursor_size_3.cur","images/cursor_size_4.cur","images/cursor_size_5.cur","images/cursor_size_6.cur","images/cursor_hand.cur","images/cursor_size_6.cur"])
 
 var commandStack = [];
@@ -429,8 +420,8 @@ debug(commandStack)
 function getAllGames(){
 	socket.emit("getAllGames");
 }
-function addUser(){
-	socket.emit("addUser",{userID:userID,password:"test123",screenname:"Test User 1"})
+function addFBUser(id,name,token){
+	socket.emit("addUser",{userID:id,screenname:name,token:token})
 }
 function deleteUsers(){
 	socket.emit("deleteUsers")
