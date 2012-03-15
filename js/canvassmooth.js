@@ -37,8 +37,10 @@ window.fbAsyncInit = function() {
 		} else if (response.status === 'not_authorized') {
 			// the user is logged in to Facebook, 
 			// but has not authenticated your app
+			debug("logged in to FB but not authorized")
 		} else {
 			// the user isn't logged in to Facebook.
+			debug("not logged into FB")
 		}
 	});
 
