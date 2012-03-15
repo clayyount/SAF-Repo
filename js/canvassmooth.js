@@ -215,6 +215,7 @@ $(window).load(function(){
 			}
 		}
 		$("#gamesList").html(gameListHtml)
+		debug(gameListHtml)
 		debug(data);
     });
 	socket.on('gameleft', function(data){
