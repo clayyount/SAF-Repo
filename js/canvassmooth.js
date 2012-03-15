@@ -203,6 +203,19 @@ $(window).load(function(){
         debug("game joined")
 		debug(data);
     });
+	socket.on('checkGames', function(data){
+		var gameListHtml='';
+		for(var i=0;i<data.length;i++){
+			for(var j=0;j<friendList.length;j++){
+				if(data[i].players.indexOf(friendList[j].userID)!=-1){
+					gameList.push(data[i])
+					gameListHtml+='<a onclick=\'new function(){joinGame("'+data[i].gameID+'")};\'>Join '+friendList[j].screenname+'\'s game</a>'
+				}
+			}
+		}
+		$("#gamesList").html(gameListHtml)
+		debug(data);
+    });
 	socket.on('gameleft', function(data){
         debug("game left")
 		debug(data);
