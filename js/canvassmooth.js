@@ -13,7 +13,7 @@ function preload(arrayOfImages) {
     });
 }
 
-
+//Facebook stuff
 window.fbAsyncInit = function() {
     FB.init({
       appId      : '239015749524254', // App ID
@@ -34,15 +34,15 @@ window.fbAsyncInit = function() {
      ref.parentNode.insertBefore(js, ref);
 }(document));
 
-
 function fblogin(response) {
 	if (response.status === 'connected') {
+		userID = response.authResponse.userID;
+		//fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', function(response) {
 			debug("me");
 			debug(response);
+			addFBUser(userID,response.name){
 		});
-		fbID = response.authResponse.userID;
-		fbAccessToken = response.authResponse.accessToken;
 	} else if (response.status === 'not_authorized') {
 		debug("logged in to FB but not authorized")
 	} else {
@@ -55,7 +55,7 @@ var commandStack = [];
 var userStack = [];
 var usersList = [];
 var gameList = [];
-var userID=String(Math.round((Math.random()*1000000)))
+var userID;
 var gameID;
 debug("userID="+userID)
 var socket;
@@ -420,8 +420,8 @@ debug(commandStack)
 function getAllGames(){
 	socket.emit("getAllGames");
 }
-function addFBUser(id,name,token){
-	socket.emit("addUser",{userID:id,screenname:name,token:token})
+function addFBUser(id,name){
+	socket.emit("addUser",{userID:id,screenname:name})
 }
 function deleteUsers(){
 	socket.emit("deleteUsers")
