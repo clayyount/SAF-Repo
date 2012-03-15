@@ -42,10 +42,17 @@ function fblogin(response) {
 		FB.api('/me', function(response) {
 			debug("me");
 			debug(response);
-			addFBUser(userID,response.name)
+			userObj={userID:userID,screenname:response.name, fb:true}
+			addUser(userObj)
 		});
 		FB.api('me/friends?fields=installed',function(response){
 			debug("friends with the app installed");
+			for(var i=0;i<response.data.length){
+				if(response.data[i].installed){
+					friendList.push(response.data[i])
+				}
+			}
+			debug(friendList)
 			debug(response)
 		})
 	} else if (response.status === 'not_authorized') {
@@ -425,8 +432,8 @@ debug(commandStack)
 function getAllGames(){
 	socket.emit("getAllGames");
 }
-function addFBUser(id,name){
-	socket.emit("addUser",{userID:id,screenname:name})
+function addUser(userObj){
+	socket.emit("addUser",userObj)
 }
 function deleteUsers(){
 	socket.emit("deleteUsers")
