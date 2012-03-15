@@ -45,10 +45,11 @@ function fblogin(response) {
 			userObj={userID:userID,screenname:response.name, fb:true}
 			addUser(userObj)
 		});
-		var fqlquery="SELECT uid, first_name, last_name, is_app_user FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me())"
+		var fqlquery="SELECT uid, first_name, last_name, is_app_user FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = "+ userID +")"
 		FB.api('/fql?q='+fqlquery, function(response){
 			debug("fql response")
 			debug(response)
+			/*
 			for(var i=0;i<response.data.length;i++){
 				if(response.data[i].installed){
 					friendList.push(response.data[i]);
@@ -57,6 +58,7 @@ function fblogin(response) {
 			debug("friendList")
 			debug(friendList)
 			debug(response)
+			*/
 		})
 
 		FB.api('me/friends?fields=installed',function(response){
