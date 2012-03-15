@@ -47,9 +47,9 @@ function fblogin(response) {
 		});
 		FB.api('me/friends?fields=installed',function(response){
 			debug("friends with the app installed");
-			for(var i=0;i<response.data.length){
+			for(var i=0;i<response.data.length;i++){
 				if(response.data[i].installed){
-					friendList.push(response.data[i])
+					friendList.push(response.data[i]);
 				}
 			}
 			debug(friendList)
@@ -67,6 +67,7 @@ var commandStack = [];
 var userStack = [];
 var usersList = [];
 var gameList = [];
+var friendList=[];
 var userID;
 var gameID;
 debug("userID="+userID)
