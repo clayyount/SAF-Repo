@@ -50,7 +50,7 @@ function fblogin(response) {
 			for(var i=0;i<response.data.length;i++){
 				friendList.push({
 								userID:response.data[i].uid,
-								screenname:response.data[i].first_name+" "+response.data[i].first_name
+								screenname:response.data[i].first_name+" "+response.data[i].last_name
 								});
 			}
 			debug(response);
