@@ -212,6 +212,7 @@ $(window).load(function(){
     });
 	socket.on('gotGames', function(data){
      	debug("got games")
+		gameList=[];
 		debug(data);
 		var gameListHtml='';
 		for(var i=0;i<data.length;i++){
@@ -220,10 +221,13 @@ $(window).load(function(){
 					gameList.push(data[i])
 					gameListHtml+='<a onclick=\'new function(){joinGame("'+data[i].gameID+'")};\'>Join '+friendList[j].screenname+'\'s game</a>'
 				}
+				if(data[i].players.indexOf(userID)!=-1){
+					joinGame(data[i].gameID);
+				}
 			}
 		}
-	debug("friend game list");
-	debug(gameList)
+		debug("friend game list");
+		debug(gameList)
 		
 		$("#gamesList").html(gameListHtml)
     });
