@@ -50,7 +50,6 @@ function fblogin(response) {
 		FB.api('/fql?q='+fqlquery, function(response){
 			debug("fql response")
 			debug(response)
-			/*
 			for(var i=0;i<response.data.length;i++){
 				if(response.data[i].installed){
 					friendList.push(response.data[i]);
@@ -59,21 +58,6 @@ function fblogin(response) {
 			debug("friendList")
 			debug(friendList)
 			debug(response)
-			*/
-		})
-
-		FB.api('me/friends?fields=installed',function(response){
-			/*
-			debug("friends with the app installed");
-			for(var i=0;i<response.data.length;i++){
-				if(response.data[i].installed){
-					friendList.push(response.data[i]);
-				}
-			}
-			debug("friendList")
-			debug(friendList)
-			debug(response)
-			*/
 		})
 	} else if (response.status === 'not_authorized') {
 		debug("logged in to FB but not authorized")
