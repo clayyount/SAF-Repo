@@ -208,7 +208,9 @@ $(window).load(function(){
 		debug("friendList")
 		debug(friendList);
 		var gameListHtml='';
+		
 		for(var i=0;i<friendList.length;i++){
+			debug("array index="+data.players.indexOf(friendList[i].userID))
 			if(data.players.indexOf(friendList[i].userID)!=-1){
 				gameListHtml+='<a onclick=\'new function(){joinGame("'+data.gameID+'")};\'>Join '+friendList[i].screenname+'\'s game</a>'
 			}
@@ -236,7 +238,6 @@ $(window).load(function(){
 		var gameListHtml='';
 		for(var i=0;i<data.length;i++){
 			for(var j=0;j<friendList.length;j++){
-				debug("array index="+data[i].players.indexOf(friendList[j].userID))
 				if(data[i].players.indexOf(friendList[j].userID)!=-1){
 					gameList.push(data[i])
 					gameListHtml+='<a onclick=\'new function(){joinGame("'+data[i].gameID+'")};\'>Join '+friendList[j].screenname+'\'s game</a>'
