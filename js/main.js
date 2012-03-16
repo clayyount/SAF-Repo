@@ -158,6 +158,11 @@ returnStr+=']'
 
 $(document).ready(function(){
 	$("#page").hide();
+	$("#newgamebutton").button();
+	$("#watchgamebutton").button();
+	$("#settingsbutton").button();
+	$("#howtoplaybutton").button();
+	$("#practicebutton").button();
 	$(".blackBG").hide();
 	$("#pressure").hide();
 	$.ajax({

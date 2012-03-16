@@ -19,56 +19,66 @@
 </style>
 </head>
 <body>
-<div id="fb-root"></div>
-<div id="gameHolder" style="display:none;">
-	<div id="canvasHolder"><canvas id="canvas" width="100" height="100"></canvas></div>
-	<div id="canvasNavHolder">
-	<div id="canvasNavBox"></div>
-	<canvas id="canvasNav" width="100" heght="100"></canvas>
-	</div>
-	<div id="buttonHolder">
-	<a class="color_picker" id="color_picker"><div class="color_box" id="color_box"></div></a>
-	<a class="size_picker" id="size_picker"></a>
-	<a class="show_all" id="show_all"></a>
-	<a class="zoom" id="zoom"></a>
-	<a class="grab_hand" id="grab_hand"></a>
-	<a class="pressure" id="pressure"></a>
-	<div id="markerHolder">
-	<div class="marker" id="marker_white"></div>
-	<div class="marker" id="marker_grey"></div>
-	<div class="marker" id="marker_purple"></div>
-	<div class="marker" id="marker_yellow"></div>
-	<div class="marker" id="marker_orange"></div>
-	<div class="marker" id="marker_green"></div>
-	<div class="marker" id="marker_blue"></div>
-	<div class="marker" id="marker_red"></div>
-	<div class="marker" id="marker_black"></div>
-	</div>
-	<a class="buttonspacer"></a>
-	
-	<div id="brushHolder">
-	<div class="brushsize" id="brush_size_1"></div>
-	<div class="brushsize" id="brush_size_2"></div>
-	<div class="brushsize" id="brush_size_3"></div>
-	<div class="brushsize" id="brush_size_4"></div>
-	<div class="brushsize" id="brush_size_5"></div>
-	<div class="brushsize" id="brush_size_6"></div>
-	<div class="buttonspacer"></div>
-	</div>
-	<a id="spin"> spin </a> | <a id="clearbutton">clear</a> | <a id="smoothingon"> smoothing on </a><a id="smoothingoff"> smoothing off </a> | <a id="leavegamebutton" onclick="leaveGame()"> leave game </a>
-	</div>
-	<div class="blackBG"></div>
-	<div id="wheelofdeath"></div>
-</div>
-	<div id="startscreen" style="display:none;">
-	<div id="splash">
-		<div id="profile">
-			<div class="profilepic"></div>
-			<div class="profilename"></div>
+	<div id="fb-root"></div>
+	<div id="gameHolder" style="display:none;">
+		<div id="canvasHolder"><canvas id="canvas" width="100" height="100"></canvas></div>
+		<div id="canvasNavHolder">
+		<div id="canvasNavBox"></div>
+		<canvas id="canvasNav" width="100" heght="100"></canvas>
 		</div>
-		<div class="fb-login-button" autologoutlink="true"></div>
-		<a id="creategamebutton" onclick="createGame()">create game</a>
+		<div id="buttonHolder">
+		<a class="color_picker" id="color_picker"><div class="color_box" id="color_box"></div></a>
+		<a class="size_picker" id="size_picker"></a>
+		<a class="show_all" id="show_all"></a>
+		<a class="zoom" id="zoom"></a>
+		<a class="grab_hand" id="grab_hand"></a>
+		<a class="pressure" id="pressure"></a>
+		<div id="markerHolder">
+		<div class="marker" id="marker_white"></div>
+		<div class="marker" id="marker_grey"></div>
+		<div class="marker" id="marker_purple"></div>
+		<div class="marker" id="marker_yellow"></div>
+		<div class="marker" id="marker_orange"></div>
+		<div class="marker" id="marker_green"></div>
+		<div class="marker" id="marker_blue"></div>
+		<div class="marker" id="marker_red"></div>
+		<div class="marker" id="marker_black"></div>
+		</div>
+		<a class="buttonspacer"></a>
+		
+		<div id="brushHolder">
+		<div class="brushsize" id="brush_size_1"></div>
+		<div class="brushsize" id="brush_size_2"></div>
+		<div class="brushsize" id="brush_size_3"></div>
+		<div class="brushsize" id="brush_size_4"></div>
+		<div class="brushsize" id="brush_size_5"></div>
+		<div class="brushsize" id="brush_size_6"></div>
+		<div class="buttonspacer"></div>
+		</div>
+		<a id="spin"> spin </a> | <a id="clearbutton">clear</a> | <a id="smoothingon"> smoothing on </a><a id="smoothingoff"> smoothing off </a> | <a id="leavegamebutton" onclick="leaveGame()"> leave game </a>
+		</div>
+		<div class="blackBG"></div>
+		<div id="wheelofdeath"></div>
 	</div>
+	<div id="startscreen" style="display:none;">
+		<div id="splash">
+			<div id="profile">
+				<div class="profilepic"></div>
+				<div class="profilename"></div>
+			</div>
+			<div class="fb-login-button" autologoutlink="true"></div>
+			<div id="splash_buttonholder">
+				<a id="newgamebutton">NEW GAME</a>
+				<br/>
+				<a id="watchgamebutton">WATCH GAME</a>
+				<br/>
+				<a id="settingsbutton">SETTINGS</a>
+				<br/>
+				<a id="howtoplaybutton">how to play</a>
+				<br/>
+				<a id="practicebutton">practice</a>
+			</div>
+		</div>
 	</div>
 </body>
 
