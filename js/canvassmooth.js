@@ -38,6 +38,7 @@ function fblogin(response) {
 			var myProfileHTML=''
 			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
 			$('.profilename').html(response.name)
+			$('#profile').show();
 			
 		});
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
