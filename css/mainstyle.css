@@ -1,19 +1,12 @@
 html{
 	background:#717171;
-overflow:hidden;
-padding:0px;
-margin:0px;
+	overflow:hidden;
+	padding:0px;
+	margin:0px;
 }
 body{
 padding:0px;
-margin:10px;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
--o-user-select: none;
-user-select: none;
-
+margin:0px;
 }
 a{
 cursor:pointer;
