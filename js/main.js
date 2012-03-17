@@ -158,7 +158,7 @@ returnStr+=']'
 
 $(document).ready(function(){
 	$("#page").hide();
-	$("#newgamebutton").button();
+	$("#newgamebutton").button().click(createGame);
 	$("#watchgamebutton").button();
 	$("#settingsbutton").button();
 	$("#howtoplaybutton").button();
