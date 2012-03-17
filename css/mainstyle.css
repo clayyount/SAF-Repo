@@ -11,8 +11,10 @@ margin:0px;
 a{
 cursor:pointer;
 }
-
-#splash{
+#splashpage{
+	height:100%;
+}
+#splash_content{
 	width:700px;
 	height:700px;
 	background:url(../images/splash1.png) no-repeat top left;
