@@ -157,7 +157,6 @@ returnStr+=']'
 }
 
 $(document).ready(function(){
-	$("#page").hide();
 	$(".blackBG").hide();
 	$("#pressure").hide();
 	$.ajax({
@@ -266,10 +265,8 @@ $(window).load(function(){
  		replayStack.push(data);
     });
 
-	$("#startscreen").show();
 })
 function startGame(){
-$("#startscreen").hide();
 	//Check for Wacom plugin and write the plugin object if it is installed
 	for(i=0;i<navigator.plugins.length;i++){
 		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
@@ -437,7 +434,6 @@ $("#startscreen").hide();
 	//set the cursor to the #2 brush
 	$("#canvas").css({cursor: "url(images/"+currentCursor+".cur) "+cursorPosition[currentCursor]+" "+cursorPosition[currentCursor]+", crosshair"})
 	//show the page and slide the brush and marker menus	
-	$("#gameHolder").show();
 	$("#markerHolder").slideToggle();
 	$("#brushHolder").slideToggle();
 /*
