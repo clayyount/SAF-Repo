@@ -20,6 +20,12 @@ cursor:pointer;
 	-webkit-box-shadow:0px 0px 10px -2px #000000;
 	box-shadow:0px 0px 10px -2px #000000;
 }
+#splash_buttonholder{
+	margin-top:345px;
+	margin-left:200px;
+	width:255px;
+	height:235ps;
+}
 
 .blackBG{
 width:100%;
