@@ -158,7 +158,7 @@ returnStr+=']'
 $('#mainmenu').live('pageinit',function(event){
 	var screenH=$.mobile.getScreenHeight()
 	var screenW=$(window).width();
-	$("splashpage").css({marginTop:(screenH/2-350),marginLeft:(screenH/2-350)})
+	$("#splashpage").css({marginTop:(screenH/2-350),marginLeft:(screenH/2-350)})
 });
 
 $(document).ready(function(){
