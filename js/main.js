@@ -158,10 +158,10 @@ returnStr+=']'
 $('#mainmenu').live('pageinit',function(event){
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
-	splashH=Number($("#splash_content").css("height").split("px")[0])
-	splashW=Number($("#splash_content").css("width").split("px")[0])
+	splashH=350
+	splashW=350
 	debug("splashH="+ splashH)
-	debug("splashH="+ splashW)
+	debug("splashW="+ splashW)
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
 
