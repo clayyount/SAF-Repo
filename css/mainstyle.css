@@ -8,7 +8,7 @@ body{
 padding:0px;
 margin:0px;
 }
-.landscape, .landscape .ui-page, .portrait, .portrait .ui-page, .ui-page {
+.ui-content {
 	min-height: 100%;
 }
 a{
