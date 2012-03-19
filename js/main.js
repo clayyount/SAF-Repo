@@ -474,6 +474,10 @@ function deleteUsers(){
 function deleteGames(){
 	socket.emit("deleteGames")
 }
+function newGame(){
+	$.mobile.changePage($("#drawing"),{transition:"pop"});
+	createGame()
+}
 function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
 	socket.emit("createGame",{gameID:gameID,players:[userID]})
