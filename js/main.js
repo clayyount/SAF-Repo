@@ -160,6 +160,8 @@ $('#mainmenu').live('pageinit',function(event){
 	splashScreenW=$(window).width()-30;
 	splashH=Number($("#splash_content").css("height").split("px")[0])
 	splashW=Number($("#splash_content").css("width").split("px")[0])
+	debug("splashH="+ splashH)
+	debug("splashH="+ splashW)
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
 
