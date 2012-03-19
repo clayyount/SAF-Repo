@@ -167,8 +167,8 @@ $('#mainmenu').live('pageinit',function(event){
 $('#drawing').live('pageinit',function(event){
 		debug("drawing page init")
 });
-$('#drawing').live('pagechange',function(event){
-		debug("drawing page changed")
+$('#drawing').live('pageshow',function(event){
+		debug("drawing page shown")
 });
 
 $(document).ready(function(){
