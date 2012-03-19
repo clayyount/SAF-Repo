@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div id="fb-root"></div>
-	<div id="mainmenu" data-role="page" data-transition="flow">
+	<div id="mainmenu" data-role="page" >
 			<div id="splashpage" data-role="content">
 				
 				<div id="splash_content">
@@ -31,9 +31,9 @@
 						<div class="fb-login-button" autologoutlink="true"></div>
 						-->
 						<div id="splash_buttonholder">
-							<a href="#drawing" id="newgamebutton" data-role="button" data-icon="star">NEW GAME</a>
+							<a href="#drawing" id="newgamebutton" data-role="button" data-icon="star" data-transition="flow">NEW GAME</a>
 							<a href="#" id="watchgamebutton" data-role="button">WATCH GAME</a>
-							<a href="#settings" id="settingsbutton" data-role="button" data-icon="gear">SETTINGS</a>
+							<a href="#settings" id="settingsbutton" data-role="button" data-icon="gear" data-transition="flip">SETTINGS</a>
 							<a href="#" id="howtoplaybutton" data-role="button" data-icon="info">HOW TO PLAY</a>
 							<a href="#" id="practicebutton" data-role="button">PRACTICE</a>
 						</div>
@@ -41,7 +41,7 @@
 		
 			</div>
 		</div>
-	<div id="drawing" data-role="page" data-transition="flow">
+	<div id="drawing" data-role="page" data-transition="pop">
 		<div data-role="header"></div>
 			<div data-role="content">
 
@@ -93,7 +93,7 @@
 			</div>
 		<div data-role="footer"></div>
 	</div>
-	<div id="settings" data-role="page" data-transition="flip">
+	<div id="settings" data-role="page">
 	Settings
 	</div>
 </body>
