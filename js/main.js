@@ -366,7 +366,7 @@ function startGame(){
 	$("#smoothingon").click(function(){smoothingOn=1; smoothingFactor=defaultSmoothingFactor;$(this).hide();$("#smoothingoff").show() }).hide();
 	$("#smoothingoff").click(function(){smoothingOn=0; smoothingFactor=1; $(this).hide();$("#smoothingon").show() })
 	$("#spin").click(function(){
-		$.mobile.changePage($("wheel"),transition:"pop")
+		$.mobile.changePage($("#wheel"),{transition:"pop"})
 		$("#wheelofdeath").spin();
 	});
 	$("#zoom").toggle(
