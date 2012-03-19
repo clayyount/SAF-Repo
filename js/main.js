@@ -156,9 +156,7 @@ returnStr=returnStr.substr(0,returnStr.length-2)
 returnStr+=']'
 }
 $('#mainmenu').live('pageinit',function(event){
-	var screenH=$.mobile.getScreenHeight()
-	var screenW=$(window).width();
-	$("#splashpage").css({marginTop:(screenH/2-350),marginLeft:(screenH/2-350)})
+	
 });
 
 $(document).ready(function(){
@@ -178,7 +176,9 @@ $(document).ready(function(){
 
 
 $(window).load(function(){
-
+	screenH=$(window).height();
+	screenW=$(window).width();
+	$("#splashpage").css({marginTop:(screenH/2-350),marginLeft:(screenW/2-350)})
 	//set the socket
 	try{
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
