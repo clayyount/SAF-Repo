@@ -164,6 +164,12 @@ $('#mainmenu').live('pageinit',function(event){
 	debug("splashW="+ splashW)
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
+$('#drawing').live('pageinit',function(event){
+		debug("drawing page init")
+});
+$('#drawing').live('pagechange',function(event){
+		debug("drawing page changed")
+});
 
 $(document).ready(function(){
 	$("#pressure").hide();
