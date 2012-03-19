@@ -158,8 +158,8 @@ returnStr+=']'
 $('#mainmenu').live('pageinit',function(event){
 	screenH=$(window).height();
 	screenW=$(window).width();
-	splashH=$("#splash_content").css("height")
-	splashW=$("#splash_content").css("width")
+	splashH=Number($("#splash_content").css("height").split("px")[0])
+	splashW=Number($("#splash_content").css("width").split("px")[0])
 debug("splashW="+ splashW)
 debug("splashH="+ splashH)
 	$("#splash_content").css({marginTop:(screenH/2-(splashH/2)),marginLeft:(screenW/2-(splashW/2))})
