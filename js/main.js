@@ -158,7 +158,11 @@ returnStr+=']'
 $('#mainmenu').live('pageinit',function(event){
 	screenH=$(window).height();
 	screenW=$(window).width();
-	$("#splash_content").css({marginTop:(screenH/2-($("#splash_content").height()/2)),marginLeft:(screenW/2-($("#splash_content").width()/2))})
+	splashH=$("#splash_content").height()
+	splashW=$("#splash_content").width()
+debug("splashW="+ splashW)
+debug("splashH="+ splashH)
+	$("#splash_content").css({marginTop:(screenH/2-(splashH/2)),marginLeft:(screenW/2-(splashW/2))})
 	//$(window).resize(resize);
 });
 
