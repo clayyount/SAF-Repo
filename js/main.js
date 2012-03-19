@@ -174,7 +174,8 @@ $(document).ready(function(){
 			$("#wheelofdeath").WheelOfDeath({wheelItems:data.wheelofdeath.items, onSelect: function(sel){
 				//HIDE WHEEL	
 				//$("#wheelofdeath").delay(2000).animate({top:-300},function(){$(".blackBG").hide();});}
-			
+
+				}
 			});
 		  }
 	});
