@@ -13,8 +13,6 @@ position:absolute;
 	
 }
 #wheelofdeath{
-	position:absolute;
-	z-index:12;
 	width:350px;
 	height:200px;
 }
