@@ -156,7 +156,9 @@ returnStr=returnStr.substr(0,returnStr.length-2)
 returnStr+=']'
 }
 $('#mainmenu').live('pageinit',function(event){
-	debug("main page is live")
+	var screenH=$.mobile.getScreenHeight()
+	var screenW=$(window).width();
+	$("splashpage").css({marginTop:(screenH/2-350),marginLeft:(screenH/2-350)})
 });
 
 $(document).ready(function(){
