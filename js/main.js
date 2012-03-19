@@ -155,9 +155,13 @@ for(i=0;i<arr.length;i++){
 returnStr=returnStr.substr(0,returnStr.length-2)
 returnStr+=']'
 }
+$('#mainmenu').live('pageinit',function(event){
+	var screenH=$.mobile.getScreenHeight()
+	var screenW=$.mobile.getScreenWidth()
+	$("splashpage").css({marginTop:(screenH/2-350),marginLeft:(screenH/2-350)})
+});
 
 $(document).ready(function(){
-	$(".blackBG").hide();
 	$("#pressure").hide();
 	$.ajax({
 		  url: 'json/wheelofdeath.json',

@@ -8,9 +8,6 @@ body{
 padding:0px;
 margin:0px;
 }
-.ui-content {
-	min-height: 100%;
-}
 a{
 cursor:pointer;
 }
