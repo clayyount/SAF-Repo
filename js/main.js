@@ -171,13 +171,13 @@ $(document).ready(function(){
 		  url: 'json/wheelofdeath.json',
 		  dataType: 'json',
 		  success: function(data){
-			debug("success!")
 			$("#wheelofdeath").WheelOfDeath({wheelItems:data.wheelofdeath.items, onSelect: function(sel){
-			debug(sel);$("#wheelofdeath").delay(2000).animate({top:-300},function(){$(".blackBG").hide();});}
+				//HIDE WHEEL	
+				//$("#wheelofdeath").delay(2000).animate({top:-300},function(){$(".blackBG").hide();});}
+			
 			});
-			}
-		});
-	$("#wheelofdeath").css({top:-300, left:($(window).width()/2)-175});
+		  }
+	});
 })
 
 
@@ -365,9 +365,8 @@ function startGame(){
 	$("#smoothingon").click(function(){smoothingOn=1; smoothingFactor=defaultSmoothingFactor;$(this).hide();$("#smoothingoff").show() }).hide();
 	$("#smoothingoff").click(function(){smoothingOn=0; smoothingFactor=1; $(this).hide();$("#smoothingon").show() })
 	$("#spin").click(function(){
-		$(".blackBG").show();
-		$("#wheelofdeath").animate({top:(($(window).height()/2)-100),left:(($(window).width()/2)-175)},1000,"easeOutBounce",function(){$("#wheelofdeath").spin();});
-		
+		$.mobile.changePage($("wheel"),transition:"pop")
+		$("#wheelofdeath").spin();
 	});
 	$("#zoom").toggle(
 		function(){
