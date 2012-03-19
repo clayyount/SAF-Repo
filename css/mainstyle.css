@@ -15,6 +15,8 @@ cursor:pointer;
 	height:100%;
 	left: 50%;
 	margin-left: 350px;
+	top: 50%;
+	margin-top: 350px;
 }
 #splash_content{
 	width:700px;
