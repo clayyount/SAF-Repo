@@ -276,6 +276,7 @@ $(window).load(function(){
 
 })
 function startGame(){
+debug("starting game")
 	//Check for Wacom plugin and write the plugin object if it is installed
 	for(i=0;i<navigator.plugins.length;i++){
 		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
