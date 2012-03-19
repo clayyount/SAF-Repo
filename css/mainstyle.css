@@ -13,10 +13,7 @@ cursor:pointer;
 }
 #splashpage{
 	height:100%;
-	width:100%;
-	left: 50%;
-	margin-left: -350px;
-	
+	width:100%;	
 }
 #splash_content{
 	width:700px;
