@@ -156,14 +156,8 @@ returnStr=returnStr.substr(0,returnStr.length-2)
 returnStr+=']'
 }
 $('#mainmenu').live('pageinit',function(event){
-	screenH=$(window).height();
-	screenW=$(window).width();
-	splashH=Number($("#splash_content").css("height").split("px")[0])
-	splashW=Number($("#splash_content").css("width").split("px")[0])
-debug("splashW="+ splashW)
-debug("splashH="+ splashH)
-	$("#splash_content").css({marginTop:(screenH/2-(splashH/2)),marginLeft:(screenW/2-(splashW/2))})
-	//$(window).resize(resize);
+	resize()
+	$(window).resize(resize);
 });
 
 $(document).ready(function(){
@@ -495,7 +489,14 @@ function connectToGame(gameID){
 
 // Function to resize all the page elements based on screen height and width
 function resize(){
-
+	// resize the mainmenu
+	screenH=$(window).height();
+	screenW=$(window).width();
+	splashH=Number($("#splash_content").css("height").split("px")[0])
+	splashW=Number($("#splash_content").css("width").split("px")[0])
+	$("#splash_content").css({marginTop:(screenH/2-(splashH/2)),marginLeft:(screenW/2-(splashW/2))})
+	
+	// resize the drawing canvas
 	screenW=$(window).width()-20;
 	screenH=$(window).height()-60;
 	$("#buttonHolder").css({width:screenW})
