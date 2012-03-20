@@ -1,4 +1,5 @@
 //define global variables
+var mode;
 var commandStack = [];
 var userStack = [];
 var usersList = [];
@@ -165,7 +166,6 @@ $('#mainmenu').live('pageinit',function(event){
 	setupSocket();
 	// Check Wacom plugin
 	checkForWacom();
-
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
 	splashH=700
@@ -174,9 +174,11 @@ $('#mainmenu').live('pageinit',function(event){
 	debug("splashW="+ splashW)
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
-$('#drawing').live('pageinit',function(event){
-		debug("drawing page init")
-});
+$('#gameChooser').live('pageshow',function(event){
+	debug("game chooser page shown")
+}
+
+
 $('#drawing').live('pageshow',function(event){
 		debug("drawing page shown")
 });
@@ -447,6 +449,7 @@ function setupSocket(){
 }
 
 function startGame(){
+	mode="play"
 	//Add mouse events to the canvas
 	$("#canvas").mousedown(mousedown).mouseup(mouseup).mousemove(mousemove).mouseout(mouseup)
 	//get the screen width and height so we can set the defaultZoomLevel
@@ -472,6 +475,14 @@ function startGame(){
 	//set the cursor to the #2 brush
 	$("#canvas").css({cursor: "url(images/"+currentCursor+".cur) "+cursorPosition[currentCursor]+" "+cursorPosition[currentCursor]+", crosshair"})
 	//show the page and slide the brush and marker menus	
+}
+function watchGame(){
+	mode="watch"
+	$.mobile.changePage($("#drawing"),{transition:"pop"});
+}
+function practiceGame(){
+	mode="practice"
+	$.mobile.changePage($("#drawing"),{transition:"pop"});
 }
 
 function getAllGames(){
