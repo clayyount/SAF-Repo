@@ -332,6 +332,10 @@ $.ajax({
 	});
 }
 
+function plugin(){
+	return document.getElementById('wtPlugin');
+}
+
 function checkForWacom(){
 	//BEGIN Check Wacom plugin	
 	for(i=0;i<navigator.plugins.length;i++){
