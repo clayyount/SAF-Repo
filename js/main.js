@@ -222,7 +222,7 @@ $('#drawing').live('pageinit',function(event){
 		canvasFactor=2
 	}
 $.mobile.orientationChangeEnabled=true;
-$.mobile.live('orientationchange',resize)
+$(window).live('orientationchange',resize)
 	//define the canvas and canvas nav elements
 	canvas = document.getElementById('canvas');
 	canvasNav = document.getElementById('canvasNav');
