@@ -159,7 +159,7 @@ returnStr+=']'
 }
 
 */
-$(document).ready(function(){
+$(window).load(function(){
 checkForWacom();
 })
 //on mainmenu init
