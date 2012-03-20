@@ -203,11 +203,7 @@ $('#drawing').live('pageshow',function(event){
 	resize();
 });
 
-$.mobile.orientationChangeEnabled=true;
-$('#drawing').live('orientationchange',function(event){
-debug("orientation changed")
-resize(event);
-})
+
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
 	$("#pressure").hide();
@@ -226,7 +222,11 @@ $('#drawing').live('pageinit',function(event){
 	}else if(navigator.userAgent.match(/safari/i)){
 		canvasFactor=2
 	}
-	
+	$.mobile.orientationChangeEnabled=true;
+	$(window).bind('orientationchange',function(event){
+		debug("orientation changed")
+		resize(event);
+	})
 	//define the canvas and canvas nav elements
 	canvas = document.getElementById('canvas');
 	canvasNav = document.getElementById('canvasNav');
