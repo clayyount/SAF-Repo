@@ -52,6 +52,8 @@ opacity:.70;
 
 }
 #canvasHolder{
+margin-left:10px;
+margin-top:10px;
 	position:absolute;
 	text-align:left;
 	z-index:2;
