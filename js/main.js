@@ -769,10 +769,8 @@ evt.preventDefault();
 		startX = lastX = smoothedMouseX = lastSmoothedMouseX = curX;
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
 		debug("startX ="+ startX)
-
 		if (penAPI && pressureOn)
         {
-			penAPI.setFocus=true;
             pressure = roundNumber(penAPI.pressure,6)
 			if(pressure==0){
 			pressure=.1
