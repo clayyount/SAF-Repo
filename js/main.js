@@ -221,8 +221,8 @@ $('#drawing').live('pageinit',function(event){
 	}else if(navigator.userAgent.match(/safari/i)){
 		canvasFactor=2
 	}
-$.mobile.orientationChangeEnabled=true;
-$(window).live('orientationchange',resize)
+	$.mobile.orientationChangeEnabled=true;
+	$('#drawing').live('orientationchange',resize)
 	//define the canvas and canvas nav elements
 	canvas = document.getElementById('canvas');
 	canvasNav = document.getElementById('canvasNav');
@@ -519,7 +519,7 @@ function connectToGame(gameID){
 }
 
 // Function to resize all the page elements based on screen height and width
-function resize(){
+function resize(evt){
 
 	
 	screenW=$(window).width()-20;
