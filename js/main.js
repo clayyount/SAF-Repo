@@ -221,7 +221,8 @@ $('#drawing').live('pageinit',function(event){
 	}else if(navigator.userAgent.match(/safari/i)){
 		canvasFactor=2
 	}
-$(window).live('orientationchange',resize)
+$.mobile.orientationChangeEnabled=true;
+$.mobile.live('orientationchange',resize)
 	//define the canvas and canvas nav elements
 	canvas = document.getElementById('canvas');
 	canvasNav = document.getElementById('canvasNav');
