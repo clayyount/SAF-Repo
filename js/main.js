@@ -210,23 +210,25 @@ $('#drawing').live('pageinit',function(event){
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
 		canvasFactor=2
+		$(window).bind('resize',resize)
 	}else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)){
 		navSize=.05
 		$("#buttonHolder").hide();
 		$(".marker").css({marginTop:-15})
 		canvasFactor=1
+		$(window).bind('orientationchange',resize)
 	}else if(navigator.userAgent.match(/iPad/i)){
 		canvasFactor=1
+		$(window).bind('orientationchange',resize)
 	}else if(navigator.userAgent.match(/firefox/i)){
 		canvasFactor=2
+		$(window).bind('resize',resize)
 	}else if(navigator.userAgent.match(/safari/i)){
 		canvasFactor=2
+		$(window).bind('resize',resize)
 	}
 	$.mobile.orientationChangeEnabled=false;
-	$(window).bind('orientationchange',function(event){
-		debug("orientation changed")
-		resize(event);
-	})
+	
 	//define the canvas and canvas nav elements
 	canvas = document.getElementById('canvas');
 	canvasNav = document.getElementById('canvasNav');
