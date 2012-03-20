@@ -180,8 +180,6 @@ $('#gameChooser').live('pageshow',function(event){
 
 
 $('#drawing').live('pageshow',function(event){
-
-	$('#canvas').live('vmousedown',mousedown).live('vmouseup', mouseup).live('vmousemove', mousemove);
 	//get the screen width and height so we can set the defaultZoomLevel
 	screenW=$(window).width()-20;
 	screenH=$(window).height()-60;
@@ -338,6 +336,7 @@ $('#drawing').live('pageinit',function(event){
 			grabToggleOff();
 		}	
 	});
+	$('#canvas').live('vmousedown',mousedown).live('vmouseup', mouseup).live('vmousemove', mousemove);
 
 	$("#markerHolder").slideToggle();
 	$("#brushHolder").slideToggle();
