@@ -384,6 +384,7 @@ debug("penAPI")
 }
 
 function setupSocket(){
+debug("setting up socket io stuff")
 //set the socket
 	try{
 	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
