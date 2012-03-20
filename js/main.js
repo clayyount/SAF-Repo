@@ -485,6 +485,10 @@ function practiceGame(){
 	$.mobile.changePage($("#drawing"),{transition:"pop"});
 }
 
+function loadWatchGames(){
+	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
+}
+
 function getAllGames(){
 	socket.emit("getAllGames");
 }
