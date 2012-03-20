@@ -451,7 +451,7 @@ function setupSocket(){
 function startGame(){
 	mode="play"
 	//Add mouse events to the canvas
-	$('#canvas').live('vmousedown',mousedown).live('vmouseup', mouseup).live('vmousemove', mousemove).live('vmousecancel', mouseup);
+	$('#canvas').live('vmousedown',mousedown).live('vmouseup', mouseup).live('vmousemove', mousemove);
 	//get the screen width and height so we can set the defaultZoomLevel
 	screenW=$(window).width()-20;
 	screenH=$(window).height()-60;
