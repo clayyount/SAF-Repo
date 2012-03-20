@@ -94,7 +94,7 @@ function fblogin(response) {
 		FB.api('/me', function(response) {
 			debug("me");
 			debug(response);
-			userObj={userID:userID,screenname:response.name, fb:true}
+			userObj={userID:userID,screenname:response.name,token:fbAccessToken}
 			addUser(userObj)
 			var myProfileHTML=''
 			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
