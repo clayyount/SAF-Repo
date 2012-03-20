@@ -160,6 +160,7 @@ returnStr+=']'
 
 */
 $(window).load(function(){
+//firefox won't load the plugin correctly before window load.
 checkForWacom();
 })
 //on mainmenu init
