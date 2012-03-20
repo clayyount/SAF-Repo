@@ -174,6 +174,7 @@ $('#mainmenu').live('pageinit',function(event){
 	debug("splashW="+ splashW)
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
+
 $('#gameChooser').live('pageshow',function(event){
 	debug("game chooser page shown")
 })
@@ -199,36 +200,28 @@ $('#drawing').live('pageshow',function(event){
 	//set the currentZoomLevel to the default
 	currentZoomLevel= defaultZoomLevel
 	//First call to resize
-	resize()
-		debug("drawing page shown")
+	resize();
 });
 
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
-	
 	$("#pressure").hide();
-
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
-		$(window).resize(resize);
 		canvasFactor=2
 	}else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)){
-		window.onorientationchange=resize;
 		navSize=.05
 		$("#buttonHolder").hide();
 		$(".marker").css({marginTop:-15})
 		canvasFactor=1
 	}else if(navigator.userAgent.match(/iPad/i)){
-		window.onorientationchange=resize;
 		canvasFactor=1
 	}else if(navigator.userAgent.match(/firefox/i)){
-		$(window).resize(resize);
 		canvasFactor=2
 	}else if(navigator.userAgent.match(/safari/i)){
-		$(window).resize(resize);
 		canvasFactor=2
 	}
-
+$(window).live('orientationchange',resize)
 	//define the canvas and canvas nav elements
 	canvas = document.getElementById('canvas');
 	canvasNav = document.getElementById('canvasNav');
@@ -241,7 +234,6 @@ $('#drawing').live('pageinit',function(event){
 	//set the nav h/w to a percentage of the canvas size
 	canvasNav.width=canvas.width*navSizePercent;
 	canvasNav.height=canvas.height*navSizePercent;
-	
 	//Load Wheel of Death
 	loadWheelofDeath()
 	//set the default brush and marker buttons to selected state
@@ -254,7 +246,6 @@ $('#drawing').live('pageinit',function(event){
 	//var initObj={lastX:0,lastY:0,curX:0,curY:0,pressure:0, brushColor:brushColor, brushSize:0}
 	//drawline(initObj)
 	//commandStack.push(initObj)
-	
 	//Add button events
 	$("#markerHolder").children().click(function(evt){
 		selectmarker(evt);
