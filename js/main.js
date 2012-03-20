@@ -335,8 +335,8 @@ $('#drawing').live('pageinit',function(event){
 		}	
 	});
 	$('#canvas').live('vmousedown',mousedown).live('vmouseup', mouseup).live('vmousemove', mousemove);
-	//$("#markerHolder").slideToggle();
-	//$("#brushHolder").slideToggle();
+	$("#markerHolder").hide();
+	$("#brushHolder").hide();
 })
 
 function loadWheelofDeath(){
