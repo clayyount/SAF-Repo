@@ -317,7 +317,7 @@ $('#drawing').live('pageinit',function(event){
 
 	$("#markerHolder").slideToggle();
 	$("#brushHolder").slideToggle();
-})
+}).preventDefault()
 
 function loadWheelofDeath(){
 $.ajax({
