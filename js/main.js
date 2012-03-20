@@ -222,6 +222,7 @@ $('#drawing').live('pageinit',function(event){
 	}else if(navigator.userAgent.match(/safari/i)){
 		canvasFactor=2
 	}
+	$.mobile.orientationChangeEnabled=false;
 	$(window).bind('orientationchange',function(event){
 		debug("orientation changed")
 		resize(event);
