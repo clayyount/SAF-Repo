@@ -758,6 +758,7 @@ function pluginloaded()
 }
 //canvas mousedown function.
 function mousedown(evt){
+evt.preventDefault();
 	if(!dragging){
 		lineDown=1
 		var ev = evt || window.event;
@@ -796,7 +797,8 @@ function mousedown(evt){
 	}
 }
 //canvas mouseup function.
-function mouseup(){
+function mouseup(evt){
+evt.preventDefault();
 	if(!dragging){
 		lineDown=0;
 		drawing=false;
@@ -812,6 +814,7 @@ function mouseup(){
 }
 //canvas mousemove function.
 function mousemove(evt){
+evt.preventDefault();
 if(!dragging){
 	if(drawing){
 		// Non-IE browsers will use evt
