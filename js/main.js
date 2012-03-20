@@ -159,13 +159,15 @@ returnStr+=']'
 }
 
 */
-
+$(document).ready(function(){
+checkForWacom();
+})
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
 	// Init Socket connection and assign events
 	setupSocket();
 	// Check Wacom plugin
-	checkForWacom();
+	
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
 	splashH=700
