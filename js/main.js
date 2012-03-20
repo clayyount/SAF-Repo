@@ -317,7 +317,7 @@ $('#drawing').live('pageinit',function(event){
 
 	$("#markerHolder").slideToggle();
 	$("#brushHolder").slideToggle();
-}).preventDefault()
+})
 
 function loadWheelofDeath(){
 $.ajax({
@@ -451,7 +451,7 @@ function setupSocket(){
 function startGame(){
 	mode="play"
 	//Add mouse events to the canvas
-	$("#canvas").mousedown(mousedown).mouseup(mouseup).mousemove(mousemove).mouseout(mouseup)
+	$("#canvas").vmousedown(mousedown).vmouseup(mouseup).vmousemove(mousemove).vmousecancel(mouseup)
 	//get the screen width and height so we can set the defaultZoomLevel
 	screenW=$(window).width()-20;
 	screenH=$(window).height()-60;
