@@ -162,13 +162,12 @@ returnStr+=']'
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.
 checkForWacom();
+setupSocket();
 })
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
 	// Init Socket connection and assign events
-	setupSocket();
 	// Check Wacom plugin
-	
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
 	splashH=700
