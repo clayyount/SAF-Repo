@@ -553,6 +553,7 @@ function resize(){
 }
 //Function to zoom to a point on the canvas takes x/y coordinates from the canvas object
 function zoomCanvasTo(_x,_y, oldlevel ,newlevel){
+	debug("zoom1")
 	if(showAll){
 		screenH=$(window).height()-20;
 
@@ -573,7 +574,7 @@ newLevel= showAllZoomLevel
 		$("#canvasNavHolder").slideDown("slow").delay(400);
 		$("#canvas").css({cursor: "url(images/"+currentCursor+".cur) "+cursorPosition[currentCursor]+" "+cursorPosition[currentCursor]+", crosshair"})
 	}
-
+debug("zoom2")
 	canvasCenter={x:_x,y:_y}
 	var oldCanvasW=canvas.width/oldlevel;
 	var newCanvasW=canvas.width/newlevel;
@@ -603,6 +604,7 @@ newLevel= showAllZoomLevel
 		canvasPos.x=$("#canvas").offset().left;
 		canvasPos.y=$("#canvas").offset().top;
 	});
+debug("zoom3")
 	//destroy the draggable instance.
 	$("#canvas").draggable("destroy")
 	canvasPos.x=offsetX;
@@ -613,6 +615,7 @@ newLevel= showAllZoomLevel
 		width:canvasBoxW-2,
 		height:canvasBoxH-2
 	},300);	
+debug("zoom4")
 }
 
 function grabToggleOn(){
