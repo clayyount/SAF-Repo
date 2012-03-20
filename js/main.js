@@ -1,70 +1,3 @@
-//debug function
-function debug(message){
-	if(window.console){
-		console.log(message);
-	}
-}
-
-// Facebook Stuff
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '239015749524254',
-      oauth		 : true,
-      status     : true,
-      cookie     : true,
-      xfbml      : true
-    });
-	FB.Event.subscribe('auth.login',fblogin);
-	FB.getLoginStatus(fblogin);
-};
-  // Load the SDK Asynchronously
-(function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-}(document));
-// Facebook login function
-function fblogin(response) {
-	if (response.status === 'connected') {
-		userID = response.authResponse.userID;
-		fbAccessToken = response.authResponse.accessToken;
-		FB.api('/me', function(response) {
-			debug("me");
-			debug(response);
-			userObj={userID:userID,screenname:response.name, fb:true}
-			addUser(userObj)
-			var myProfileHTML=''
-			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
-			$('.profilename').html(response.name)
-			$('#profile').show();
-			
-		});
-		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
-		FB.api('/fql?q='+fqlquery, function(response){
-			for(var i=0;i<response.data.length;i++){
-				friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
-			}
-			getAllGames();
-		});
-	} else if (response.status === 'not_authorized') {
-		debug("logged in to FB but not authorized")
-	} else {
-		debug("not logged into FB")
-	}
-}
-//END Facebook Stuff
-
-//Image preload function
-function preload(arrayOfImages) {
-    $(arrayOfImages).each(function(){
-		$('<img src="' + this + '" />')
-    });
-}
-//Preload site images
-preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_size_2.cur","images/cursor_size_3.cur","images/cursor_size_4.cur","images/cursor_size_5.cur","images/cursor_size_6.cur","images/cursor_hand.cur","images/cursor_size_6.cur"])
-
 //define global variables
 var commandStack = [];
 var userStack = [];
@@ -125,11 +58,79 @@ var startX=0;
 var startY=0;
 var showAll=false;
 
-function plugin(){
-	return document.getElementById('wtPlugin');
+//debug function
+function debug(message){
+	if(window.console){
+		console.log(message);
+	}
 }
 
-//copy command stack to clipboard, use to write to file.
+//BEGIN Facebook Init
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '239015749524254',
+      oauth		 : true,
+      status     : true,
+      cookie     : true,
+      xfbml      : true
+    });
+	FB.Event.subscribe('auth.login',fblogin);
+	FB.getLoginStatus(fblogin);
+};
+// Load the SDK Asynchronously
+(function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+}(document));
+// Facebook login function
+function fblogin(response) {
+	if (response.status === 'connected') {
+		userID = response.authResponse.userID;
+		fbAccessToken = response.authResponse.accessToken;
+		FB.api('/me', function(response) {
+			debug("me");
+			debug(response);
+			userObj={userID:userID,screenname:response.name, fb:true}
+			addUser(userObj)
+			var myProfileHTML=''
+			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
+			$('.profilename').html(response.name)
+			$('#profile').show();
+			
+		});
+		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
+		FB.api('/fql?q='+fqlquery, function(response){
+			for(var i=0;i<response.data.length;i++){
+				friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
+			}
+			getAllGames();
+		});
+	} else if (response.status === 'not_authorized') {
+		debug("logged in to FB but not authorized")
+	} else {
+		debug("not logged into FB")
+	}
+}
+//END Facebook Init
+
+
+//BEGIN Image Preloader
+//Image preload function
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+		$('<img src="' + this + '" />')
+    });
+}
+//Preload site images
+preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_size_2.cur","images/cursor_size_3.cur","images/cursor_size_4.cur","images/cursor_size_5.cur","images/cursor_size_6.cur","images/cursor_hand.cur","images/cursor_size_6.cur"])
+//END Image Preloader
+
+
+//old copy command stack to clipboard, use to write to file.
+/*
 function copyToClipboard (arr) {
 var returnStr='[';
 for(i=0;i<arr.length;i++){
@@ -155,7 +156,16 @@ for(i=0;i<arr.length;i++){
 returnStr=returnStr.substr(0,returnStr.length-2)
 returnStr+=']'
 }
+
+*/
+
+//on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
+	// Init Socket connection and assign events
+	setupSocket();
+	// Check Wacom plugin
+	checkForWacom();
+
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
 	splashH=700
@@ -171,135 +181,10 @@ $('#drawing').live('pageshow',function(event){
 		debug("drawing page shown")
 });
 
-$(document).ready(function(){
+//on drawing page init
+$('#drawing').live('pageinit',function(event){
 	$("#pressure").hide();
-	$.ajax({
-		  url: 'json/wheelofdeath.json',
-		  dataType: 'json',
-		  success: function(data){
-			$("#wheelofdeath").WheelOfDeath({wheelItems:data.wheelofdeath.items, onSelect: function(sel){
-				//HIDE WHEEL	
-				//$("#wheelofdeath").delay(2000).animate({top:-300},function(){$(".blackBG").hide();});}
 
-				}
-			});
-		  }
-	});
-})
-
-
-$(window).load(function(){
-	
-	//set the socket
-	try{
-	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
-	}catch(e){
-		debug("socket io not running")
-	}
-	socket.emit("setUser",{userID:userID})
-	
-	//set draw event for the socket
-	socket.on('connection', function(){
-        debug('socket connected');
-    });
-	socket.on('error', function(data){
-        debug(data.error);
-    });
-	socket.on('loggedIn', function(data){
-        debug("logged in")
-		debug(data);
-    });
-	socket.on('gameJoined', function(data){
-        debug("game joined")
-		debug(data);
-    });
-	socket.on('checkGame', function(data){
-		var gameListHtml='';
-		for(var i=0;i<friendList.length;i++){
-			debug("array index="+data.players.indexOf(friendList[i].userID))
-			if(data.players.indexOf(friendList[i].userID)!=-1){
-				gameListHtml+='<a onclick=\'new function(){joinGame("'+data.gameID+'")};\'>Join '+friendList[i].screenname+'\'s game</a>'
-			}
-		}
-		$("#gamesList").html(gameListHtml)
-    });
-	socket.on('gameleft', function(data){
-        debug("game left")
-		debug(data);
-    });
-	socket.on('gameCreated', function(data){
-     	debug("game created")
-		debug(data);
-		joinGame(data.gameID);
-    });
-	socket.on('gotUsers', function(data){
-     	debug("got users")
-		debug(data);
-    });
-	socket.on('gotGames', function(data){
-		gameList=[];
-		var gameListHtml='';
-		for(var i=0;i<data.length;i++){
-			for(var j=0;j<friendList.length;j++){
-				if(data[i].players.indexOf(friendList[j].userID)!=-1){
-					gameList.push(data[i])
-					gameListHtml+='<a onclick=\'new function(){joinGame("'+data[i].gameID+'")};\'>Join '+friendList[j].screenname+'\'s game</a>'
-				}
-				if(data[i].players.indexOf(userID)!=-1){
-					joinGame(data[i].gameID);
-				}
-			}
-		}
-		$("#gamesList").html(gameListHtml)
-    });
-	socket.on('gameJoined', function(data){
-     	debug("game joined")
-		debug(data);
-		currentGame=data.gameID;
-		startGame();
-    });
-	
-
-	socket.on('userSet', function(data) {
-    	usersList.push(data);
-    });
-	socket.on('gotGames', function(data) {
-    	debug("current games");
-		debug(data);
-    });
-	socket.on('gameCreated', function(data) {
-    	debug("game created");
-		debug(data);
-    });
-	socket.on('gameConnected', function(data) {
-    	debug("connected to game");
-		debug(data);
-    });
-	socket.on('draw', function(data) {
-    	commandStack.push(data);
- 		replayStack.push(data);
-    });
-
-})
-function startGame(){
-debug("starting game")
-	//Check for Wacom plugin and write the plugin object if it is installed
-	for(i=0;i<navigator.plugins.length;i++){
-		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
-			pluginInstalled=true
-			break;
-		}
-	}
-	if(pluginInstalled){
-		$("body").append('<!--[if IE]><object style="visiblity:hidden;" id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object><![endif]--><!--[if !IE]> <--><!-- This is the Firebreath wacomtabletplugin --><object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginloaded" /></object><!--> <![endif]-->');
-		penAPI = plugin().penAPI;
-		// if the plugin is working, show the pressure button
-		if(penAPI){
-			$("#pressure").show();
-			pressureOn=true;
-			$("#pressure").css({backgroundPosition:"top right"});
-		}
-	}
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
 		$(window).resize(resize);
@@ -319,6 +204,7 @@ debug("starting game")
 		$(window).resize(resize);
 		canvasFactor=2
 	}
+
 	//define the canvas and canvas nav elements
 	canvas = document.getElementById('canvas');
 	canvasNav = document.getElementById('canvasNav');
@@ -332,6 +218,8 @@ debug("starting game")
 	canvasNav.width=canvas.width*navSizePercent;
 	canvasNav.height=canvas.height*navSizePercent;
 	
+	//Load Wheel of Death
+	loadWheelofDeath()
 	//set the default brush and marker buttons to selected state
 	$("#brush_size_2").css({backgroundPosition: "top right"})
 	$("#marker_black").css({backgroundPosition: "top right"})
@@ -424,6 +312,137 @@ debug("starting game")
 			grabToggleOff();
 		}	
 	});
+
+	$("#markerHolder").slideToggle();
+	$("#brushHolder").slideToggle();
+})
+
+function loadWheelofDeath(){
+$.ajax({
+		  url: 'json/wheelofdeath.json',
+		  dataType: 'json',
+		  success: function(data){
+			$("#wheelofdeath").WheelOfDeath({wheelItems:data.wheelofdeath.items, onSelect: function(sel){
+				//HIDE WHEEL	
+				//$("#wheelofdeath").delay(2000).animate({top:-300},function(){$(".blackBG").hide();});}
+				//currentPage
+				}
+			});
+		  }
+	});
+}
+
+function checkForWacom(){
+	//BEGIN Check Wacom plugin	
+	for(i=0;i<navigator.plugins.length;i++){
+		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
+			pluginInstalled=true
+			break;
+		}
+	}
+	if(pluginInstalled){
+		$("body").append('<!--[if IE]><object style="visiblity:hidden;" id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object><![endif]--><!--[if !IE]> <--><!-- This is the Firebreath wacomtabletplugin --><object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginloaded" /></object><!--> <![endif]-->');
+		penAPI = plugin().penAPI;
+		// if the plugin is working, show the pressure button
+		if(penAPI){
+			$("#pressure").show();
+			pressureOn=true;
+			$("#pressure").css({backgroundPosition:"top right"});
+		}
+	}
+	//END Check Wacom plugin
+}
+
+function setupSocket(){
+//set the socket
+	try{
+	socket = io.connect('http://ec2-50-19-184-210.compute-1.amazonaws.com:4000');
+	}catch(e){
+		debug("socket io not running")
+	}
+	//set the UserID
+	socket.emit("setUser",{userID:userID})
+	socket.on('connection', function(){
+        debug('socket connected');
+    });
+	socket.on('error', function(data){
+        debug(data.error);
+    });
+	socket.on('loggedIn', function(data){
+        debug("logged in")
+		debug(data);
+    });
+	socket.on('gameJoined', function(data){
+        debug("game joined")
+		debug(data);
+    });
+	socket.on('checkGame', function(data){
+		var gameListHtml='';
+		for(var i=0;i<friendList.length;i++){
+			debug("array index="+data.players.indexOf(friendList[i].userID))
+			if(data.players.indexOf(friendList[i].userID)!=-1){
+				gameListHtml+='<a onclick=\'new function(){joinGame("'+data.gameID+'")};\'>Join '+friendList[i].screenname+'\'s game</a>'
+			}
+		}
+		$("#gamesList").html(gameListHtml)
+    });
+	socket.on('gameleft', function(data){
+        debug("game left")
+		debug(data);
+    });
+	socket.on('gameCreated', function(data){
+     	debug("game created")
+		debug(data);
+		joinGame(data.gameID);
+    });
+	socket.on('gotUsers', function(data){
+     	debug("got users")
+		debug(data);
+    });
+	socket.on('gotGames', function(data){
+		gameList=[];
+		var gameListHtml='';
+		for(var i=0;i<data.length;i++){
+			for(var j=0;j<friendList.length;j++){
+				if(data[i].players.indexOf(friendList[j].userID)!=-1){
+					gameList.push(data[i])
+					gameListHtml+='<a onclick=\'new function(){joinGame("'+data[i].gameID+'")};\'>Join '+friendList[j].screenname+'\'s game</a>'
+				}
+				if(data[i].players.indexOf(userID)!=-1){
+					joinGame(data[i].gameID);
+				}
+			}
+		}
+		$("#gamesList").html(gameListHtml)
+    });
+	socket.on('gameJoined', function(data){
+     	debug("game joined")
+		debug(data);
+		currentGame=data.gameID;
+		startGame();
+    });
+	socket.on('userSet', function(data) {
+    	usersList.push(data);
+    });
+	socket.on('gotGames', function(data) {
+    	debug("current games");
+		debug(data);
+    });
+	socket.on('gameCreated', function(data) {
+    	debug("game created");
+		debug(data);
+    });
+	socket.on('gameConnected', function(data) {
+    	debug("connected to game");
+		debug(data);
+    });
+	socket.on('draw', function(data) {
+    	commandStack.push(data);
+ 		replayStack.push(data);
+    });
+}
+
+function startGame(){
 	//Add mouse events to the canvas
 	$("#canvas").mousedown(mousedown).mouseup(mouseup).mousemove(mousemove).mouseout(mouseup)
 	//get the screen width and height so we can set the defaultZoomLevel
@@ -449,24 +468,6 @@ debug("starting game")
 	//set the cursor to the #2 brush
 	$("#canvas").css({cursor: "url(images/"+currentCursor+".cur) "+cursorPosition[currentCursor]+" "+cursorPosition[currentCursor]+", crosshair"})
 	//show the page and slide the brush and marker menus	
-	$("#markerHolder").slideToggle();
-	$("#brushHolder").slideToggle();
-/*
-	$.ajax({
-	  url: 'json/testopponent.json',
-	  dataType: 'json',
-	  success: function(data){
-		debug("json loaded");
-		debug(data);
-		var opponentActions=data["testopponent"];
-		for(i=0;i<opponentActions.length;i++){
-			//commandStack.push(opponentActions[i])
-		}
-		debug("commandStack")
-debug(commandStack)
-		}
-	});
-*/
 }
 
 function getAllGames(){
