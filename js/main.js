@@ -101,7 +101,7 @@ function fblogin(response) {
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', function(response) {
-			debug("me");
+			debug("me received");
 			userObj={userID:userID,screenname:response.name,token:fbAccessToken}
 			addUser(userObj)
 			var myProfileHTML=''
