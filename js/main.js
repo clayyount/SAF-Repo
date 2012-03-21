@@ -111,11 +111,8 @@ function pluginLoaded(){
 	debug(penAPI.TabletModel)
 	debug(penAPI.TabletModelID)
 	debug(penAPI.version)
-	
-	
-	
 	// if the plugin is working, show the pressure button
-	if(penAPI!=false){
+	if(penAPI.isWacom){
 		$("#pressure").show();
 		pressureOn=true;
 		$("#pressure").css({backgroundPosition:"top right"});
