@@ -65,6 +65,9 @@ function debug(message){
 		console.log(message);
 	}
 }
+function plugin(){
+	return document.getElementById('wtPlugin');
+}
 
 //BEGIN Facebook Init
 window.fbAsyncInit = function() {
@@ -80,10 +83,13 @@ window.fbAsyncInit = function() {
 	//FB.Event.subscribe('auth.login',fblogin);
 	FB.Event.subscribe('auth.statusChange',fblogin);
 	setupSocket();
-	checkForWacom()
+	
 	
 };
 // Load the SDK Asynchronously
+$(document).ready(function(){
+	checkForWacom();
+})
 
 (function(d){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -178,13 +184,10 @@ $(window).load(function(){
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
 	// Init Socket connection and assign events
-	// Check Wacom plugin
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
 	splashH=700
 	splashW=700
-	debug("splashH="+ splashH)
-	debug("splashW="+ splashW)
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
 
@@ -367,9 +370,7 @@ $.ajax({
 	});
 }
 
-function plugin(){
-	return document.getElementById('wtPlugin');
-}
+
 
 function checkForWacom(){
 	//BEGIN Check Wacom plugin	
