@@ -72,11 +72,11 @@ window.fbAsyncInit = function() {
       appId      : '239015749524254',
       oauth		 : true,
       status     : true,
-      cookie     : false,
+      cookie     : true,
       xfbml      : true
     });
 	
-	FB.getLoginStatus(fblogin);
+	FB.getLoginStatus(fblogin,true);
 	//FB.Event.subscribe('auth.login',fblogin);
 	//FB.Event.subscribe('auth.statusChange',fblogin);
 	
