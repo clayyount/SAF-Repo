@@ -96,7 +96,7 @@ function checkForWacom(){
 		}
 	}
 	if(pluginInstalled){
-		$("body").append('<object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object>');
+		$("body").append('<object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginLoaded" /></object>');
 	}
 	penAPI = plugin().penAPI;
 	debug("penAPI")
@@ -110,6 +110,11 @@ function checkForWacom(){
 
 	//END Check Wacom plugin
 }
+
+function pluginLoaded(){
+	debug("Plugin loaded!");
+}
+
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
