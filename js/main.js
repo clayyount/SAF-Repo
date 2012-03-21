@@ -99,6 +99,8 @@ function checkForWacom(){
 		$("body").append('<object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object>');
 	}
 	penAPI = plugin().penAPI;
+	debug("penAPI")
+	debug(penAPI)
 		// if the plugin is working, show the pressure button
 		if(penAPI){
 			$("#pressure").show();
