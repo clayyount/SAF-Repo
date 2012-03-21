@@ -79,6 +79,8 @@ window.fbAsyncInit = function() {
 	FB.getLoginStatus(fblogin,true);
 	//FB.Event.subscribe('auth.login',fblogin);
 	FB.Event.subscribe('auth.statusChange',fblogin);
+	setupSocket();
+	checkForWacom()
 	
 };
 // Load the SDK Asynchronously
@@ -93,7 +95,7 @@ window.fbAsyncInit = function() {
 
 // Facebook login function
 function fblogin(response) {
-	setupSocket();
+	
 	debug("fblogin")
 	if (response.status === 'connected') {
 		$("#login_holder").hide();
@@ -171,7 +173,7 @@ returnStr+=']'
 */
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.
-checkForWacom();
+
 })
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
