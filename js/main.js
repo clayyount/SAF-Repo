@@ -84,6 +84,12 @@ if ( pluginVersion != undefined )
 return retVersion;
 }
 
+function clearLoadedPluginFlag()
+{
+	debug("WARNING: could not load WacomIE.cab file.");
+	loadedPlugin = 0;
+}
+
 //BEGIN Facebook Init
 window.fbAsyncInit = function() {
     FB.init({
@@ -227,16 +233,16 @@ returnStr+=']'
 }
 
 */
-$("body").load(function(){
+$(window).load(function(){
 //firefox won't load the plugin correctly before window load.
 var loadVersion = isPluginLoaded();
 if ( loadVersion != "" )
 {
-	alert("Loaded webplugin: " + loadVersion);
+	debug("Loaded webplugin: " + loadVersion);
 }
 else
 {
-	alert("webplugin is NOT Loaded (or undiscoverable)");
+	debug("webplugin is NOT Loaded (or undiscoverable)");
 	return;
 }
 })
