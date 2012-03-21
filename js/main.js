@@ -105,7 +105,7 @@ function pluginLoaded(){
 	debug("Plugin loaded!");
 	penAPI = plugin().penAPI;
 	debug("penAPI")
-	debug(penAPI)
+	debug(penAPI.pressure)
 	// if the plugin is working, show the pressure button
 	if(penAPI!=false){
 		$("#pressure").show();
