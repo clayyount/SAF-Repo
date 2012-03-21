@@ -75,11 +75,13 @@ window.fbAsyncInit = function() {
       cookie     : true,
       xfbml      : true
     });
-	FB.Event.subscribe('auth.login',fblogin);
-	FB.getLoginStatus(fblogin);
 	debug("getting login status")
+	FB.getLoginStatus(fblogin);
+	FB.Event.subscribe('auth.login',fblogin);
+	
 };
 // Load the SDK Asynchronously
+/*
 (function(d){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
      if (d.getElementById(id)) {return;}
@@ -87,6 +89,7 @@ window.fbAsyncInit = function() {
      js.src = "//connect.facebook.net/en_US/all.js";
      ref.parentNode.insertBefore(js, ref);
 }(document));
+*/
 // Facebook login function
 function fblogin(response) {
 	if (response.status === 'connected') {
