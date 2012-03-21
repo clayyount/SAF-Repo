@@ -94,6 +94,7 @@ window.fbAsyncInit = function() {
 
 // Facebook login function
 function fblogin(response) {
+	debug("fblogin")
 	if (response.status === 'connected') {
 		$("#splash_buttonholder").show();
 		$("#login_holder").hide();
