@@ -97,7 +97,7 @@ function checkForWacom(){
 		}
 	}
 	if(pluginInstalled){
-		$("body").append('<!--[if IE]><object id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308"></object><![endif]--><!--[if !IE]> <--><embed id="wtPlugin" type="application/x-wacomtabletplugin" HIDDEN="TRUE"></embed><!--> <![endif]-->');
+		$("body").append('<!--[if IE]><object id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308"><param name="onload" value="pluginLoaded" /></object><![endif]--><!--[if !IE]> <--><embed id="wtPlugin" type="application/x-wacomtabletplugin" HIDDEN="TRUE" onLoad="pluginLoaded"></embed><!--> <![endif]-->');
 	}
 	//END Check Wacom plugin
 }
