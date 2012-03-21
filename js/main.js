@@ -68,7 +68,6 @@ function debug(message){
 
 //BEGIN Facebook Init
 window.fbAsyncInit = function() {
-	debug("getting login status")
     FB.init({
       appId      : '239015749524254',
       oauth		 : true,
@@ -77,9 +76,9 @@ window.fbAsyncInit = function() {
       xfbml      : true
     });
 	
-	FB.getLoginStatus(fblogin);
+	//FB.getLoginStatus(fblogin);
 	//FB.Event.subscribe('auth.login',fblogin);
-	//FB.Event.subscribe('auth.statusChange',fblogin);
+	FB.Event.subscribe('auth.statusChange',fblogin);
 	
 };
 // Load the SDK Asynchronously
