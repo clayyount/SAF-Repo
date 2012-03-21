@@ -76,7 +76,7 @@ window.fbAsyncInit = function() {
       xfbml      : true
     });
 	
-	//FB.getLoginStatus(fblogin);
+	FB.getLoginStatus(fblogin);
 	//FB.Event.subscribe('auth.login',fblogin);
 	//FB.Event.subscribe('auth.statusChange',fblogin);
 	
