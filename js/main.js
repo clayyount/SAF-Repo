@@ -115,7 +115,6 @@ function fblogin(response) {
 			for(var i=0;i<response.data.length;i++){
 				friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
 			}
-			getAllGames();
 		});
 	} else if (response.status === 'not_authorized') {
 		$("#splash_buttonholder").hide();
