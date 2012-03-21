@@ -239,6 +239,7 @@ var loadVersion = isPluginLoaded();
 if ( loadVersion != "" )
 {
 	debug("Loaded webplugin: " + loadVersion);
+	penAPI=getWacomPlugin();
 }
 else
 {
