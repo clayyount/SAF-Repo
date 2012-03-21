@@ -241,8 +241,8 @@ if ( loadVersion != "" )
 	debug("Loaded webplugin: " + loadVersion);
 	debug(getWacomPlugin().penAPI.pressure)
 	debug(getWacomPlugin().penAPI.isWacom)
-	debug(getWacomPlugin().penAPI.TabletModel)
-	debug(getWacomPlugin().penAPI.TabletModelID)
+	debug(getWacomPlugin().penAPI.tabletModel)
+	debug(getWacomPlugin().penAPI.tabletModelID)
 	debug(getWacomPlugin().version)
 }
 else
