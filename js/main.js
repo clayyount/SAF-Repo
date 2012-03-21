@@ -101,15 +101,13 @@ function fblogin(response) {
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', function(response) {
 			$("#splash_buttonholder").show();
-			
 			debug("me received");
 			userObj={userID:userID,screenname:response.name,token:fbAccessToken}
-			addUser(userObj)
+			
 			var myProfileHTML=''
 			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
 			$('.profilename').html(response.name)
 			$('#profile').show();
-			
 		});
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
