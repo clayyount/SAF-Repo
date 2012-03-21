@@ -25,7 +25,7 @@ var dragging=false;
 var currentCursor="cursor_size_2"
 var cursorPosition={"cursor_size_1":4,"cursor_size_2":5,"cursor_size_3":7,"cursor_size_4":9,"cursor_size_5":11,"cursor_size_6":14}
 var pluginInstalled=false;
-var penAPI;
+var penAPI=false;
 var pressure;
 var pressureOn=false;
 var ctx;
@@ -106,11 +106,11 @@ function pluginLoaded(){
 	penAPI = plugin().penAPI;
 	debug("penAPI")
 	// if the plugin is working, show the pressure button
-		if(penAPI){
-			$("#pressure").show();
-			pressureOn=true;
-			$("#pressure").css({backgroundPosition:"top right"});
-		}
+	if(penAPI!=false){
+		$("#pressure").show();
+		pressureOn=true;
+		$("#pressure").css({backgroundPosition:"top right"});
+	}
 
 }
 
