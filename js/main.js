@@ -787,8 +787,14 @@ evt.preventDefault();
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
 		debug("startX ="+ startX)
 		if (penAPI && pressureOn)
-        {
-            pressure = roundNumber(penAPI.pressure,6)
+        {	
+			var penpressure=1;
+			try{
+			penpressure = penAPI.pressure
+			}catch(e){
+			debug(e)
+			}
+            pressure = roundNumber(penpressure,6)
 			if(pressure==0){
 			pressure=.1
 			}	
