@@ -105,7 +105,15 @@ function pluginLoaded(){
 	debug("Plugin loaded!");
 	penAPI = plugin().penAPI;
 	debug("penAPI")
+	penAPI.SetFocus
 	debug(penAPI.pressure)
+	debug(penAPI.isWacom)
+	debug(penAPI.TabletModel)
+	debug(penAPI.TabletModelID)
+	debug(penAPI.version)
+	
+	
+	
 	// if the plugin is working, show the pressure button
 	if(penAPI!=false){
 		$("#pressure").show();
