@@ -78,7 +78,7 @@ window.fbAsyncInit = function() {
     });
 	
 	FB.getLoginStatus(fblogin);
-	FB.Event.subscribe('auth.login',fblogin);
+	//FB.Event.subscribe('auth.login',fblogin);
 	FB.Event.subscribe('auth.statusChange',fblogin);
 	
 };
