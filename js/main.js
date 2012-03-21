@@ -105,8 +105,7 @@ function pluginLoaded(){
 	debug("Plugin loaded!");
 	penAPI = plugin().penAPI;
 	debug("penAPI")
-	debug(penAPI)
-		// if the plugin is working, show the pressure button
+	// if the plugin is working, show the pressure button
 		if(penAPI){
 			$("#pressure").show();
 			pressureOn=true;
@@ -118,7 +117,7 @@ function pluginLoaded(){
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
-	checkForWacom();
+	
 });
 
 (function(d){
@@ -209,7 +208,7 @@ returnStr+=']'
 */
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.
-
+checkForWacom();
 })
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
