@@ -94,6 +94,7 @@ window.fbAsyncInit = function() {
 
 // Facebook login function
 function fblogin(response) {
+	setupSocket();
 	debug("fblogin")
 	if (response.status === 'connected') {
 		$("#splash_buttonholder").show();
@@ -103,7 +104,7 @@ function fblogin(response) {
 		FB.api('/me', function(response) {
 			debug("me received");
 			userObj={userID:userID,screenname:response.name,token:fbAccessToken}
-			//addUser(userObj)
+			addUser(userObj)
 			var myProfileHTML=''
 			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
 			$('.profilename').html(response.name)
@@ -173,7 +174,6 @@ returnStr+=']'
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.
 checkForWacom();
-setupSocket();
 })
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
