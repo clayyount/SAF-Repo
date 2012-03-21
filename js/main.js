@@ -79,7 +79,9 @@ window.fbAsyncInit = function() {
 	FB.getLoginStatus(fblogin,true);
 	//FB.Event.subscribe('auth.login',fblogin);
 	FB.Event.subscribe('auth.statusChange',fblogin);
-	setupSocket();	
+	setupSocket();
+	checkForWacom()
+	
 };
 // Load the SDK Asynchronously
 
@@ -171,7 +173,19 @@ returnStr+=']'
 */
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.
-checkForWacom();
+
+if(pluginInstalled){
+	penAPI = plugin().penAPI;
+debug("penAPI")
+		debug(penAPI)
+		// if the plugin is working, show the pressure button
+		if(penAPI){
+			$("#pressure").show();
+			pressureOn=true;
+			$("#pressure").css({backgroundPosition:"top right"});
+		}
+}
+
 })
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
@@ -379,15 +393,6 @@ function checkForWacom(){
 	}
 	if(pluginInstalled){
 		$("body").append('<!--[if IE]><object style="visiblity:hidden;" id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object><![endif]--><!--[if !IE]> <--><!-- This is the Firebreath wacomtabletplugin --><object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginloaded" /></object><!--> <![endif]-->');
-		penAPI = plugin().penAPI;
-debug("penAPI")
-		debug(penAPI)
-		// if the plugin is working, show the pressure button
-		if(penAPI){
-			$("#pressure").show();
-			pressureOn=true;
-			$("#pressure").css({backgroundPosition:"top right"});
-		}
 	}
 	//END Check Wacom plugin
 }
