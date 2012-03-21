@@ -77,6 +77,7 @@ window.fbAsyncInit = function() {
     });
 	FB.Event.subscribe('auth.login',fblogin);
 	FB.getLoginStatus(fblogin);
+	debug("getting login status")
 };
 // Load the SDK Asynchronously
 (function(d){
