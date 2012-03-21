@@ -123,7 +123,7 @@ function pluginLoaded(){
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
-	
+	$("#pressure").hide();
 });
 
 (function(d){
@@ -257,7 +257,7 @@ $('#drawing').live('pageshow',function(event){
 
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
-	$("#pressure").hide();
+	
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
 		canvasFactor=2
