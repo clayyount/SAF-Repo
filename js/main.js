@@ -97,11 +97,12 @@ function fblogin(response) {
 	setupSocket();
 	debug("fblogin")
 	if (response.status === 'connected') {
-		$("#splash_buttonholder").show();
-		$("#login_holder").hide();
+		
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', function(response) {
+			$("#splash_buttonholder").show();
+			$("#login_holder").hide();
 			debug("me received");
 			userObj={userID:userID,screenname:response.name,token:fbAccessToken}
 			addUser(userObj)
