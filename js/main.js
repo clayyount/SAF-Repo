@@ -89,6 +89,8 @@ window.fbAsyncInit = function() {
 // Facebook login function
 function fblogin(response) {
 	if (response.status === 'connected') {
+		$("#splash_buttonholder").show();
+		$("#login_holder").hide();
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', function(response) {
@@ -110,8 +112,12 @@ function fblogin(response) {
 			getAllGames();
 		});
 	} else if (response.status === 'not_authorized') {
+		$("#splash_buttonholder").hide();
+		$("#login_holder").show();
 		debug("logged in to FB but not authorized")
 	} else {
+		$("#splash_buttonholder").hide();
+		$("#login_holder").show();
 		debug("not logged into FB")
 	}
 }
