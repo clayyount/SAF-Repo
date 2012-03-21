@@ -65,9 +65,23 @@ function debug(message){
 		console.log(message);
 	}
 }
-function plugin(){
+function getWacomPlugin()
+{
 // ----------- IE ----------------------- FireFox et al. ----
 	return window.wtPlugin || document.embeds["wtPlugin"];
+}
+function isPluginLoaded()
+{
+var retVersion = "";
+var pluginVersion = getWacomPlugin().version;
+//alert(pluginVersion);
+
+if ( pluginVersion != undefined )
+{
+  		retVersion = pluginVersion;
+}
+
+return retVersion;
 }
 
 //BEGIN Facebook Init
@@ -97,7 +111,7 @@ function checkForWacom(){
 		}
 	}
 	if(pluginInstalled){
-		$("body").append('<!--[if IE]><object id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308"><param name="onload" value="pluginLoaded" /></object><![endif]--><!--[if !IE]> <--><embed id="wtPlugin" type="application/x-wacomtabletplugin" HIDDEN="TRUE" onLoad="pluginLoaded"></embed><!--> <![endif]-->');
+		//$("body").append('<!--[if IE]><object id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308"><param name="onload" value="pluginLoaded" /></object><![endif]--><!--[if !IE]> <--><embed id="wtPlugin" type="application/x-wacomtabletplugin" HIDDEN="TRUE" onLoad="pluginLoaded"></embed><!--> <![endif]-->');
 	}
 	//END Check Wacom plugin
 }
@@ -213,9 +227,18 @@ returnStr+=']'
 }
 
 */
-$(window).load(function(){
+$("body").load(function(){
 //firefox won't load the plugin correctly before window load.
-checkForWacom();
+var loadVersion = isPluginLoaded();
+if ( loadVersion != "" )
+{
+	alert("Loaded webplugin: " + loadVersion);
+}
+else
+{
+	alert("webplugin is NOT Loaded (or undiscoverable)");
+	return;
+}
 })
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
