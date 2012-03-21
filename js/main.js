@@ -98,6 +98,11 @@ function checkForWacom(){
 	if(pluginInstalled){
 		$("body").append('<!--[if IE]><object id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308"><param name="onload" value="pluginLoaded" /></object><![endif]--><!--[if !IE]> <--><object id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginLoaded" /></object><br /><!--> <![endif]-->');
 	}
+	//END Check Wacom plugin
+}
+
+function pluginLoaded(){
+	debug("Plugin loaded!");
 	penAPI = plugin().penAPI;
 	debug("penAPI")
 	debug(penAPI)
@@ -108,11 +113,6 @@ function checkForWacom(){
 			$("#pressure").css({backgroundPosition:"top right"});
 		}
 
-	//END Check Wacom plugin
-}
-
-function pluginLoaded(){
-	debug("Plugin loaded!");
 }
 
 
