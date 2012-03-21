@@ -66,6 +66,7 @@ function debug(message){
 	}
 }
 function plugin(){
+	debug(document.getElementById('wtPlugin'))
 	return document.getElementById('wtPlugin');
 }
 
@@ -105,7 +106,7 @@ function pluginLoaded(){
 	debug("Plugin loaded!");
 	penAPI = plugin().penAPI;
 	debug("penAPI")
-	penAPI.SetFocus
+	penAPI.SetFocus=true;
 	debug(penAPI.pressure)
 	debug(penAPI.isWacom)
 	debug(penAPI.TabletModel)
