@@ -72,13 +72,13 @@ window.fbAsyncInit = function() {
       appId      : '239015749524254',
       oauth		 : true,
       status     : true,
-      cookie     : true,
+      cookie     : false,
       xfbml      : true
     });
 	
 	//FB.getLoginStatus(fblogin);
 	//FB.Event.subscribe('auth.login',fblogin);
-	FB.Event.subscribe('auth.statusChange',fblogin);
+	//FB.Event.subscribe('auth.statusChange',fblogin);
 	
 };
 // Load the SDK Asynchronously
