@@ -86,10 +86,33 @@ window.fbAsyncInit = function() {
 	
 	
 };
+
+function checkForWacom(){
+	//BEGIN Check Wacom plugin	
+	for(i=0;i<navigator.plugins.length;i++){
+		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
+			pluginInstalled=true
+			break;
+		}
+	}
+	if(pluginInstalled){
+		$("body").append('<!--[if IE]><object style="visiblity:hidden;" id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object><![endif]--><!--[if !IE]> <--><!-- This is the Firebreath wacomtabletplugin --><object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginloaded" /></object><!--> <![endif]-->');
+	}
+	penAPI = plugin().penAPI;
+		// if the plugin is working, show the pressure button
+		if(penAPI){
+			$("#pressure").show();
+			pressureOn=true;
+			$("#pressure").css({backgroundPosition:"top right"});
+		}
+
+	//END Check Wacom plugin
+}
+
 // Load the SDK Asynchronously
 $(document).ready(function(){
 	checkForWacom();
-})
+});
 
 (function(d){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -372,27 +395,7 @@ $.ajax({
 
 
 
-function checkForWacom(){
-	//BEGIN Check Wacom plugin	
-	for(i=0;i<navigator.plugins.length;i++){
-		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
-			pluginInstalled=true
-			break;
-		}
-	}
-	if(pluginInstalled){
-		$("body").append('<!--[if IE]><object style="visiblity:hidden;" id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginloaded" /></object><![endif]--><!--[if !IE]> <--><!-- This is the Firebreath wacomtabletplugin --><object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginloaded" /></object><!--> <![endif]-->');
-	}
-	penAPI = plugin().penAPI;
-		// if the plugin is working, show the pressure button
-		if(penAPI){
-			$("#pressure").show();
-			pressureOn=true;
-			$("#pressure").css({backgroundPosition:"top right"});
-		}
 
-	//END Check Wacom plugin
-}
 
 function setupSocket(){
 debug("setting up socket io stuff")
