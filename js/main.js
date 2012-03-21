@@ -103,7 +103,7 @@ function fblogin(response) {
 			$("#splash_buttonholder").show();
 			debug("me received");
 			userObj={userID:userID,screenname:response.name,token:fbAccessToken}
-			
+			addUser(userObj)
 			var myProfileHTML=''
 			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
 			$('.profilename').html(response.name)
@@ -507,6 +507,7 @@ function getAllGames(){
 	socket.emit("getAllGames");
 }
 function addUser(userObj){
+	debug("adding user!!")
 	socket.emit("addUser",userObj)
 }
 function deleteUsers(){
