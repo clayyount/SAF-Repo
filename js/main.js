@@ -96,7 +96,7 @@ function checkForWacom(){
 		}
 	}
 	if(pluginInstalled){
-		$("body").append('<object style="visiblity:hidden;" id="wtPlugin" type="application/x-wacomtabletplugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308" codebase="fbWacomTabletPlugin.cab" width="0" height="0"> <param name="onload" value="pluginLoaded" /></object>');
+		$("body").append('<!--[if IE]><object id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308"><param name="onload" value="pluginLoaded" /></object><![endif]--><!--[if !IE]> <--><object id="wtPlugin" type="application/x-wacomtabletplugin" width="0" height="0"><param name="onload" value="pluginLoaded" /></object><br /><!--> <![endif]-->');
 	}
 	penAPI = plugin().penAPI;
 	debug("penAPI")
