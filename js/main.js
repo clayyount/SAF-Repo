@@ -238,6 +238,9 @@ $(window).load(function(){
 var loadVersion = isPluginLoaded();
 if ( loadVersion != "" )
 {
+	$("#pressure").show();
+	pressureOn=true;
+	$("#pressure").css({backgroundPosition:"top right"});
 	debug("Loaded webplugin: " + loadVersion);
 	debug(getWacomPlugin().penAPI.pressure)
 	debug(getWacomPlugin().penAPI.isWacom)
