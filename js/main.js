@@ -247,13 +247,7 @@ $('#mainmenu').live('pageinit',function(event){
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
 
-$('#gameChooser').live('pageinit',function(event){
-	try{
-	$('#friendList').listview('refresh');
-	}catch(e){
-		debug("!e")
-		debug(e)
-	}
+$('#gameChooser').live('pageshow',function(event){
 	debug("game chooser page shown")
 })
 
@@ -567,6 +561,12 @@ function newGame(){
 	})
 	friendListHTML+='</ul>'
 	$("#friendCollapsable p").html(friendListHTML);
+	try{
+	$('#gameChooser').trigger( "create" );
+	}catch(e){
+		debug("!e")
+		debug(e)
+	}
 	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
 	//createGame()
 }
