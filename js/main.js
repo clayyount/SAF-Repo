@@ -303,7 +303,7 @@ $('#drawing').live('pageinit',function(event){
 	
 	debug("drawing page initiated")
 	//Load Wheel of Death
-	loadWheelofDeath()
+	//loadWheelofDeath()
 	//set the default brush and marker buttons to selected state
 	$("#brush_size_2").css({backgroundPosition: "top right"})
 	$("#marker_black").css({backgroundPosition: "top right"})
