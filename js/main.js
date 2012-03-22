@@ -247,7 +247,7 @@ $('#mainmenu').live('pageinit',function(event){
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
 
-$('#gameChooser').live('pageshow',function(event){
+$('#gameChooser').live('pageinit',function(event){
 	try{
 	$('#friendList').listview('refresh');
 	}catch(e){
