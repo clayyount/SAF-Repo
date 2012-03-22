@@ -914,7 +914,14 @@ if(!dragging){
         var oldpressure = pressure;
         if (penAPI && pressureOn)
         {
-            pressure = roundNumber(penAPI.pressure,6)
+        	
+        	var penpressure=1;
+			try{
+			penpressure = penAPI.pressure
+			}catch(e){
+			debug(e)
+			}
+            pressure = roundNumber(penpressure,6)
 			if(pressure!=oldpressure){
 				if(oldpressure>(pressure*1.1)){
 				pressure=roundNumber(oldpressure/1.1,6)
