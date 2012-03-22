@@ -145,21 +145,7 @@ function fblogin(response) {
 		$("#login_holder").hide();
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
-		FB.api('/me', function(response) {
-			$("#splash_buttonholder").show();
-			debug("me received");
-			userObj={userID:userID,screenname:response.name,token:fbAccessToken}
-			//addUser(userObj)
-			var myProfileHTML=''
-			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
-			$('.profilename').html(response.name)
-			$('#profile').show();
-			//set the user options, should be after getUser
-			$('#screen_name').val(response.name)
-			$('#sound_flip option[value="on"]').prop("selected","selected")
-			$('#sound_flip option[value="off"]').prop("selected","")
-			$('#sound_flip').slider('refresh');
-		});
+		FB.api('/me', mecallback);
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
@@ -175,6 +161,22 @@ function fblogin(response) {
 		$("#login_holder").show();
 		debug("not logged into FB")
 	}
+}
+
+function mecallback(response) {
+	$("#splash_buttonholder").show();
+	debug("me received!!");
+	userObj={userID:userID,screenname:response.name,token:fbAccessToken}
+	//addUser(userObj)
+	var myProfileHTML=''
+	$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
+	$('.profilename').html(response.name)
+	$('#profile').show();
+	//set the user options, should be after getUser
+	$('#screen_name').val(response.name)
+	$('#sound_flip option[value="on"]').prop("selected","selected")
+	$('#sound_flip option[value="off"]').prop("selected","")
+	$('#sound_flip').slider('refresh');
 }
 //END Facebook Init
 
