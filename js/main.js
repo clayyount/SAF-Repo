@@ -560,8 +560,7 @@ function newGame(){
 		friendListHTML+='<li>'+friend+'</li>'
 	})
 	friendListHTML+='</ul>'
-	$("#friendList p").html(friendListHTML)
-	$("#friendList").collapsible('refresh');
+	$("#friendList p").html(friendListHTML);
 	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
 	//createGame()
 }
