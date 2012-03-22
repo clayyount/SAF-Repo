@@ -166,17 +166,17 @@ function fblogin(response) {
 function mecallback(response) {
 	$("#splash_buttonholder").show();
 	debug("me received!!");
-	userObj={userID:userID,screenname:response.name,token:fbAccessToken}
-	//addUser(userObj)
+	userObj={userID:userID,screenname:response.name,profilepic:'http://graph.facebook.com/'+userID+'/picture',token:fbAccessToken}
+	addUser(userObj)
 	var myProfileHTML=''
-	$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
-	$('.profilename').html(response.name)
-	$('#profile').show();
+	//$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
+	//$('.profilename').html(response.name)
+	//$('#profile').show();
 	//set the user options, should be after getUser
-	$('#screen_name').val(response.name)
-	$('#sound_flip option[value="on"]').prop("selected","selected")
-	$('#sound_flip option[value="off"]').prop("selected","")
-	$('#sound_flip').slider('refresh');
+	//$('#screen_name').val(response.name)
+	//$('#sound_flip option[value="on"]').prop("selected","selected")
+	//$('#sound_flip option[value="off"]').prop("selected","")
+	//$('#sound_flip').slider('refresh');
 }
 //END Facebook Init
 
