@@ -285,27 +285,7 @@ $('#gameChooser').live('pageshow',function(event){
 
 
 $('#drawing').live('pageshow',function(event){
-	debug("drawing page shown")
-	//get the screen width and height so we can set the defaultZoomLevel
-	screenW=$(window).width()-20;
-	screenH=$(window).height()-60;
-	screenRatio=screenW/screenH;
-	if(canvasRatio>screenRatio){
-		defaultZoomLevel=(canvas.height/screenH)
-	}else{
-		defaultZoomLevel =(canvas.width/screenW)
-	}
-	defaultZoomLevel= defaultZoomLevel/2
-	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
-	if(canvasRatio>screenRatio){
-		showAllZoomLevel=(canvas.width/screenW)
-	}else{
-		showAllZoomLevel=(canvas.height/screenH)
-	}
-	//set the currentZoomLevel to the default
-	currentZoomLevel= defaultZoomLevel
-	//First call to resize
-	resize();
+	
 });
 
 
@@ -416,6 +396,28 @@ $('#drawing').live('pageinit',function(event){
 	$('#canvas').live('vmousedown',mousedown).live('vmouseup', mouseup).live('vmousemove', mousemove);
 	$("#markerHolder").hide();
 	$("#brushHolder").hide();
+	
+	debug("drawing page shown")
+	//get the screen width and height so we can set the defaultZoomLevel
+	screenW=$(window).width()-20;
+	screenH=$(window).height()-60;
+	screenRatio=screenW/screenH;
+	if(canvasRatio>screenRatio){
+		defaultZoomLevel=(canvas.height/screenH)
+	}else{
+		defaultZoomLevel =(canvas.width/screenW)
+	}
+	defaultZoomLevel= defaultZoomLevel/2
+	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
+	if(canvasRatio>screenRatio){
+		showAllZoomLevel=(canvas.width/screenW)
+	}else{
+		showAllZoomLevel=(canvas.height/screenH)
+	}
+	//set the currentZoomLevel to the default
+	currentZoomLevel= defaultZoomLevel
+	//First call to resize
+	resize();
 })
 
 function loadWheelofDeath(){
