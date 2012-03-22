@@ -606,7 +606,7 @@ function resize(evt){
 	}else{
 		defaultZoomLevel =(canvas.width/screenW)
 	}
-	defaultZoomLevel= defaultZoomLevel/2
+	defaultZoomLevel= roundNumber((defaultZoomLevel/2),2)
 	alert("defaultZoomLevel="+defaultZoomLevel)
 	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
 	if(canvasRatio>screenRatio){
