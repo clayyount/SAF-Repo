@@ -555,6 +555,13 @@ function deleteGames(){
 	socket.emit("deleteGames")
 }
 function newGame(){
+	var friendListHTML='<ul data-role="listview" data-theme="c">';
+	friendList.forEach(function(friend){
+		friendListHTML+='<li>'+friend+'</li>'
+	})
+	friendListHTML+='</ul>'
+	$("#friendList p").html(friendListHTML)
+	$("#friendList").collapsible('refresh');
 	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
 	//createGame()
 }
