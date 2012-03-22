@@ -830,15 +830,9 @@ evt.preventDefault();
 		curY = Math.floor((ev.pageY?ev.pageY : ev.clientY) - canvasPos.y)*(currentZoomLevel);
 		startX = lastX = smoothedMouseX = lastSmoothedMouseX = curX;
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
-		if (penAPI && pressureOn)
+		if (isPluginLoaded() && pressureOn)
         {	
-			var penpressure=1;
-			try{
-			penpressure = penAPI.pressure
-			}catch(e){
-			debug(e)
-			}
-            pressure = roundNumber(penpressure,6)
+			var pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
 			if(pressure==0){
 			pressure=.1
 			}	
@@ -912,16 +906,10 @@ if(!dragging){
 		
 	
         var oldpressure = pressure;
-        if (penAPI && pressureOn)
+        if (isPluginLoaded() && pressureOn)
         {
         	
-        	var penpressure=1;
-			try{
-			penpressure = penAPI.pressure
-			}catch(e){
-			debug(e)
-			}
-            pressure = roundNumber(penpressure,6)
+        	var pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
 			if(pressure!=oldpressure){
 				if(oldpressure>(pressure*1.1)){
 				pressure=roundNumber(oldpressure/1.1,6)
