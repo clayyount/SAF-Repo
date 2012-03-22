@@ -256,6 +256,7 @@ $('#gameChooser').live('pageshow',function(event){
 
 
 $('#drawing').live('pageshow',function(event){
+	debug("drawing page shown")
 	//get the screen width and height so we can set the defaultZoomLevel
 	screenW=$(window).width()-20;
 	screenH=$(window).height()-60;
@@ -281,7 +282,7 @@ $('#drawing').live('pageshow',function(event){
 
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
-	
+	debug("drawing page initiated")
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
 		canvasFactor=2
