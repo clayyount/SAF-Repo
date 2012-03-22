@@ -565,6 +565,8 @@ function newGame(){
 	try{
 	$('#friendList').listview('refresh');
 	}catch(e){
+		debug("!e")
+		debug(e)
 	}
 	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
 	//createGame()
