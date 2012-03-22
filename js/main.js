@@ -248,7 +248,12 @@ $('#mainmenu').live('pageinit',function(event){
 });
 
 $('#gameChooser').live('pageshow',function(event){
-	
+	try{
+	$('#friendList').listview('refresh');
+	}catch(e){
+		debug("!e")
+		debug(e)
+	}
 	debug("game chooser page shown")
 })
 
@@ -562,12 +567,6 @@ function newGame(){
 	})
 	friendListHTML+='</ul>'
 	$("#friendCollapsable p").html(friendListHTML);
-	try{
-	$('#friendList').listview('refresh');
-	}catch(e){
-		debug("!e")
-		debug(e)
-	}
 	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
 	//createGame()
 }
