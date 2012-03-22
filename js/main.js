@@ -607,7 +607,6 @@ function resize(evt){
 		defaultZoomLevel =(canvas.width/screenW)
 	}
 	defaultZoomLevel= roundNumber((defaultZoomLevel/2),2)
-	alert("defaultZoomLevel="+defaultZoomLevel)
 	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
 	if(canvasRatio>screenRatio){
 		showAllZoomLevel=(canvas.width/screenW)
@@ -861,6 +860,7 @@ evt.preventDefault();
 }
 //canvas mouseup function.
 function mouseup(evt){
+	alert("mouseUp")
 evt.preventDefault();
 	if(!dragging){
 		lineDown=0;
