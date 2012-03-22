@@ -561,14 +561,13 @@ function newGame(){
 	})
 	friendListHTML+='</ul>'
 	$("#friendCollapsable p").html(friendListHTML);
+	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
 	try{
-	$('#friendList').listview( "refresh" );
 	$('#gameChooser').trigger( "create" );
 	}catch(e){
 		debug("!e")
 		debug(e)
 	}
-	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
 	//createGame()
 }
 function createGame(){
