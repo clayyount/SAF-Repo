@@ -124,6 +124,7 @@ function checkForWacom(){
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
+	debug("document ready")
 	$("#pressure").hide();
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
