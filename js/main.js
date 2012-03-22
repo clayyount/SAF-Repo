@@ -122,24 +122,6 @@ function checkForWacom(){
 	//END Check Wacom plugin
 }
 
-function pluginLoaded(){
-	debug("Plugin loaded!");
-	penAPI = plugin().penAPI;
-	debug("penAPI")
-	penAPI.SetFocus=true;
-	debug(penAPI.pressure)
-	debug(penAPI.isWacom)
-	debug(penAPI.TabletModel)
-	debug(penAPI.TabletModelID)
-	debug(penAPI.version)
-	// if the plugin is working, show the pressure button
-	if(penAPI.isWacom){
-		$("#pressure").show();
-		pressureOn=true;
-		$("#pressure").css({backgroundPosition:"top right"});
-	}
-
-}
 
 
 // Load the SDK Asynchronously
@@ -242,12 +224,6 @@ if ( loadVersion != "" )
 	$("#pressure").show();
 	pressureOn=true;
 	$("#pressure").css({backgroundPosition:"top right"});
-	debug("Loaded webplugin: " + loadVersion);
-	debug(getWacomPlugin().penAPI.pressure)
-	debug(getWacomPlugin().penAPI.isWacom)
-	debug(getWacomPlugin().penAPI.tabletModel)
-	debug(getWacomPlugin().penAPI.tabletModelID)
-	debug(getWacomPlugin().version)
 }
 else
 {
@@ -820,10 +796,7 @@ function roundNumber(num, dec) {
 	//return num;
 }
 
-//Wacom Plugin callback function. Not using this.	
-function pluginloaded()
-{
-}
+
 //canvas mousedown function.
 function mousedown(evt){
 evt.preventDefault();
