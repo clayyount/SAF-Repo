@@ -300,11 +300,7 @@ $('#mainmenu').live('pageinit',function(event){
 
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
-	splashScreenH=$(window).height()-30;
-	splashScreenW=$(window).width()-30;
-	splashH=700
-	splashW=700
-	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
+	
 	debug("drawing page initiated")
 	//Load Wheel of Death
 	loadWheelofDeath()
