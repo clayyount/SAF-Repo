@@ -33,7 +33,7 @@
 						
 						-->
 						<div id="splash_buttonholder" style="display:none;">
-							<a onClick="newGame()" id="newgamebutton" data-role="button" data-icon="star" data-transition="pop">NEW GAME</a>
+							<a onClick="newGame()" id="newgamebutton" data-role="button" data-icon="star" data-transition="pop">PLAY GAME</a>
 							<a onClick="loadWatchGames()" id="watchgamebutton" data-role="button"  data-icon="star">WATCH GAME</a>
 							<a onClick="practiceGame()" id="practicebutton" data-role="button"  data-icon="star">PRACTICE</a>
 							<a href="#settings" id="settingsbutton" data-role="button" data-icon="gear" data-rel="dialog" data-transition="flip">SETTINGS</a>
@@ -113,18 +113,14 @@
 	
 	</div>
 	<div id="gameChooser" data-role="page" data-add-back-btn="true">
-	<div data-role="header" data-theme="c"><h1>Choose a Game</h1></div>
-	<div data-role="content" data-theme="c">
-		<ul data-role="listview" data-theme="c">
-		<li data-role="list-divider">New Game</li>
-		<li>Create New Game</li>
-		<li data-role="list-divider">Join Game</li>
-		</ul>
-		<div id="friendGamesList" data-role="collapsible" data-content-theme="c" data-collapsed="false">
-		   <h3>Friend Games</h3>
-		   <p>Friend games go here.</p>
+		<div data-role="header" data-theme="c"><h1>Choose a Game</h1></div>
+		<div data-role="content" data-theme="c">
+			<a data-role="button" data-icon="star">Create New Game</a>			
+			<div id="friendGamesList" data-role="collapsible" data-content-theme="c" data-collapsed="false">
+			   <h3>Friend Games</h3>
+			   <p>Friend games go here.</p>
+			</div>
 		</div>
-	</div>
 	</div>
 	<div id="howtoplay" data-role="page">
 		<div data-role="header" data-theme="c"><h1>How To Play</h1></div>
