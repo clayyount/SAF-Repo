@@ -238,6 +238,7 @@ $(window).load(function(){
 var loadVersion = isPluginLoaded();
 if ( loadVersion != "" )
 {
+	penAPI=getWacomPlugin().penAPI;
 	$("#pressure").show();
 	pressureOn=true;
 	$("#pressure").css({backgroundPosition:"top right"});
