@@ -860,7 +860,6 @@ evt.preventDefault();
 }
 //canvas mouseup function.
 function mouseup(evt){
-	alert("mouseUp")
 evt.preventDefault();
 	if(!dragging){
 		lineDown=0;
