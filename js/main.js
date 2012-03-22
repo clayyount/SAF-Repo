@@ -285,7 +285,7 @@ $('#gameChooser').live('pageshow',function(event){
 
 
 $('#drawing').live('pageshow',function(event){
-	
+	resize();
 });
 
 
@@ -417,7 +417,7 @@ $('#drawing').live('pageinit',function(event){
 	//set the currentZoomLevel to the default
 	currentZoomLevel= defaultZoomLevel
 	//First call to resize
-	resize();
+	
 })
 
 function loadWheelofDeath(){
