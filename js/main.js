@@ -891,9 +891,13 @@ if(!dragging){
 			smoothedMouseY = lastSmoothedMouseY = lastY;
 			lastRotation += Math.PI;
 		}	
-		
+		if(smoothingOn){
 		smoothedMouseX = smoothedMouseX + smoothingFactor*(curX - smoothedMouseX);
 		smoothedMouseY = smoothedMouseY + smoothingFactor*(curY - smoothedMouseY);
+		}else{
+			smoothedMouseX=curX;
+			smoothedMouseY=curY;
+		}
 		dx = smoothedMouseX - lastSmoothedMouseX;
 		dy = smoothedMouseY - lastSmoothedMouseY;
 		dist = Math.sqrt(dx*dx + dy*dy);
@@ -1026,9 +1030,6 @@ if(obj.s){
 		canto(canvasid).beginPath().moveTo(obj.psX*redrawMultiplier,obj.psY*redrawMultiplier).lineTo(lsmX*redrawMultiplier, lsmY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 		
 	}else{
-		//draw a curved line with segments and fill
-		//canto(canvasid).beginPath().moveTo((lsmX + L0Cos0)* redrawMultiplier, (lsmY + L0Sin0)* redrawMultiplier).quadraticCurveTo(controlX1* redrawMultiplier,controlY1* redrawMultiplier,(smX + L1Cos1)*redrawMultiplier, (obj.smY + L1Sin1)* redrawMultiplier).lineTo((smX - L1Cos1)* redrawMultiplier, (obj.smY - L1Sin1)* redrawMultiplier).quadraticCurveTo((controlX2)* redrawMultiplier, (controlY2)* redrawMultiplier, (lsmX - L0Cos0)* redrawMultiplier, (lsmY - L0Sin0)* redrawMultiplier).lineTo((lsmX + L0Cos0)* redrawMultiplier, (lsmY + L0Sin0)* redrawMultiplier).fill({lineWidth: lineW, fillStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
-		
 		//draw a curved line with stroke
 		canto(canvasid).beginPath().moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier).quadraticCurveTo(controlX* redrawMultiplier,controlY* redrawMultiplier,(smX )*redrawMultiplier, (obj.smY)* redrawMultiplier).stroke({lineWidth:lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 
