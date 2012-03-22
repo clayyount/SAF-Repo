@@ -159,6 +159,7 @@ function fblogin(response) {
 			debug($('#sound_flip option[value="off"]'))
 			$('#sound_flip option[value="off"]').prop("checked",false)
 			$('#sound_flip option[value="on"]').prop("checked",true)
+			$('#sound_flip').slider('refresh');
 		});
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
