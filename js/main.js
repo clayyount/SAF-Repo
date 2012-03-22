@@ -99,7 +99,7 @@ window.fbAsyncInit = function() {
       cookie     : true,
       xfbml      : true
     });
-	
+	debug("facebook initialized")
 	//FB.getLoginStatus(fblogin,true);
 	//FB.Event.subscribe('auth.login',fblogin);
 	setupSocket();
@@ -161,12 +161,11 @@ function fblogin(response) {
 			$('#sound_flip').slider('refresh');
 		});
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
-		/*FB.api('/fql?q='+fqlquery, function(response){
+		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
 				friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
 			}
 		});
-		*/
 	} else if (response.status === 'not_authorized') {
 		$("#splash_buttonholder").hide();
 		$("#login_holder").show();
