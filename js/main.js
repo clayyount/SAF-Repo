@@ -802,17 +802,13 @@ function mousedown(evt){
 evt.preventDefault();
 	if(!dragging){
 		lineDown=1
-		debug("canvasPos.x="+canvasPos.x)
-
 		var ev = evt || window.event;
 		var mouseX = (ev.pageX?(ev.pageX) : (ev.clientX + document.body.scrollLeft))- canvasPos.x
 		var mouseY = (ev.pageY?(ev.pageY) : (ev.clientY + document.body.scrollTop))- canvasPos.y
-		debug("mouseX ="+ mouseX)
 		curX = Math.floor((ev.pageX?ev.pageX : ev.clientX) - canvasPos.x)*(currentZoomLevel);
 		curY = Math.floor((ev.pageY?ev.pageY : ev.clientY) - canvasPos.y)*(currentZoomLevel);
 		startX = lastX = smoothedMouseX = lastSmoothedMouseX = curX;
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
-		debug("startX ="+ startX)
 		if (penAPI && pressureOn)
         {	
 			var penpressure=1;
