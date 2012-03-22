@@ -557,7 +557,7 @@ function deleteGames(){
 function newGame(){
 	var friendListHTML='<ul data-role="listview" data-theme="c">';
 	friendList.forEach(function(friend){
-		friendListHTML+='<li>'+friend+'</li>'
+		friendListHTML+='<li>'+friend.screenname+'</li>'
 	})
 	friendListHTML+='</ul>'
 	$("#friendList p").html(friendListHTML);
