@@ -2,7 +2,6 @@
 var mode;
 var commandStack = [];
 var userStack = [];
-var usersList = [];
 var gameList = [];
 var friendList=[];
 var userID;
@@ -501,7 +500,7 @@ debug("setting up socket io stuff")
 		startGame();
     });
 	socket.on('userSet', function(data) {
-    	usersList.push(data);
+ 
     });
 	socket.on('gotGames', function(data) {
     	debug("current games");
@@ -556,8 +555,8 @@ function deleteGames(){
 	socket.emit("deleteGames")
 }
 function newGame(){
-	$.mobile.changePage($("#drawing"),{transition:"pop"});
-	createGame()
+	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
+	//createGame()
 }
 function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
