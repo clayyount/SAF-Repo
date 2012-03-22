@@ -280,7 +280,10 @@ $('#mainmenu').live('pageinit',function(event){
 	splashH=700
 	splashW=700
 	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
+});
 
+//on drawing page init
+$('#drawing').live('pageinit',function(event){
 	debug("drawing page initiated")
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
