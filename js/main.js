@@ -125,6 +125,42 @@ function checkForWacom(){
 // Load the SDK Asynchronously
 $(document).ready(function(){
 	$("#pressure").hide();
+	//Broswer specific actions
+	if((navigator.userAgent.match(/chrome/i))){
+		canvasFactor=2
+		$(window).bind('resize',resize)
+	}else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)){
+		navSize=.05
+		$("#buttonHolder").hide();
+		$(".marker").css({marginTop:-15})
+		canvasFactor=1
+		$(window).bind('orientationchange',resize)
+	}else if(navigator.userAgent.match(/iPad/i)){
+		canvasFactor=1
+		$(window).bind('orientationchange',resize)
+	}else if(navigator.userAgent.match(/firefox/i)){
+		canvasFactor=2
+		$(window).bind('resize',resize)
+	}else if(navigator.userAgent.match(/safari/i)){
+		canvasFactor=2
+		$(window).bind('resize',resize)
+	}
+	$.mobile.orientationChangeEnabled=false;
+	
+	//define the canvas and canvas nav elements
+	canvas = document.getElementById('canvas');
+	canvasNav = document.getElementById('canvasNav');
+	//set the canvas width and height to a factor of 1080p defending on the browser. for instance, mobile safari won't support more than 5mpx in a canvas
+	canvas.width=1920*canvasFactor;
+	canvas.height=1080*canvasFactor;
+	//get some ratios for the canvas and the nav box
+	canvasRatio=canvas.width/canvas.height;
+	navSizePercent=navSize/canvasFactor;
+	//set the nav h/w to a percentage of the canvas size
+	canvasNav.width=canvas.width*navSizePercent;
+	canvasNav.height=canvas.height*navSizePercent;
+	ctx = canvas.getContext("2d");
+ 	navctx= canvasNav.getContext("2d");
 });
 
 (function(d){
@@ -274,7 +310,6 @@ $('#drawing').live('pageshow',function(event){
 
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
-	// Init Socket connection and assign events
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
 	splashH=700
@@ -285,48 +320,13 @@ $('#mainmenu').live('pageinit',function(event){
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
 	debug("drawing page initiated")
-	//Broswer specific actions
-	if((navigator.userAgent.match(/chrome/i))){
-		canvasFactor=2
-		$(window).bind('resize',resize)
-	}else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)){
-		navSize=.05
-		$("#buttonHolder").hide();
-		$(".marker").css({marginTop:-15})
-		canvasFactor=1
-		$(window).bind('orientationchange',resize)
-	}else if(navigator.userAgent.match(/iPad/i)){
-		canvasFactor=1
-		$(window).bind('orientationchange',resize)
-	}else if(navigator.userAgent.match(/firefox/i)){
-		canvasFactor=2
-		$(window).bind('resize',resize)
-	}else if(navigator.userAgent.match(/safari/i)){
-		canvasFactor=2
-		$(window).bind('resize',resize)
-	}
-	$.mobile.orientationChangeEnabled=false;
-	
-	//define the canvas and canvas nav elements
-	canvas = document.getElementById('canvas');
-	canvasNav = document.getElementById('canvasNav');
-	//set the canvas width and height to a factor of 1080p defending on the browser. for instance, mobile safari won't support more than 5mpx in a canvas
-	canvas.width=1920*canvasFactor;
-	canvas.height=1080*canvasFactor;
-	//get some ratios for the canvas and the nav box
-	canvasRatio=canvas.width/canvas.height;
-	navSizePercent=navSize/canvasFactor;
-	//set the nav h/w to a percentage of the canvas size
-	canvasNav.width=canvas.width*navSizePercent;
-	canvasNav.height=canvas.height*navSizePercent;
 	//Load Wheel of Death
 	loadWheelofDeath()
 	//set the default brush and marker buttons to selected state
 	$("#brush_size_2").css({backgroundPosition: "top right"})
 	$("#marker_black").css({backgroundPosition: "top right"})
 	//set global var for canvas and nav context
-	ctx = canvas.getContext("2d");
- 	navctx= canvasNav.getContext("2d");
+	
 	//Safari seems to have a lag when the canvas is first drawn to.
 	//var initObj={lastX:0,lastY:0,curX:0,curY:0,pressure:0, brushColor:brushColor, brushSize:0}
 	//drawline(initObj)
