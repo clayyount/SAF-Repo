@@ -156,9 +156,9 @@ function fblogin(response) {
 			$('#profile').show();
 			//set the user options, should be after getUser
 			$('#screen_name').val(response.name)
-			debug($('#screen_name option[value="off"]'))
-			$('#screen_name option[value="off"]').prop("checked",false)
-			$('#screen_name option[value="on"]').prop("checked",true)
+			debug($('#sound_flip option[value="off"]'))
+			$('#sound_flip option[value="off"]').prop("checked",false)
+			$('#sound_flip option[value="on"]').prop("checked",true)
 		});
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
