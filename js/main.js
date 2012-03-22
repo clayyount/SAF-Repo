@@ -240,15 +240,7 @@ else
 	return;
 }
 })
-//on mainmenu init
-$('#mainmenu').live('pageinit',function(event){
-	// Init Socket connection and assign events
-	splashScreenH=$(window).height()-30;
-	splashScreenW=$(window).width()-30;
-	splashH=700
-	splashW=700
-	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
-});
+
 
 $('#gameChooser').live('pageshow',function(event){
 	debug("game chooser page shown")
@@ -280,8 +272,15 @@ $('#drawing').live('pageshow',function(event){
 });
 
 
-//on drawing page init
-$('#drawing').live('pageinit',function(event){
+//on mainmenu init
+$('#mainmenu').live('pageinit',function(event){
+	// Init Socket connection and assign events
+	splashScreenH=$(window).height()-30;
+	splashScreenW=$(window).width()-30;
+	splashH=700
+	splashW=700
+	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
+
 	debug("drawing page initiated")
 	//Broswer specific actions
 	if((navigator.userAgent.match(/chrome/i))){
