@@ -562,6 +562,7 @@ function newGame(){
 	friendListHTML+='</ul>'
 	$("#friendCollapsable p").html(friendListHTML);
 	try{
+	$('#friendList').listview( "refresh" );
 	$('#gameChooser').trigger( "create" );
 	}catch(e){
 		debug("!e")
