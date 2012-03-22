@@ -142,6 +142,7 @@ function fblogin(response) {
 	
 	debug("fblogin")
 	if (response.status === 'connected') {
+		debug("fblogin connected");
 		$("#login_holder").hide();
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
@@ -149,14 +150,13 @@ function fblogin(response) {
 			$("#splash_buttonholder").show();
 			debug("me received");
 			userObj={userID:userID,screenname:response.name,token:fbAccessToken}
-			addUser(userObj)
+			//addUser(userObj)
 			var myProfileHTML=''
 			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
 			$('.profilename').html(response.name)
 			$('#profile').show();
 			//set the user options, should be after getUser
 			$('#screen_name').val(response.name)
-			debug($('#sound_flip option[value="off"]'))
 			$('#sound_flip option[value="on"]').prop("selected","selected")
 			$('#sound_flip option[value="off"]').prop("selected","")
 			$('#sound_flip').slider('refresh');
