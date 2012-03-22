@@ -33,7 +33,7 @@
 						
 						-->
 						<div id="splash_buttonholder" style="display:none;">
-							<a onClick="newGame()" id="newgamebutton" data-role="button" data-icon="star" data-transition="pop">PLAY GAME</a>
+							<a onClick="newGame()" id="newgamebutton" data-role="button" data-icon="star" data-rel="dialog" data-transition="flip">PLAY GAME</a>
 							<a onClick="loadWatchGames()" id="watchgamebutton" data-role="button"  data-icon="star">WATCH GAME</a>
 							<a onClick="practiceGame()" id="practicebutton" data-role="button"  data-icon="star">PRACTICE</a>
 							<a href="#settings" id="settingsbutton" data-role="button" data-icon="gear" data-rel="dialog" data-transition="flip">SETTINGS</a>
@@ -112,7 +112,7 @@
 		</div>	
 	
 	</div>
-	<div id="gameChooser" data-role="page" data-add-back-btn="true">
+	<div id="gameChooser" data-role="dialog">
 		<div data-role="header" data-theme="c"><h1>Choose a Game</h1></div>
 		<div data-role="content" data-theme="c">
 			<a data-role="button" data-icon="star">Create New Game</a>			
