@@ -832,7 +832,7 @@ evt.preventDefault();
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
 		if (isPluginLoaded() && pressureOn)
         {	
-			var pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
+			pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
 			if(pressure==0){
 			pressure=.1
 			}	
@@ -909,7 +909,7 @@ if(!dragging){
         if (isPluginLoaded() && pressureOn)
         {
         	
-        	var pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
+        	pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
 			if(pressure!=oldpressure){
 				if(oldpressure>(pressure*1.1)){
 				pressure=roundNumber(oldpressure/1.1,6)
