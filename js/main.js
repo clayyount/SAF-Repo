@@ -226,7 +226,10 @@ $(window).load(function(){
 var loadVersion = isPluginLoaded();
 if ( loadVersion != "" )
 {
+	
 	penAPI=getWacomPlugin().penAPI;
+	debug("wacom info");
+	debug(penAPI.isWacom)
 	$("#pressure").show();
 	pressureOn=true;
 	$("#pressure").css({backgroundPosition:"top right"});
