@@ -140,7 +140,7 @@ $(document).ready(function(){
 		canvasFactor=1
 		$(window).bind('orientationchange',resize)
 	}else if(navigator.userAgent.match(/firefox/i)){
-		canvasFactor=2
+		canvasFactor=.5
 		$(window).bind('resize',resize)
 	}else if(navigator.userAgent.match(/safari/i)){
 		canvasFactor=2
