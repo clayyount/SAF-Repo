@@ -154,7 +154,10 @@ function fblogin(response) {
 			$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
 			$('.profilename').html(response.name)
 			$('#profile').show();
+			//set the user options, should be after getUser
 			$('#screen_name').val(response.name)
+			$('#screen_name option[value="off"]').prop("checked",false)
+			$('#screen_name option[value="on"]').prop("checked",true)
 		});
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
