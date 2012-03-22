@@ -156,6 +156,7 @@ function fblogin(response) {
 			$('#profile').show();
 			//set the user options, should be after getUser
 			$('#screen_name').val(response.name)
+			debug($('#screen_name option[value="off"]'))
 			$('#screen_name option[value="off"]').prop("checked",false)
 			$('#screen_name option[value="on"]').prop("checked",true)
 		});
