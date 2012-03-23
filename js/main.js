@@ -1085,12 +1085,14 @@ function updateNavigtor(){
 
 
 function redraw2(){
+	debug("redrawing")
 	$("#redrawprogressbar").progressbar({value: 0}).show();
 	var tempstack=replayStack.slice(0);
 	var tslength=tempstack.length;
 	tempstack.forEach(function(){	
 		drawSmoothLine(this);
 		var tspercent=tslength/this.index
+		debug("tspercent="+tspercent)
 		$("#redrawprogressbar").progressbar({value: tspercent})
 	})
 	updateNavigtor()
