@@ -242,7 +242,7 @@ else
 })
 
 
-$('#gameChooser').live('pageshow',function(event){
+$('#gameChooser').live('pagebeforeshow',function(event){
 	debug("game chooser page shown")
 })
 
