@@ -249,7 +249,6 @@ $('#gameChooser').live('pageshow',function(event){
 
 $('#drawing').live('pageshow',function(event){
 	resize();
-	$("#canvasHolder").css({height:1})
 });
 
 
@@ -264,7 +263,6 @@ $('#mainmenu').live('pageinit',function(event){
 
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
-	$("#canvasHolder").css({width:1})
 	debug("document ready")
 	$("#pressure").hide();
 	//Broswer specific actions
