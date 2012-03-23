@@ -1099,7 +1099,7 @@ function redraw2(){
 	tempCanvas.width=canvas.width;
 	//debug("tslength="+tslength)
 	tempstack.forEach(function(obj, ind, arr){	
-		drawSmoothLine(obj,"tempcanvas");
+		drawSmoothLine(obj,tempCanvas);
 		//var tspercent=ind/tslength
 		//debug("tspercent="+tspercent)
 		//$("#redrawprogressbar").progressbar({value: tspercent})
