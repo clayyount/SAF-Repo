@@ -345,7 +345,7 @@ $('#drawing').live('pageinit',function(event){
 	$("#smoothingon").click(function(){smoothingOn=1; smoothingFactor=defaultSmoothingFactor;$(this).hide();$("#smoothingoff").show() }).hide();
 	$("#smoothingoff").click(function(){smoothingOn=0; smoothingFactor=1; $(this).hide();$("#smoothingon").show() })
 	$("#spin").click(function(){
-		$.mobile.changePage($("#wheel"),{transition:"pop"})
+		$.mobile.changePage($("#wheel"))
 		$("#wheelofdeath").spin();
 	});
 	$("#zoom").toggle(
@@ -543,15 +543,15 @@ function startGame(){
 }
 function watchGame(){
 	mode="watch"
-	$.mobile.changePage($("#drawing"),{transition:"fade"});
+	$.mobile.changePage($("#drawing"));
 }
 function practiceGame(){
 	mode="practice"
-	$.mobile.changePage($("#drawing"),{transition:"fade"});
+	$.mobile.changePage($("#drawing"));
 }
 
 function loadWatchGames(){
-	$.mobile.changePage($("#gameChooser"),{transition:"fade"});
+	$.mobile.changePage($("#gameChooser"));
 }
 
 function getAllGames(){
@@ -574,7 +574,7 @@ function newGame(){
 	})
 	friendListHTML+='</ul>'
 	$("#friendCollapsable p").html(friendListHTML);
-	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
+	$.mobile.changePage($("#gameChooser"));
 	try{
 	$('#gameChooser').trigger( "create" );
 	}catch(e){
