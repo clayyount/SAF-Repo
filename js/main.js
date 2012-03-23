@@ -171,7 +171,7 @@ function fblogin(response) {
 }
 
 function mecallback(response) {
-	$("#splash_buttonholder").show();
+	//$("#splash_buttonholder").show();
 	//$("#loginprogressbar").progressbar({value: 100}).hide();
 	debug("me received!!");
 	userObj={userID:userID,screenname:response.name,profilepic:'http://graph.facebook.com/'+userID+'/picture',token:fbAccessToken}
