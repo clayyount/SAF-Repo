@@ -1088,13 +1088,14 @@ function redraw2(){
 	debug("redrawing")
 	//$("#redrawprogressbar").progressbar({value: 0}).show().css({left:(screenW/2-100)});
 	$.ajax({
-	  url: 'json/testopponent.json',
-	  dataType: 'json',
-	  success: function(data){
-		debug("json loaded");
-		var opponentActions=data["gameData"];
-		opponentActions.forEach(drawSmoothLine);
-		updateNavigtor();
+		url: 'json/testopponent.json',
+		dataType: 'json',
+		complete: function(response){debug("json complete");debug(response);}
+		success: function(data){
+			debug("json loaded");
+			var opponentActions=data["gameData"];
+			opponentActions.forEach(drawSmoothLine);
+			updateNavigtor();
 		} 
 	});
 	
