@@ -1097,7 +1097,7 @@ function redraw2(){
 		$("#redrawprogressbar").progressbar({value: tspercent})
 	})
 	updateNavigtor()
-	$("#redrawprogressbar").progressbar({value: 100}).hide();
+	$("#redrawprogressbar").progressbar({value: 100}).show();
 }
 
 
