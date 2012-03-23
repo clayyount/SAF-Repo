@@ -132,7 +132,7 @@ function unloadMessage() {
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
-	$("#loginprogressbar").progressbar({value: 50}).show();
+	$("#loginprogressbar").progressbar({value: 37}).show();
 });
 
 (function(d){
