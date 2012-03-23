@@ -550,7 +550,7 @@ function watchGame(){
 function practiceGame(){
 	mode="practice"
 	resize()
-	//$.mobile.changePage($("#drawing"),{transition:"pop"});
+	$.mobile.changePage($("#drawing"),{transition:"fade"});
 }
 
 function loadWatchGames(){
