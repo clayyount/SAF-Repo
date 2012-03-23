@@ -282,7 +282,6 @@ $(document).ready(function(){
 	//set the currentZoomLevel to the default
 	currentZoomLevel= defaultZoomLevel
 	//First call to resize
-	resize();
  	
 });
 
@@ -407,7 +406,7 @@ $('#gameChooser').live('pageshow',function(event){
 
 
 $('#drawing').live('pageshow',function(event){
-	//resize();
+	resize();
 	$("#canvasHolder").css({height:1})
 });
 
