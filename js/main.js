@@ -547,7 +547,7 @@ function watchGame(){
 }
 function practiceGame(){
 	mode="practice"
-	$.mobile.changePage($("#drawing"),{transition:"flip"});
+	$.mobile.changePage($("#drawing"),{transition:"fade"});
 }
 
 function loadWatchGames(){
