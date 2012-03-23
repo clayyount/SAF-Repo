@@ -975,9 +975,9 @@ if(!dragging){
 		//write the line object.
 		var lineObj={i:replayStack.length,p:roundNumber(pressure, 5),lp:roundNumber(oldpressure,5), bc:brushColor, bs:roundNumber(modBrushSize, rounddec), uID:userID, cf:canvasFactor, lvX:roundNumber(lastMouseChangeVectorX, rounddec), lvY:roundNumber(lastMouseChangeVectorY, rounddec), vX:roundNumber(mouseChangeVectorX, rounddec), vY:roundNumber(mouseChangeVectorY, rounddec),lR:roundNumber(lastRotation,rounddec),smX: roundNumber(smoothedMouseX,rounddec),smY: roundNumber(smoothedMouseY, rounddec),lsmX:roundNumber(lastSmoothedMouseX,rounddec),lsmY:roundNumber(lastSmoothedMouseY,rounddec),lvc:lastVelocityChange,ld:lineDown,s:smoothingOn, psX:psX,psY:psY}
 		//push to command and replay stack
-		if(mode=="play"){
+		//if(mode=="play"){
 			socket.emit("drawClick", lineObj);
-		}
+		//}
 		//push your strokes directly to the stack
 		commandStack.push(lineObj)
 		replayStack.push(lineObj)
