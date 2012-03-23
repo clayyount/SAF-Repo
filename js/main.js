@@ -624,7 +624,7 @@ function resize(evt){
 	}else{
 		showAllZoomLevel=(canvas.height/screenH)
 	}
-	$("#buttonHolder").css({marginTop:(screenH+50)+"px"});
+	$("#buttonHolder").css({marginTop:(screenH+60)+"px", marginLeft:"10px"});
 	//$("#markerHolder").css({marginTop:(-($("#markerHolder").height()))});
 	zoomCanvasTo((canvas.width/2),(canvas.height/2), currentZoomLevel , currentZoomLevel)
 }
