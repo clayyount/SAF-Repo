@@ -406,7 +406,7 @@ $('#gameChooser').live('pageshow',function(event){
 
 
 $('#drawing').live('pageshow',function(event){
-	resize();
+	//resize();
 });
 
 
