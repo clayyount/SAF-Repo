@@ -40,7 +40,9 @@ background:#333333;
 
 }
 #loginProgressHolder{
-	width:255px;
+	padding-top:500px;
+	margin-left:290px;
+	width:225px;
 	height:12px;
 }
 #wheel_content{
