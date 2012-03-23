@@ -123,7 +123,7 @@ function checkForWacom(){
 }
 
 function unloadMessage() {
-            return "Are you sure you want to leave?";
+            return "Leaving this page may end your game.";
         }
 
         function setConfirmUnload(enabled) {
@@ -149,6 +149,7 @@ function fblogin(response) {
 	if (response.status === 'connected') {
 		debug("fblogin connected");
 		$("#login_holder").hide();
+		$("#loginprogressbar").progress({value: 100}).show();
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', mecallback);
@@ -171,6 +172,7 @@ function fblogin(response) {
 
 function mecallback(response) {
 	$("#splash_buttonholder").show();
+	$("#loginprogressbar").progress({value: 100}).hide();
 	debug("me received!!");
 	userObj={userID:userID,screenname:response.name,profilepic:'http://graph.facebook.com/'+userID+'/picture',token:fbAccessToken}
 	addUser(userObj)
