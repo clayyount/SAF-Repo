@@ -80,6 +80,10 @@ margin-top:10px;
 #redrawprogressbar{
 	position:absolute;
 	z-index:15;
+	width:200px;
+	height:20px;
+	top:50%;
+	left:0;
 }
 #canvasNavHolder{
 	position:absolute;
