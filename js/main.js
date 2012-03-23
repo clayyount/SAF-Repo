@@ -254,6 +254,10 @@ $('#drawing').live('pageshow',function(event){
 
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
+	//set the default transitions to fade because mobile safari screws up canvas drawing if 3d transitions are applied.
+	$.mobile.defaultDialogTransition="fade"
+	$.mobile.defaultPageTransition="fade"
+	
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
 	splashH=700
