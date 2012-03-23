@@ -649,7 +649,7 @@ newLevel= showAllZoomLevel
 	}else{
 		$("#canvasHolder").css({width:screenW, height:screenH})
 		screenH=$(window).height()-60;
-		$("#buttonHolder").css({marginTop:(screenH+20)+"px"}).clearQueue().show();
+		$("#buttonHolder").css({marginTop:(screenH+10)+"px"}).clearQueue().show();
 		$("#canvasNavHolder").slideDown("slow").delay(400);
 		$("#canvas").css({cursor: "url(images/"+currentCursor+".cur) "+cursorPosition[currentCursor]+" "+cursorPosition[currentCursor]+", crosshair"})
 	}
