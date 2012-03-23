@@ -1002,7 +1002,7 @@ if(obj.lsmX){
 	curctx=ctx
 	if(overridecanvasid){
 		canvasid=overridecanvasid
-		var curcanvas=document.getElementById("overridecanvasid")
+		var curcanvas=document.getElementById(canvasid)
 		curctx=curcanvas.getContext("2d");
 	}
 	if(obj.bc.r==0 && obj.bc.g==0 && obj.bc.b==0){
