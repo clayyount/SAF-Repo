@@ -242,12 +242,12 @@ else
 })
 
 
-$('#gameChooser').live('pagebeforeshow',function(event){
+$('#gameChooser').live('pageshow',function(event){
 	debug("game chooser page shown")
 })
 
 
-$('#drawing').live('pageshow',function(event){
+$('#drawing').live('pagebeforeshow',function(event){
 	resize();
 });
 
