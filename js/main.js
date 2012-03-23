@@ -122,11 +122,16 @@ function checkForWacom(){
 	//END Check Wacom plugin
 }
 
+function unloadMessage() {
+            return "Are you sure you want to leave?";
+        }
 
+        function setConfirmUnload(enabled) {
+            window.onbeforeunload = enabled ? unloadMessage : null;
+        }
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
-	 	window.onbeforeunload = "Are you sure you want to leave?";
 });
 
 (function(d){
@@ -839,6 +844,7 @@ function roundNumber(num, dec) {
 
 //canvas mousedown function.
 function mousedown(evt){
+	setConfirmUnload(true);
 evt.preventDefault();
 	if(!dragging){
 		lineDown=1
