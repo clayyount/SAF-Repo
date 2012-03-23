@@ -995,15 +995,14 @@ if(!dragging){
 	}
 }
 
-function drawSmoothLine(obj, overridecanvasid){
+function drawSmoothLine(obj, overridecanvas){
 if(obj.lsmX){
 	var redrawMultiplier=(canvasFactor/obj.cf);
 	canvasid="canvas"
 	curctx=ctx
-	if(overridecanvasid){
-		canvasid=overridecanvasid
-		var curcanvas=document.getElementById(canvasid)
-		curctx=curcanvas.getContext("2d");
+	if(overridecanvas){
+		canvasid=overridecanvas.getAttribute("id")
+		curctx=overridecanvas.getContext("2d");
 	}
 	if(obj.bc.r==0 && obj.bc.g==0 && obj.bc.b==0){
 	//If the brush is black, set to source-over	
