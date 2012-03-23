@@ -250,6 +250,9 @@ $('#gameChooser').live('pageshow',function(event){
 $('#drawing').live('pagebeforeshow',function(event){
 	resize();
 });
+$('#drawing').live('pageshow',function(event){
+	resize();
+});
 
 
 //on mainmenu init
