@@ -1085,9 +1085,16 @@ function updateNavigtor(){
 
 
 function redraw2(){
+	$("#redrawprogressbar").progressbar({value: 0}).show();
 	var tempstack=replayStack.slice(0);
-	tempstack.forEach(drawSmoothLine)
+	var tslength=tempstack.length;
+	tempstack.forEach(function(){	
+		drawSmoothLine(this);
+		var tspercent=tslength/this.index
+		$("#redrawprogressbar").progressbar({value: tspercent})
+	})
 	updateNavigtor()
+	$("#redrawprogressbar").progressbar({value: 100}).hide();
 }
 
 
