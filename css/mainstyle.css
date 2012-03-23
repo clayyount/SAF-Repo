@@ -39,6 +39,10 @@ background:#333333;
 	margin-left:275px;
 
 }
+#loginProgressHolder{
+	width:255px;
+	height:12px;
+}
 #wheel_content{
 	height:200px;
 }
