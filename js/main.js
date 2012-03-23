@@ -281,7 +281,7 @@ $(document).ready(function(){
 	//set the currentZoomLevel to the default
 	currentZoomLevel= defaultZoomLevel
 	//First call to resize
-
+	resize();
  	
 });
 
