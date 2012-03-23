@@ -1086,18 +1086,18 @@ function updateNavigtor(){
 
 function redraw2(){
 	debug("redrawing")
-	$("#redrawprogressbar").progressbar({value: 0}).show().css({left:(screenW/2-100)});
+	//$("#redrawprogressbar").progressbar({value: 0}).show().css({left:(screenW/2-100)});
 	var tempstack=replayStack.slice(0);
 	var tslength=tempstack.length;
-	debug("tslength="+tslength)
+	//debug("tslength="+tslength)
 	tempstack.forEach(function(obj, ind, arr){	
 		drawSmoothLine(obj);
-		var tspercent=ind/tslength
-		debug("tspercent="+tspercent)
-		$("#redrawprogressbar").progressbar({value: tspercent})
+		//var tspercent=ind/tslength
+		//debug("tspercent="+tspercent)
+		//$("#redrawprogressbar").progressbar({value: tspercent})
 	})
 	updateNavigtor()
-	$("#redrawprogressbar").progressbar({value: 100}).show();
+	//$("#redrawprogressbar").progressbar({value: 100}).show();
 }
 
 
