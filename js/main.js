@@ -58,6 +58,8 @@ var startX=0;
 var startY=0;
 var showAll=false;
 
+window.onbeforeunload = "Are you sure you want to leave?";
+
 //debug function
 function debug(message){
 	if(window.console){
