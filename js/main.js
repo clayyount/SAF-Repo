@@ -149,7 +149,7 @@ function fblogin(response) {
 	if (response.status === 'connected') {
 		debug("fblogin connected");
 		$("#login_holder").hide();
-		$("#loginprogressbar").progressbar({value: 50});
+		$("#loginprogressbar").progressbar({value: 100});
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', mecallback);
@@ -171,8 +171,8 @@ function fblogin(response) {
 }
 
 function mecallback(response) {
-	//$("#splash_buttonholder").show();
-	//$("#loginprogressbar").progressbar({value: 100}).hide();
+	$("#splash_buttonholder").show();
+	$("#loginprogressbar").progressbar({value: 100}).hide();
 	debug("me received!!");
 	userObj={userID:userID,screenname:response.name,profilepic:'http://graph.facebook.com/'+userID+'/picture',token:fbAccessToken}
 	addUser(userObj)
