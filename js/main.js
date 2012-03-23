@@ -99,7 +99,7 @@ window.fbAsyncInit = function() {
       xfbml      : true
     });
 	debug("facebook initialized")
-	//FB.getLoginStatus(fblogin,true);
+	FB.getLoginStatus(fblogin,true);
 	//FB.Event.subscribe('auth.login',fblogin);
 	setupSocket();
 	FB.Event.subscribe('auth.statusChange',fblogin);
