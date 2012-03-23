@@ -1117,6 +1117,7 @@ function popstack(){
 }
 
 function clearcanvas(){
+	debug("clearing canvas")
 	//ctx.clearRect ( 0 , 0 , canvas.width , canvas.height );
 	canto("canvas").beginPath().clearRect(0,0,canvas.width,canvas.height,0,0).endPath()
 	//navctx.clearRect ( 0 , 0 , canvasNav.width ,canvasNav.height );		
