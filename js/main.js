@@ -124,7 +124,7 @@ function checkForWacom(){
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
-	$("#canvas").css({visibility:"hidden"})
+	$("#canvasHolder").css({visibility:"hidden"})
 	debug("document ready")
 	$("#pressure").hide();
 	//Broswer specific actions
@@ -408,7 +408,7 @@ $('#gameChooser').live('pageshow',function(event){
 
 $('#drawing').live('pageshow',function(event){
 	//resize();
-	$("#canvas").css({visibility:"visible"})
+	$("#canvasHolder").css({visibility:"visible"})
 });
 
 
