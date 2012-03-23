@@ -1004,6 +1004,7 @@ if(obj.lsmX){
 		canvasid=overridecanvas.getAttribute("id")
 		curctx=overridecanvas.getContext("2d");
 	}
+	debug("canvasid="+canvasid)
 	if(obj.bc.r==0 && obj.bc.g==0 && obj.bc.b==0){
 	//If the brush is black, set to source-over	
 curctx.globalCompositeOperation = 'source-over';
