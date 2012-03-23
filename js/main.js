@@ -162,6 +162,127 @@ $(document).ready(function(){
 	canvasNav.height=canvas.height*navSizePercent;
 	ctx = canvas.getContext("2d");
  	navctx= canvasNav.getContext("2d");
+ 	
+ 	
+ 	debug("drawing page initiated")
+	//Load Wheel of Death
+	//loadWheelofDeath()
+	//set the default brush and marker buttons to selected state
+	$("#brush_size_2").css({backgroundPosition: "top right"})
+	$("#marker_black").css({backgroundPosition: "top right"})
+	//set global var for canvas and nav context
+	
+	//Safari seems to have a lag when the canvas is first drawn to.
+	//var initObj={lastX:0,lastY:0,curX:0,curY:0,pressure:0, brushColor:brushColor, brushSize:0}
+	//drawline(initObj)
+	//commandStack.push(initObj)
+	//Add button events
+	$("#markerHolder").children().click(function(evt){
+		selectmarker(evt);
+	})
+	$("#brushHolder").children().click(function(evt){
+		selectbrush(evt);
+	})
+	$("#color_picker").click(function(){
+		$("#markerHolder").css({marginTop:(-($("#markerHolder").height()))});
+		$("#markerHolder").slideToggle();
+		if($("#brushHolder").css("display")!="none"){
+		$("#brushHolder").slideToggle();
+		}
+	})
+	$("#size_picker").click(function(){
+		$("#brushHolder").css({marginTop:(-($("#brushHolder").height()))});
+		$("#brushHolder").slideToggle();
+		if($("#markerHolder").css("display")!="none"){
+		$("#markerHolder").slideToggle();
+		}
+	})
+	$("#grab_hand").toggle(grabToggleOn,grabToggleOff)
+	$("#clearbutton").click(clearcanvas);
+	$("#copybutton").click(function(){copyToClipboard(replayStack)});
+	$("#redrawbutton").click(redrawcanvas);
+	$("#savebutton").click(saveImage);
+	$("#redrawbutton2").click(redraw2);
+	$("#smoothingon").click(function(){smoothingOn=1; smoothingFactor=defaultSmoothingFactor;$(this).hide();$("#smoothingoff").show() }).hide();
+	$("#smoothingoff").click(function(){smoothingOn=0; smoothingFactor=1; $(this).hide();$("#smoothingon").show() })
+	$("#spin").click(function(){
+		$.mobile.changePage($("#wheel"),{transition:"pop"})
+		$("#wheelofdeath").spin();
+	});
+	$("#zoom").toggle(
+		function(){
+			showAll=false;
+			$("#zoom").css({background:"url(images/zoom_out.png) no-repeat top left"});
+			zoomCanvasTo(canvasCenter.x,canvasCenter.y,currentZoomLevel,defaultZoomLevel*.5);
+		},
+		function(){
+			showAll=false;
+			$("#zoom").css({background:"url(images/zoom_in.png) no-repeat top left"});
+			zoomCanvasTo(canvasCenter.x,canvasCenter.y,currentZoomLevel,defaultZoomLevel);
+		}
+	);
+	$("#show_all").click(function(){
+		if(dragging){
+			grabToggleOff();
+		}
+		showAll=true;		
+		zoomCanvasTo((canvas.width/2), (canvas.height/2), currentZoomLevel,showAllZoomLevel);
+		canvasPos.x=$("#canvas").offset().left;
+		canvasPos.y=$("#canvas").offset().top;
+		if($("#markerHolder").css("display")!="none"){
+			$("#markerHolder").slideToggle();
+		}
+		if($("#brushHolder").css("display")!="none"){
+			$("#brushHolder").slideToggle();
+		}
+	});
+	$("#pressure").click(
+		function(){
+			if(pressureOn){
+				pressureOn=false;
+				$("#pressure").css({backgroundPosition:"top left"});
+			}else{
+				pressureOn=true;
+				$("#pressure").css({backgroundPosition:"top right"});
+			}
+		}
+	);
+	//Add key events for the space bar so you can move the canvas
+	$(document).keydown(function(evt){
+		if(evt.keyCode==32){
+			grabToggleOn();
+		}
+	}).keyup(function(evt){
+		if(evt.keyCode==32){
+			grabToggleOff();
+		}	
+	});
+	$('#canvas').live('vmousedown',mousedown).live('vmouseup', mouseup).live('vmousemove', mousemove);
+	$("#markerHolder").hide();
+	$("#brushHolder").hide();
+	
+	debug("drawing page shown")
+	//get the screen width and height so we can set the defaultZoomLevel
+	screenW=$(window).width()-20;
+	screenH=$(window).height()-60;
+	screenRatio=screenW/screenH;
+	if(canvasRatio>screenRatio){
+		defaultZoomLevel=(canvas.height/screenH)
+	}else{
+		defaultZoomLevel =(canvas.width/screenW)
+	}
+	defaultZoomLevel= defaultZoomLevel/2
+	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
+	if(canvasRatio>screenRatio){
+		showAllZoomLevel=(canvas.width/screenW)
+	}else{
+		showAllZoomLevel=(canvas.height/screenH)
+	}
+	//set the currentZoomLevel to the default
+	currentZoomLevel= defaultZoomLevel
+	//First call to resize
+
+ 	
 });
 
 (function(d){
@@ -301,124 +422,7 @@ $('#mainmenu').live('pageinit',function(event){
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
 	
-	debug("drawing page initiated")
-	//Load Wheel of Death
-	//loadWheelofDeath()
-	//set the default brush and marker buttons to selected state
-	$("#brush_size_2").css({backgroundPosition: "top right"})
-	$("#marker_black").css({backgroundPosition: "top right"})
-	//set global var for canvas and nav context
-	
-	//Safari seems to have a lag when the canvas is first drawn to.
-	//var initObj={lastX:0,lastY:0,curX:0,curY:0,pressure:0, brushColor:brushColor, brushSize:0}
-	//drawline(initObj)
-	//commandStack.push(initObj)
-	//Add button events
-	$("#markerHolder").children().click(function(evt){
-		selectmarker(evt);
-	})
-	$("#brushHolder").children().click(function(evt){
-		selectbrush(evt);
-	})
-	$("#color_picker").click(function(){
-		$("#markerHolder").css({marginTop:(-($("#markerHolder").height()))});
-		$("#markerHolder").slideToggle();
-		if($("#brushHolder").css("display")!="none"){
-		$("#brushHolder").slideToggle();
-		}
-	})
-	$("#size_picker").click(function(){
-		$("#brushHolder").css({marginTop:(-($("#brushHolder").height()))});
-		$("#brushHolder").slideToggle();
-		if($("#markerHolder").css("display")!="none"){
-		$("#markerHolder").slideToggle();
-		}
-	})
-	$("#grab_hand").toggle(grabToggleOn,grabToggleOff)
-	$("#clearbutton").click(clearcanvas);
-	$("#copybutton").click(function(){copyToClipboard(replayStack)});
-	$("#redrawbutton").click(redrawcanvas);
-	$("#savebutton").click(saveImage);
-	$("#redrawbutton2").click(redraw2);
-	$("#smoothingon").click(function(){smoothingOn=1; smoothingFactor=defaultSmoothingFactor;$(this).hide();$("#smoothingoff").show() }).hide();
-	$("#smoothingoff").click(function(){smoothingOn=0; smoothingFactor=1; $(this).hide();$("#smoothingon").show() })
-	$("#spin").click(function(){
-		$.mobile.changePage($("#wheel"),{transition:"pop"})
-		$("#wheelofdeath").spin();
-	});
-	$("#zoom").toggle(
-		function(){
-			showAll=false;
-			$("#zoom").css({background:"url(images/zoom_out.png) no-repeat top left"});
-			zoomCanvasTo(canvasCenter.x,canvasCenter.y,currentZoomLevel,defaultZoomLevel*.5);
-		},
-		function(){
-			showAll=false;
-			$("#zoom").css({background:"url(images/zoom_in.png) no-repeat top left"});
-			zoomCanvasTo(canvasCenter.x,canvasCenter.y,currentZoomLevel,defaultZoomLevel);
-		}
-	);
-	$("#show_all").click(function(){
-		if(dragging){
-			grabToggleOff();
-		}
-		showAll=true;		
-		zoomCanvasTo((canvas.width/2), (canvas.height/2), currentZoomLevel,showAllZoomLevel);
-		canvasPos.x=$("#canvas").offset().left;
-		canvasPos.y=$("#canvas").offset().top;
-		if($("#markerHolder").css("display")!="none"){
-			$("#markerHolder").slideToggle();
-		}
-		if($("#brushHolder").css("display")!="none"){
-			$("#brushHolder").slideToggle();
-		}
-	});
-	$("#pressure").click(
-		function(){
-			if(pressureOn){
-				pressureOn=false;
-				$("#pressure").css({backgroundPosition:"top left"});
-			}else{
-				pressureOn=true;
-				$("#pressure").css({backgroundPosition:"top right"});
-			}
-		}
-	);
-	//Add key events for the space bar so you can move the canvas
-	$(document).keydown(function(evt){
-		if(evt.keyCode==32){
-			grabToggleOn();
-		}
-	}).keyup(function(evt){
-		if(evt.keyCode==32){
-			grabToggleOff();
-		}	
-	});
-	$('#canvas').live('vmousedown',mousedown).live('vmouseup', mouseup).live('vmousemove', mousemove);
-	$("#markerHolder").hide();
-	$("#brushHolder").hide();
-	
-	debug("drawing page shown")
-	//get the screen width and height so we can set the defaultZoomLevel
-	screenW=$(window).width()-20;
-	screenH=$(window).height()-60;
-	screenRatio=screenW/screenH;
-	if(canvasRatio>screenRatio){
-		defaultZoomLevel=(canvas.height/screenH)
-	}else{
-		defaultZoomLevel =(canvas.width/screenW)
-	}
-	defaultZoomLevel= defaultZoomLevel/2
-	modBrushSize=(brushSize*defaultZoomLevel)*(canvasFactor/2)
-	if(canvasRatio>screenRatio){
-		showAllZoomLevel=(canvas.width/screenW)
-	}else{
-		showAllZoomLevel=(canvas.height/screenH)
-	}
-	//set the currentZoomLevel to the default
-	currentZoomLevel= defaultZoomLevel
-	//First call to resize
-	
+		
 })
 
 function loadWheelofDeath(){
