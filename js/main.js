@@ -995,16 +995,11 @@ if(!dragging){
 	}
 }
 
-function drawSmoothLine(obj, overridecanvas){
+function drawSmoothLine(obj){
 if(obj.lsmX){
 	var redrawMultiplier=(canvasFactor/obj.cf);
 	canvasid="canvas"
 	curctx=ctx
-	if(overridecanvas){
-		canvasid=overridecanvas.getAttribute("id")
-		curctx=overridecanvas.getContext("2d");
-	}
-	debug("canvasid="+canvasid)
 	if(obj.bc.r==0 && obj.bc.g==0 && obj.bc.b==0){
 	//If the brush is black, set to source-over	
 curctx.globalCompositeOperation = 'source-over';
@@ -1092,22 +1087,38 @@ function updateNavigtor(){
 function redraw2(){
 	debug("redrawing")
 	//$("#redrawprogressbar").progressbar({value: 0}).show().css({left:(screenW/2-100)});
+	$.ajax({
+	  url: 'json/testopponent.json',
+	  dataType: 'json',
+	  success: function(data){
+		debug("json loaded");
+		debug(data);
+		var opponentActions=data["testopponent"];
+		opponentActions.forEach(drawSmoothLine);
+		updateNavigtor();
+		}
+	});
+	
+	
+	/*
 	var tempstack=replayStack.slice(0);
 	var tslength=tempstack.length;
 	var tempCanvas = document.createElement('canvas');
 	tempCanvas.setAttribute("id", "tempcanvas");
 	tempCanvas.height=canvas.height;
 	tempCanvas.width=canvas.width;
+	
 	//debug("tslength="+tslength)
 	tempstack.forEach(function(obj, ind, arr){	
-		drawSmoothLine(obj,tempCanvas);
+		drawSmoothLine(obj);
 		//var tspercent=ind/tslength
 		//debug("tspercent="+tspercent)
 		//$("#redrawprogressbar").progressbar({value: tspercent})
 	})
 	var tempctx=tempCanvas.getContext("2d");
 	ctx.drawImage(tempCanvas,0,0)
-	updateNavigtor()
+	*/
+	
 	//$("#redrawprogressbar").progressbar({value: 100}).show();
 }
 
