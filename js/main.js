@@ -565,7 +565,7 @@ function watchGame(){
 	$.mobile.changePage($("#drawing"));
 }
 function practiceGame(){
-	mode="practice"
+	mode="play"
 	$.mobile.changePage($("#drawing"));
 }
 
