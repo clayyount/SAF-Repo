@@ -124,6 +124,146 @@ function checkForWacom(){
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
+	 	
+});
+
+(function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+}(document));
+
+// Facebook login function
+function fblogin(response) {
+	
+	debug("fblogin")
+	if (response.status === 'connected') {
+		debug("fblogin connected");
+		$("#login_holder").hide();
+		userID = response.authResponse.userID;
+		fbAccessToken = response.authResponse.accessToken;
+		FB.api('/me', mecallback);
+		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
+		FB.api('/fql?q='+fqlquery, function(response){
+			for(var i=0;i<response.data.length;i++){
+				friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
+			}
+		});
+	} else if (response.status === 'not_authorized') {
+		$("#splash_buttonholder").hide();
+		$("#login_holder").show();
+		debug("logged in to FB but not authorized")
+	} else {
+		$("#splash_buttonholder").hide();
+		$("#login_holder").show();
+		debug("not logged into FB")
+	}
+}
+
+function mecallback(response) {
+	$("#splash_buttonholder").show();
+	debug("me received!!");
+	userObj={userID:userID,screenname:response.name,profilepic:'http://graph.facebook.com/'+userID+'/picture',token:fbAccessToken}
+	addUser(userObj)
+	var myProfileHTML=''
+	//$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
+	//$('.profilename').html(response.name)
+	//$('#profile').show();
+	//set the user options, should be after getUser
+	//$('#screen_name').val(response.name)
+	//$('#sound_flip option[value="on"]').prop("selected","selected")
+	//$('#sound_flip option[value="off"]').prop("selected","")
+	//$('#sound_flip').slider('refresh');
+}
+//END Facebook Init
+
+
+//BEGIN Image Preloader
+//Image preload function
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+		$('<img src="' + this + '" />')
+    });
+}
+//Preload site images
+preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_size_2.cur","images/cursor_size_3.cur","images/cursor_size_4.cur","images/cursor_size_5.cur","images/cursor_size_6.cur","images/cursor_hand.cur","images/cursor_size_6.cur"])
+//END Image Preloader
+
+
+//old copy command stack to clipboard, use to write to file.
+/*
+function copyToClipboard (arr) {
+var returnStr='[';
+for(i=0;i<arr.length;i++){
+	returnStr+='{'
+	for(prop in arr[i]){
+		returnStr+='"'+prop+'":'
+		if(typeof arr[i][prop]=="object"){
+			returnStr+='{'
+			
+			for(prop2 in arr[i][prop]){
+				returnStr+='"'+prop2+'":"'+arr[i][prop][prop2]+'", '
+			}
+			returnStr=returnStr.substr(0,returnStr.length-2)
+			returnStr+='}, '
+
+		}else{
+			returnStr+='"'+arr[i][prop]+'", '
+		}
+	}
+	returnStr=returnStr.substr(0,returnStr.length-2)
+	returnStr+='}, '
+}
+returnStr=returnStr.substr(0,returnStr.length-2)
+returnStr+=']'
+}
+
+*/
+$(window).load(function(){
+//firefox won't load the plugin correctly before window load.
+var loadVersion = isPluginLoaded();
+if ( loadVersion != "" )
+{
+	
+	penAPI=getWacomPlugin().penAPI;
+	debug("wacom info");
+	debug(penAPI.isWacom)
+	$("#pressure").show();
+	pressureOn=true;
+	$("#pressure").css({backgroundPosition:"top right"});
+}
+else
+{
+	debug("webplugin is NOT Loaded (or undiscoverable)");
+	return;
+}
+})
+
+
+$('#gameChooser').live('pageshow',function(event){
+	debug("game chooser page shown")
+})
+
+
+$('#drawing').live('pageshow',function(event){
+	resize();
+	$("#canvasHolder").css({height:1})
+});
+
+
+//on mainmenu init
+$('#mainmenu').live('pageinit',function(event){
+	splashScreenH=$(window).height()-30;
+	splashScreenW=$(window).width()-30;
+	splashH=700
+	splashW=700
+	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
+});
+
+//on drawing page init
+$('#drawing').live('pageinit',function(event){
 	$("#canvasHolder").css({width:1})
 	debug("document ready")
 	$("#pressure").hide();
@@ -282,147 +422,7 @@ $(document).ready(function(){
 	//set the currentZoomLevel to the default
 	currentZoomLevel= defaultZoomLevel
 	//First call to resize
- 	
-});
 
-(function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-}(document));
-
-// Facebook login function
-function fblogin(response) {
-	
-	debug("fblogin")
-	if (response.status === 'connected') {
-		debug("fblogin connected");
-		$("#login_holder").hide();
-		userID = response.authResponse.userID;
-		fbAccessToken = response.authResponse.accessToken;
-		FB.api('/me', mecallback);
-		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
-		FB.api('/fql?q='+fqlquery, function(response){
-			for(var i=0;i<response.data.length;i++){
-				friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
-			}
-		});
-	} else if (response.status === 'not_authorized') {
-		$("#splash_buttonholder").hide();
-		$("#login_holder").show();
-		debug("logged in to FB but not authorized")
-	} else {
-		$("#splash_buttonholder").hide();
-		$("#login_holder").show();
-		debug("not logged into FB")
-	}
-}
-
-function mecallback(response) {
-	$("#splash_buttonholder").show();
-	debug("me received!!");
-	userObj={userID:userID,screenname:response.name,profilepic:'http://graph.facebook.com/'+userID+'/picture',token:fbAccessToken}
-	addUser(userObj)
-	var myProfileHTML=''
-	//$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
-	//$('.profilename').html(response.name)
-	//$('#profile').show();
-	//set the user options, should be after getUser
-	//$('#screen_name').val(response.name)
-	//$('#sound_flip option[value="on"]').prop("selected","selected")
-	//$('#sound_flip option[value="off"]').prop("selected","")
-	//$('#sound_flip').slider('refresh');
-}
-//END Facebook Init
-
-
-//BEGIN Image Preloader
-//Image preload function
-function preload(arrayOfImages) {
-    $(arrayOfImages).each(function(){
-		$('<img src="' + this + '" />')
-    });
-}
-//Preload site images
-preload(["images/wheelofdeathbg.png","images/cursor_size_1.cur","images/cursor_size_2.cur","images/cursor_size_3.cur","images/cursor_size_4.cur","images/cursor_size_5.cur","images/cursor_size_6.cur","images/cursor_hand.cur","images/cursor_size_6.cur"])
-//END Image Preloader
-
-
-//old copy command stack to clipboard, use to write to file.
-/*
-function copyToClipboard (arr) {
-var returnStr='[';
-for(i=0;i<arr.length;i++){
-	returnStr+='{'
-	for(prop in arr[i]){
-		returnStr+='"'+prop+'":'
-		if(typeof arr[i][prop]=="object"){
-			returnStr+='{'
-			
-			for(prop2 in arr[i][prop]){
-				returnStr+='"'+prop2+'":"'+arr[i][prop][prop2]+'", '
-			}
-			returnStr=returnStr.substr(0,returnStr.length-2)
-			returnStr+='}, '
-
-		}else{
-			returnStr+='"'+arr[i][prop]+'", '
-		}
-	}
-	returnStr=returnStr.substr(0,returnStr.length-2)
-	returnStr+='}, '
-}
-returnStr=returnStr.substr(0,returnStr.length-2)
-returnStr+=']'
-}
-
-*/
-$(window).load(function(){
-//firefox won't load the plugin correctly before window load.
-var loadVersion = isPluginLoaded();
-if ( loadVersion != "" )
-{
-	
-	penAPI=getWacomPlugin().penAPI;
-	debug("wacom info");
-	debug(penAPI.isWacom)
-	$("#pressure").show();
-	pressureOn=true;
-	$("#pressure").css({backgroundPosition:"top right"});
-}
-else
-{
-	debug("webplugin is NOT Loaded (or undiscoverable)");
-	return;
-}
-})
-
-
-$('#gameChooser').live('pageshow',function(event){
-	debug("game chooser page shown")
-})
-
-
-$('#drawing').live('pageshow',function(event){
-	resize();
-	$("#canvasHolder").css({height:1})
-});
-
-
-//on mainmenu init
-$('#mainmenu').live('pageinit',function(event){
-	splashScreenH=$(window).height()-30;
-	splashScreenW=$(window).width()-30;
-	splashH=700
-	splashW=700
-	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
-});
-
-//on drawing page init
-$('#drawing').live('pageinit',function(event){
-	
 		
 })
 
@@ -549,7 +549,6 @@ function watchGame(){
 }
 function practiceGame(){
 	mode="practice"
-	resize()
 	$.mobile.changePage($("#drawing"),{transition:"fade"});
 }
 
