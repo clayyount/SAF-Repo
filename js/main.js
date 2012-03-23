@@ -543,7 +543,7 @@ function startGame(){
 }
 function watchGame(){
 	mode="watch"
-	$.mobile.changePage($("#drawing"),{transition:"pop"});
+	$.mobile.changePage($("#drawing"),{transition:"fade"});
 }
 function practiceGame(){
 	mode="practice"
@@ -551,7 +551,7 @@ function practiceGame(){
 }
 
 function loadWatchGames(){
-	$.mobile.changePage($("#gameChooser"),{transition:"pop"});
+	$.mobile.changePage($("#gameChooser"),{transition:"fade"});
 }
 
 function getAllGames(){
