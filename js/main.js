@@ -1092,8 +1092,7 @@ function redraw2(){
 	  dataType: 'json',
 	  success: function(data){
 		debug("json loaded");
-		debug(data);
-		var opponentActions=data["gamedata"];
+		var opponentActions=data["gameData"];
 		opponentActions.forEach(drawSmoothLine);
 		updateNavigtor();
 		} 
