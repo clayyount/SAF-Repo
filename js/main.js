@@ -132,6 +132,7 @@ function unloadMessage() {
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
+	$("#loginprogressbar").progressbar({value: 50}).show();
 });
 
 (function(d){
@@ -144,12 +145,12 @@ $(document).ready(function(){
 
 // Facebook login function
 function fblogin(response) {
-	
+	$("#loginprogressbar").progressbar({value: 100}).show();
 	debug("fblogin")
 	if (response.status === 'connected') {
 		debug("fblogin connected");
 		$("#login_holder").hide();
-		$("#loginprogressbar").progressbar({value: 100});
+		
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', mecallback);
@@ -160,10 +161,12 @@ function fblogin(response) {
 			}
 		});
 	} else if (response.status === 'not_authorized') {
+		$("#loginprogressbar").progressbar({value: 100}).hide();
 		$("#splash_buttonholder").hide();
 		$("#login_holder").show();
 		debug("logged in to FB but not authorized")
 	} else {
+		$("#loginprogressbar").progressbar({value: 100}).hide();
 		$("#splash_buttonholder").hide();
 		$("#login_holder").show();
 		debug("not logged into FB")
