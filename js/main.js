@@ -149,7 +149,7 @@ function fblogin(response) {
 	if (response.status === 'connected') {
 		debug("fblogin connected");
 		$("#login_holder").hide();
-		$("#loginprogressbar").progressbar({value: 100}).show();
+		$("#loginprogressbar").progressbar({value: 50});
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', mecallback);
