@@ -1096,7 +1096,7 @@ function redraw2(){
 		var opponentActions=data["testopponent"];
 		opponentActions.forEach(drawSmoothLine);
 		updateNavigtor();
-		}
+		} 
 	});
 	
 	
