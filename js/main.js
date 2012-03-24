@@ -19,7 +19,7 @@ var defaultZoomLevel=1;
 var currentZoomLevel=1;
 var showAllZoomLevel=1;
 var navSize=.1;
-var speed=1;
+var speed=10;
 var dragging=false;
 var currentCursor="cursor_size_2"
 var cursorPosition={"cursor_size_1":4,"cursor_size_2":5,"cursor_size_3":7,"cursor_size_4":9,"cursor_size_5":11,"cursor_size_6":14}
@@ -1047,8 +1047,9 @@ if(obj.s){
 	var smX=obj.smX
 	var smY=obj.smY
 
-	if(obj.ld){
+	if(obj.ld==1){
 		//brush stroke is starting, draw a straight line
+		debug("!line down");
 		canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 	}else{
 	//if (false) {
