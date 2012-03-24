@@ -1012,9 +1012,9 @@ curctx.globalCompositeOperation = 'destination-out';
 	}
 
 //curctx.globalCompositeOperation = 'darker';
-if(obj.s=="1"){
-	var dx = obj.smX - obj.lsmX;
-	var dy = obj.smY - obj.lsmY;
+if(parseFloat(obj.s)){
+	var dx = parseFloat(obj.smX) - parseFloat(obj.lsmX);
+	var dy = parseFloat(obj.smY) - parseFloat(obj.lsmY);
 	var dist = Math.sqrt(dx*dx + dy*dy);
 	var lnR;
 	if (dist != 0) {
@@ -1025,29 +1025,29 @@ if(obj.s=="1"){
 	}
 	lineThickness =((obj.bs/2) * obj.p)
 	lastThickness = ((obj.bs/2) * obj.lp)
-	sin0 = Math.sin(obj.lR);
-	cos0 = Math.cos(obj.lR);
-	sin1 = Math.sin(lnR);
-	cos1 = Math.cos(lnR);
+	sin0 = Math.sin(parseFloat(obj.lR));
+	cos0 = Math.cos(parseFloat(obj.lR));
+	sin1 = Math.sin(parseFloat(lnR));
+	cos1 = Math.cos(parseFloat(lnR));
 	L0Sin0 = lastThickness*sin0;
 	L0Cos0 = lastThickness*cos0;
 	L1Sin1 = lineThickness*sin1;
 	L1Cos1 = lineThickness*cos1;
 	controlVecX = 0.33*dist*sin0;
 	controlVecY = -0.33*dist*cos0;
-	controlX = obj.lsmX + controlVecX;
-	controlY = obj.lsmY + controlVecY;
+	controlX = parseFloat(obj.lsmX) + controlVecX;
+	controlY = parseFloat(obj.lsmY) + controlVecY;
 	//controlX1 = obj.lsmX + L0Cos0 + controlVecX;
 	//controlY1 = obj.lsmY + L0Sin0 + controlVecY;
 	//controlX2 = obj.lsmX - L0Cos0 + controlVecX;
 	//controlY2 = obj.lsmY - L0Sin0 + controlVecY;
 	var lineW=(obj.bs*redrawMultiplier * obj.p)
-	var lsmX=obj.lsmX
-	var lsmY=obj.lsmY
-	var smX=obj.smX
-	var smY=obj.smY
+	var lsmX=parseFloat(obj.lsmX)
+	var lsmY=parseFloat(obj.lsmY)
+	var smX=parseFloat(obj.smX)
+	var smY=parseFloat(obj.smY)
 	
-	if(obj.ld=="1"){
+	if(parseFloat(obj.ld)){
 		//brush stroke is starting, draw a straight line
 		debug("!line down");
 		canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
