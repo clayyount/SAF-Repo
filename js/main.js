@@ -936,9 +936,6 @@ if(!dragging){
 		else {
 			lineRotation = 0;
 		}
-
-		
-	
         var oldpressure = pressure;
         if (isPluginLoaded() && pressureOn)
         {
@@ -965,15 +962,37 @@ if(!dragging){
 		}
 		
 		//get previous x/y if there are any for the current user off the userStack.
-		var psX=null;
-		var psY=null;
+		var psX="";
+		var psY="";
 		if(userStack[userStack.length - 1] &&userStack[userStack.length-1].uID==userID){
 			(userStack[userStack.length-1].smX)? psX =userStack[userStack.length-1].smX: psX=null;
 			(userStack[userStack.length-1].smY)? psY =userStack[userStack.length-1].smY: psY=null;
 		}
 		
 		//write the line object.
-		var lineObj={i:replayStack.length,p:roundNumber(pressure, 5),lp:roundNumber(oldpressure,5), bc:brushColor, bs:roundNumber(modBrushSize, rounddec), uID:userID, cf:canvasFactor, lvX:roundNumber(lastMouseChangeVectorX, rounddec), lvY:roundNumber(lastMouseChangeVectorY, rounddec), vX:roundNumber(mouseChangeVectorX, rounddec), vY:roundNumber(mouseChangeVectorY, rounddec),lR:roundNumber(lastRotation,rounddec),smX: roundNumber(smoothedMouseX,rounddec),smY: roundNumber(smoothedMouseY, rounddec),lsmX:roundNumber(lastSmoothedMouseX,rounddec),lsmY:roundNumber(lastSmoothedMouseY,rounddec),lvc:lastVelocityChange,ld:lineDown,s:smoothingOn, psX:psX,psY:psY}
+		var lineObj={
+			i:replayStack.length,
+			p:roundNumber(pressure, 5),
+			lp:roundNumber(oldpressure,5),
+			bc:brushColor,
+			bs:roundNumber(modBrushSize, rounddec),
+			uID:userID,
+			cf:canvasFactor,
+			lvX:roundNumber(lastMouseChangeVectorX, rounddec),
+			lvY:roundNumber(lastMouseChangeVectorY, rounddec),
+			vX:roundNumber(mouseChangeVectorX, rounddec),
+			vY:roundNumber(mouseChangeVectorY, rounddec),
+			lR:roundNumber(lastRotation,rounddec),
+			smX: roundNumber(smoothedMouseX,rounddec),
+			smY: roundNumber(smoothedMouseY, rounddec),
+			lsmX:roundNumber(lastSmoothedMouseX,rounddec),
+			lsmY:roundNumber(lastSmoothedMouseY,rounddec),
+			lvc:lastVelocityChange,
+			ld:lineDown,
+			s:smoothingOn,
+			psX:psX,
+			psY:psY
+			}
 		//push to command and replay stack
 		//if(mode=="play"){
 			socket.emit("drawClick", lineObj);
