@@ -1088,9 +1088,9 @@ function redraw2(){
 	debug("redrawing")
 	//$("#redrawprogressbar").progressbar({value: 0}).show().css({left:(screenW/2-100)});
 	$.ajax({
-		url: 'json/testopponent.json',
+		url: 'json/testopponent2.json',
 		dataType: 'json',
-		//complete: function(response){debug("json complete");debug(response);},
+		complete: function(response){debug("json complete");debug(response);},
 		success: function(data){
 			debug("json loaded");
 			var opponentActions=data["gameData"];
