@@ -1049,7 +1049,7 @@ if(obj.s){
 
 	if(obj.ld){
 		//brush stroke is starting, draw a straight line
-		canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+		canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 	}else{
 	//if (false) {
 	if (obj.vX*obj.lvX + obj.vY*obj.lvY < 0 || obj.lvc) {	
@@ -1090,7 +1090,6 @@ function redraw2(){
 	$.ajax({
 		url: 'json/testopponent2.json',
 		dataType: 'json',
-		complete: function(response){debug("json complete");debug(response);},
 		success: function(data){
 			debug("json loaded");
 			var opponentActions=data["gameData"];
