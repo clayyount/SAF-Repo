@@ -1087,7 +1087,7 @@ function updateNavigtor(){
 
 function redraw2(){
 	debug("redrawing")
-	//$("#redrawprogressbar").progressbar({value: 0}).show().css({left:(screenW/2-100)});
+	$("#redrawprogressbar").progressbar({value: 0}).show().css({left:(screenW/2-100)});
 	$.ajax({
 		url: 'json/testopponent2.json',
 		dataType: 'json',
@@ -1101,6 +1101,7 @@ function redraw2(){
 			*/
 			opponentActions.forEach(drawSmoothLine);
 			updateNavigtor();
+			$("#redrawprogressbar").progressbar({value: 100}).hide();
 		} 
 	});
 	
