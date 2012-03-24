@@ -1090,7 +1090,7 @@ function redraw2(){
 	$.ajax({
 		url: 'json/testopponent.json',
 		dataType: 'json',
-		complete: function(response){debug("json complete");debug(response);},
+		//complete: function(response){debug("json complete");debug(response);},
 		success: function(data){
 			debug("json loaded");
 			var opponentActions=data["gameData"];
