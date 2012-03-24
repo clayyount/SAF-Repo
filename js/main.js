@@ -1012,7 +1012,7 @@ curctx.globalCompositeOperation = 'destination-out';
 	}
 
 //curctx.globalCompositeOperation = 'darker';
-if(obj.s){
+if(obj.s==1){
 	var dx = obj.smX - obj.lsmX;
 	var dy = obj.smY - obj.lsmY;
 	var dist = Math.sqrt(dx*dx + dy*dy);
