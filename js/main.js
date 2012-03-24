@@ -1047,7 +1047,7 @@ if(obj.s=="1"){
 	var smX=obj.smX
 	var smY=obj.smY
 	debug("thing")
-	debug(obj.vX*obj.lvX + obj.vY*obj.lvY)
+	debug(obj.s)
 	if(obj.ld=="1"){
 		//brush stroke is starting, draw a straight line
 		debug("!line down");
