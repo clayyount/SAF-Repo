@@ -1049,8 +1049,7 @@ if(parseFloat(obj.s)){
 	
 	if(parseFloat(obj.ld)){
 		//brush stroke is starting, draw a straight line
-		debug("!line down");
-		canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 	}else{
 	//if (false) {
 		if (obj.vX*obj.lvX + obj.vY*obj.lvY < 0 || parseInt(obj.lvc)) {	
@@ -1061,7 +1060,6 @@ if(parseFloat(obj.s)){
 			canto(canvasid).beginPath().moveTo(obj.psX*redrawMultiplier,obj.psY*redrawMultiplier).lineTo(lsmX*redrawMultiplier, lsmY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 			
 		}else{
-			debug("curve")
 			//draw a curved line with stroke
 			canto(canvasid).beginPath().moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier).quadraticCurveTo(controlX* redrawMultiplier,controlY* redrawMultiplier,(smX )*redrawMultiplier, (obj.smY)* redrawMultiplier).stroke({lineWidth:lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 	
@@ -1096,10 +1094,12 @@ function redraw2(){
 		success: function(data){
 			debug("json loaded");
 			var opponentActions=data["gameData"];
+			/*
 			for(var i=0;i<opponentActions.length;i++){
 				commandStack.push(opponentActions[i])
 			}
-			//opponentActions.forEach(drawSmoothLine);
+			*/
+			opponentActions.forEach(drawSmoothLine);
 			updateNavigtor();
 		} 
 	});
