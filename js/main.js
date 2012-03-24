@@ -1093,7 +1093,7 @@ function redraw2(){
 		success: function(data){
 			debug("json loaded");
 			var opponentActions=data["gameData"];
-			for(var i=0;i<opponentActions.length,i++){
+			for(var i=0;i<opponentActions.length;i++){
 				comandStack.push(opponentActions[i])
 			}
 			//opponentActions.forEach(drawSmoothLine);
