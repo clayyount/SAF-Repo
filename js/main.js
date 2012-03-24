@@ -1012,7 +1012,7 @@ curctx.globalCompositeOperation = 'destination-out';
 	}
 
 //curctx.globalCompositeOperation = 'darker';
-if(obj.s==1){
+if(obj.s=="1"){
 	var dx = obj.smX - obj.lsmX;
 	var dy = obj.smY - obj.lsmY;
 	var dist = Math.sqrt(dx*dx + dy*dy);
@@ -1047,7 +1047,7 @@ if(obj.s==1){
 	var smX=obj.smX
 	var smY=obj.smY
 
-	if(obj.ld==1){
+	if(obj.ld=="1"){
 		//brush stroke is starting, draw a straight line
 		debug("!line down");
 		canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
