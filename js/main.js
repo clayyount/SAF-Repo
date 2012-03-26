@@ -157,7 +157,10 @@ function fblogin(response) {
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
-				friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
+				if(friendList.indexOf(response.data[i].uid)==-1){
+					friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
+				}
+				
 			}
 		});
 	} else if (response.status === 'not_authorized') {
@@ -971,7 +974,6 @@ if(!dragging){
 		
 		//write the line object.
 		var lineObj={
-			i:replayStack.length,
 			p:roundNumber(pressure, 5),
 			lp:roundNumber(oldpressure,5),
 			bc:brushColor,
@@ -994,9 +996,9 @@ if(!dragging){
 			psY:psY
 			}
 		//push to command and replay stack
-		//if(mode=="play"){
+		if(mode=="play"){
 			socket.emit("drawClick", lineObj);
-		//}
+		}
 		//push your strokes directly to the stack
 		commandStack.push(lineObj)
 		replayStack.push(lineObj)
