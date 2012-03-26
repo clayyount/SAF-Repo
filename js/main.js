@@ -157,7 +157,7 @@ function fblogin(response) {
 		var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 		FB.api('/fql?q='+fqlquery, function(response){
 			for(var i=0;i<response.data.length;i++){
-				if(friendList.indexOf(response.data[i].uid)==-1){
+				if(friendList.indexOf(String(response.data[i].uid))==-1){
 					friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
 				}
 				
