@@ -607,7 +607,7 @@ function newGame(){
 	if(friendList.length>0){
 	var friendListHTML='<ul id="friendList" data-role="listview" data-theme="c">';
 	friendList.forEach(function(friend){
-		friendListHTML+='<li><img src="http://graph.facebook.com/'+friend.userID+'/picture?type=normal" />'+friend.screenname+'</li>'
+		friendListHTML+='<li><img src="http://graph.facebook.com/'+friend.userID+'/picture?type=large" />'+friend.screenname+'</li>'
 	})
 	friendListHTML+='</ul>'
 	$("#friendCollapsable p").html(friendListHTML);
