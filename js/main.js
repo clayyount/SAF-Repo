@@ -603,7 +603,7 @@ function deleteGames(){
 }
 function newGame(){
 	debug("friendList=")
-	dubug(friendList)
+	debug(friendList)
 	if(friendList.length>0){
 	var friendListHTML='<ul id="friendList" data-role="listview" data-theme="c">';
 	friendList.forEach(function(friend){
