@@ -589,6 +589,9 @@ function deleteGames(){
 	socket.emit("deleteGames")
 }
 function newGame(){
+	debug("friendList=")
+	dubug(friendList)
+	if(friendList.length>0){
 	var friendListHTML='<ul id="friendList" data-role="listview" data-theme="c">';
 	friendList.forEach(function(friend){
 		friendListHTML+='<li><img src="http://graph.facebook.com/'+friend.userID+'/picture" /><a href="#">'+friend.screenname+'</a></li>'
@@ -601,6 +604,7 @@ function newGame(){
 	}catch(e){
 		debug("!e")
 		debug(e)
+	}
 	}
 	//createGame()
 }
