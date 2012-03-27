@@ -1,4 +1,5 @@
 //define global variables
+var loggedin=false;
 var mode;
 var commandStack = [];
 var userStack = [];
@@ -144,26 +145,32 @@ $(document).ready(function(){
 }(document));
 
 // Facebook login function
+
 function fblogin(response) {
-	$("#loginprogressbar").progressbar({value: 100}).show();
-	debug("fblogin")
-	if (response.status === 'connected') {
-		debug("fblogin connected");
-		$("#login_holder").hide();
-		userID = response.authResponse.userID;
-		fbAccessToken = response.authResponse.accessToken;
-		FB.api('/me', mecallback);
-	} else if (response.status === 'not_authorized') {
-		$("#loginprogressbar").progressbar({value: 100}).hide();
-		$("#splash_buttonholder").hide();
-		$("#login_holder").show();
-		debug("logged in to FB but not authorized")
-	} else {
-		$("#loginprogressbar").progressbar({value: 100}).hide();
-		$("#splash_buttonholder").hide();
-		$("#login_holder").show();
-		debug("not logged into FB")
+	//only call once
+	if(!loggedin)
+		$("#loginprogressbar").progressbar({value: 100}).show();
+		debug("fblogin")
+		if (response.status === 'connected') {
+			loggedin=true
+			debug("fblogin connected");
+			$("#login_holder").hide();
+			userID = response.authResponse.userID;
+			fbAccessToken = response.authResponse.accessToken;
+			FB.api('/me', mecallback);
+		} else if (response.status === 'not_authorized') {
+			$("#loginprogressbar").progressbar({value: 100}).hide();
+			$("#splash_buttonholder").hide();
+			$("#login_holder").show();
+			debug("logged in to FB but not authorized")
+		} else {
+			$("#loginprogressbar").progressbar({value: 100}).hide();
+			$("#splash_buttonholder").hide();
+			$("#login_holder").show();
+			debug("not logged into FB")
+		}
 	}
+	
 }
 
 function mecallback(response) {
