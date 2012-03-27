@@ -1656,7 +1656,7 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 .ui-collapsible-content {
 	display: block;
 	margin:  0 -8px;
-	padding: 10px 16px;
+	padding: 10px 16px 10px 10px;
 	border-top:  none;      
 	background-image: none; 
 	font-weight: normal;    
