@@ -589,9 +589,9 @@ function deleteGames(){
 	socket.emit("deleteGames")
 }
 function newGame(){
-	var friendListHTML='<ul id="friendList" data-role="listview" data-mini="true" data-theme="c">';
+	var friendListHTML='<ul id="friendList" data-role="listview" data-theme="c">';
 	friendList.forEach(function(friend){
-		friendListHTML+='<li><a href="#">'+friend.screenname+'</a></li>'
+		friendListHTML+='<li><img src="http://graph.facebook.com/'+friend.userID+'/picture" /><a href="#">'+friend.screenname+'</a></li>'
 	})
 	friendListHTML+='</ul>'
 	$("#friendCollapsable p").html(friendListHTML);
