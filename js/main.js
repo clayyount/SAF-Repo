@@ -181,6 +181,10 @@ function mecallback(response) {
 			for(var i=0;i<response.data.length;i++){
 					friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
 			}
+			debug("response=")
+			debug(response)
+			debug("friendList=")
+			debug(friendList);
 	});
 	//$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
 	//$('.profilename').html(response.name)
