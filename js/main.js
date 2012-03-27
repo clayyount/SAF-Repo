@@ -189,6 +189,8 @@ function mecallback(response) {
 			friendList=[];
 			for(var i=0;i<response.data.length;i++){
 					friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
+					friendList.push({userID:String(response.data[i].uid),screenname:response.data[i].first_name+" "+response.data[i].last_name});
+			
 			}
 			debug("response=")
 			debug(response)
