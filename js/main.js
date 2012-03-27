@@ -150,7 +150,6 @@ function fblogin(response) {
 	if (response.status === 'connected') {
 		debug("fblogin connected");
 		$("#login_holder").hide();
-		
 		userID = response.authResponse.userID;
 		fbAccessToken = response.authResponse.accessToken;
 		FB.api('/me', mecallback);
@@ -173,8 +172,9 @@ function mecallback(response) {
 	debug("me received!!");
 	userObj={userID:userID,screenname:response.name,profilepic:'http://graph.facebook.com/'+userID+'/picture',token:fbAccessToken}
 	addUser(userObj)
+	debug("addUser complete")
 	var myProfileHTML=''
-	
+	debug("forming sql query")
 	var fqlquery=escape('SELECT uid, first_name, last_name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = \''+ userID +'\') AND is_app_user=1');
 	debug("making sql query")
 	FB.api('/fql?q='+fqlquery, function(response){
@@ -585,8 +585,8 @@ function getAllGames(){
 	socket.emit("getAllGames");
 }
 function addUser(userObj){
+	socket.emit("addUser",userObj);
 	debug("adding user!!")
-	socket.emit("addUser",userObj)
 }
 function deleteUsers(){
 	socket.emit("deleteUsers")
