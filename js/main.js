@@ -148,7 +148,7 @@ $(document).ready(function(){
 
 function fblogin(response) {
 	//only call once
-	if(!loggedin)
+	if(!loggedin){
 		$("#loginprogressbar").progressbar({value: 100}).show();
 		debug("fblogin")
 		if (response.status === 'connected') {
