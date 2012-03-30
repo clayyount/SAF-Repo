@@ -1091,6 +1091,7 @@ if(parseFloat(obj.s)){
 	controlVecY = -0.33*dist*cos0;
 	controlX = parseFloat(obj.lsmX) + controlVecX;
 	controlY = parseFloat(obj.lsmY) + controlVecY;
+	debug(controlX)
 	//controlX1 = obj.lsmX + L0Cos0 + controlVecX;
 	//controlY1 = obj.lsmY + L0Sin0 + controlVecY;
 	//controlX2 = obj.lsmX - L0Cos0 + controlVecX;
