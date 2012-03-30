@@ -1100,11 +1100,6 @@ if(parseFloat(obj.s)){
 	var lsmY=parseFloat(obj.lsmY)
 	var smX=parseFloat(obj.smX)
 	var smY=parseFloat(obj.smY)
-	debug("lineW="+lineW)
-	debug("lsmX="+lsmX)
-	debug("lsmY="+lsmY)
-	debug("smX="+smX)
-	debug("smY="+smY)
 	
 	if(parseFloat(obj.ld)){
 		debug("line down")
@@ -1130,6 +1125,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 		}
 	}	
 }else{
+	debug("smoothing off")
 var lineW=(parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p))
 canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).closePath().stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 }
