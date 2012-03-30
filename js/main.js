@@ -1124,7 +1124,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.lineCap="round";
 			ctx.stroke();
 			ctx.closePath();
-			/*
+			
 			debug("ctx.beginPath();");
 			debug("ctx.moveTo("+((lsmX)* redrawMultiplier)+","+((lsmY)* redrawMultiplier)+");")
 			debug("ctx.quadraticCurveTo("+(controlX* redrawMultiplier)+","+(controlY* redrawMultiplier)+","+((smX )*redrawMultiplier)+","+ ((obj.smY)* redrawMultiplier)+");")
@@ -1133,7 +1133,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			debug('ctx.lineCap="round";');
 			debug('ctx.stroke();');
 			debug('ctx.closePath();');
-			
+			/*
 			}else{
 			ctx.beginPath();
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
