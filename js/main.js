@@ -1133,6 +1133,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 	debug("smoothing off")
 	debug(parseFloat(obj.lsmX))
 	debug(parseFloat(obj.lsmY))
+	debug("redrawMultiplier="+redrawMultiplier)
 var lineW=(parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p))
 canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 }
