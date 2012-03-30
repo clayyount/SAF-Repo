@@ -1050,7 +1050,7 @@ if(!dragging){
 
 function drawSmoothLine(obj){
 if(obj.lsmX){
-	var redrawMultiplier=(canvasFactor/parseFloat(obj.cf));
+	var redrawMultiplier=(canvasFactor/parseInt(obj.cf));
 	canvasid="canvas"
 	curctx=ctx
 	if(obj.bc.r==0 && obj.bc.g==0 && obj.bc.b==0){
@@ -1065,9 +1065,9 @@ curctx.globalCompositeOperation = 'destination-out';
 	}
 
 //curctx.globalCompositeOperation = 'darker';
-if(parseFloat(obj.s)){
-	var dx = parseFloat(obj.smX) - parseFloat(obj.lsmX);
-	var dy = parseFloat(obj.smY) - parseFloat(obj.lsmY);
+if(parseInt(obj.s)){
+	var dx = parseInt(obj.smX) - parseInt(obj.lsmX);
+	var dy = parseInt(obj.smY) - parseInt(obj.lsmY);
 	var dist = Math.sqrt(dx*dx + dy*dy);
 	var lnR;
 	if (dist != 0) {
@@ -1076,40 +1076,40 @@ if(parseFloat(obj.s)){
 	else {
 		lnR = 0;
 	}
-	lineThickness =((parseFloat(obj.bs)/2) * parseFloat(obj.p))
-	lastThickness = ((parseFloat(obj.bs)/2) * parseFloat(obj.lp))
-	sin0 = Math.sin(parseFloat(obj.lR));
-	cos0 = Math.cos(parseFloat(obj.lR));
-	sin1 = Math.sin(parseFloat(lnR));
-	cos1 = Math.cos(parseFloat(lnR));
+	lineThickness =((parseInt(obj.bs)/2) * parseFloat(obj.p))
+	lastThickness = ((parseInt(obj.bs)/2) * parseFloat(obj.lp))
+	sin0 = Math.sin(parseInt(obj.lR));
+	cos0 = Math.cos(parseInt(obj.lR));
+	sin1 = Math.sin(parseInt(lnR));
+	cos1 = Math.cos(parseInt(lnR));
 	L0Sin0 = lastThickness*sin0;
 	L0Cos0 = lastThickness*cos0;
 	L1Sin1 = lineThickness*sin1;
 	L1Cos1 = lineThickness*cos1;
 	controlVecX = 0.33*dist*sin0;
 	controlVecY = -0.33*dist*cos0;
-	controlX = parseFloat(obj.lsmX) + controlVecX;
-	controlY = parseFloat(obj.lsmY) + controlVecY;
+	controlX = parseInt(obj.lsmX) + controlVecX;
+	controlY = parseInt(obj.lsmY) + controlVecY;
 	//controlX1 = obj.lsmX + L0Cos0 + controlVecX;
 	//controlY1 = obj.lsmY + L0Sin0 + controlVecY;
 	//controlX2 = obj.lsmX - L0Cos0 + controlVecX;
 	//controlY2 = obj.lsmY - L0Sin0 + controlVecY;
-	var lineW=(parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p))
-	var lsmX=parseFloat(obj.lsmX)
-	var lsmY=parseFloat(obj.lsmY)
-	var smX=parseFloat(obj.smX)
-	var smY=parseFloat(obj.smY)
+	var lineW=(parseInt(obj.bs)*redrawMultiplier * parseFloat(obj.p))
+	var lsmX=parseInt(obj.lsmX)
+	var lsmY=parseInt(obj.lsmY)
+	var smX=parseInt(obj.smX)
+	var smY=parseInt(obj.smY)
 	
-	if(parseFloat(obj.ld)){
+	if(parseInt(obj.ld)){
 		//brush stroke is starting, draw a straight line
 canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,smY*redrawMultiplier).closePath().stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 	}else{
 	//if (false) {
-		if (parseFloat(obj.vX)*parseFloat(obj.lvX) + parseFloat(obj.vY)*parseFloat(obj.lvY) < 0 || parseInt(obj.lvc)) {	
+		if (parseInt(obj.vX)*parseInt(obj.lvX) + parseInt(obj.vY)*parseInt(obj.lvY) < 0 || parseInt(obj.lvc)) {	
 			//quick change of velocity, draw a straight line
 			canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier, obj.smY*redrawMultiplier).closePath().stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 			
-			canto(canvasid).beginPath().moveTo(parseFloat(obj.psX)*redrawMultiplier,parseFloat(obj.psY)*redrawMultiplier).lineTo(lsmX*redrawMultiplier, lsmY*redrawMultiplier).closePath().stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
+			canto(canvasid).beginPath().moveTo(parseInt(obj.psX)*redrawMultiplier,parseInt(obj.psY)*redrawMultiplier).lineTo(lsmX*redrawMultiplier, lsmY*redrawMultiplier).closePath().stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 			
 		}else{
 			//if(dist>20){
@@ -1128,13 +1128,13 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			}else{
 			ctx.beginPath();
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
-			ctx.lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier)
+			ctx.lineTo(parseInt(obj.smX)*redrawMultiplier,parseInt(obj.smY)*redrawMultiplier)
 			ctx.lineWidth=lineW;
 			ctx.strokeStyle="rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")";
 			ctx.lineCap="round";
 			ctx.stroke();
 			ctx.closePath()
-			//canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).closePath().stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
+			//canto(canvasid).beginPath().moveTo(parseInt(obj.lsmX)*redrawMultiplier,parseInt(obj.lsmY)*redrawMultiplier).lineTo(parseInt(obj.smX)*redrawMultiplier,parseInt(obj.smY)*redrawMultiplier).closePath().stroke({lineWidth: (parseInt(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 			}
 			*/
 	//just in case I can't figure out the overlapping...
@@ -1143,8 +1143,8 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 		}
 	}	
 }else{
-var lineW=(parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p))
-canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).closePath().stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
+var lineW=(parseInt(obj.bs)*redrawMultiplier * parseFloat(obj.p))
+canto(canvasid).beginPath().moveTo(parseInt(obj.lsmX)*redrawMultiplier,parseInt(obj.lsmY)*redrawMultiplier).lineTo(parseInt(obj.smX)*redrawMultiplier,parseInt(obj.smY)*redrawMultiplier).closePath().stroke({lineWidth: (parseInt(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 }
 }
 }
