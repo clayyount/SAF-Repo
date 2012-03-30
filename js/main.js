@@ -36,7 +36,7 @@ var screenW;
 var screenH;
 var canvas;
 var canvasNav;
-var defaultSmoothingFactor=.7
+var defaultSmoothingFactor=.4
 var smoothingFactor=defaultSmoothingFactor
 var rounddec=1
 var lineDown=0
