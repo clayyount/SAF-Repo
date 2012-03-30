@@ -1126,6 +1126,9 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.strokeStyle="red";
 			ctx.lineCap="round";
 			ctx.stroke();
+			ctx.closePath()
+			ctx.beginPath()
+			ctx.closePath();
 			
 	
 	//just in case I can't figure out the overlapping...
