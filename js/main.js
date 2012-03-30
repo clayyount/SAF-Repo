@@ -128,7 +128,7 @@ function unloadMessage() {
         }
 
         function setConfirmUnload(enabled) {
-            window.onbeforeunload = enabled ? unloadMessage : null;
+           // window.onbeforeunload = enabled ? unloadMessage : null;
         }
 
 // Load the SDK Asynchronously
