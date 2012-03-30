@@ -1049,6 +1049,7 @@ if(!dragging){
 }
 
 function drawSmoothLine(obj){
+	debug(obj)
 if(obj.lsmX){
 	var redrawMultiplier=(canvasFactor/obj.cf);
 	canvasid="canvas"
