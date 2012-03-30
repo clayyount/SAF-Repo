@@ -1123,11 +1123,12 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
 			ctx.quadraticCurveTo(controlX* redrawMultiplier,controlY* redrawMultiplier,(smX )*redrawMultiplier, (obj.smY)* redrawMultiplier)
 			ctx.lineWidth=lineW;
-			ctx.strokeStyle="red";
+			ctx.strokeStyle="blue";
 			ctx.lineCap="round";
 			ctx.stroke();
 			ctx.closePath()
 			ctx.beginPath()
+			ctx.moveTo((smX)* redrawMultiplier, (smY)* redrawMultiplier)
 			ctx.closePath();
 			
 	
