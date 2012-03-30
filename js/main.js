@@ -1076,8 +1076,8 @@ if(parseFloat(obj.s)){
 	else {
 		lnR = 0;
 	}
-	lineThickness =((obj.bs/2) * obj.p)
-	lastThickness = ((obj.bs/2) * obj.lp)
+	lineThickness =((parseFloat(obj.bs)/2) * parseFloat(obj.p))
+	lastThickness = ((parseFloat(obj.bs)/2) * parseFloat(obj.lp))
 	sin0 = Math.sin(parseFloat(obj.lR));
 	cos0 = Math.cos(parseFloat(obj.lR));
 	sin1 = Math.sin(parseFloat(lnR));
@@ -1094,7 +1094,7 @@ if(parseFloat(obj.s)){
 	//controlY1 = obj.lsmY + L0Sin0 + controlVecY;
 	//controlX2 = obj.lsmX - L0Cos0 + controlVecX;
 	//controlY2 = obj.lsmY - L0Sin0 + controlVecY;
-	var lineW=(obj.bs*redrawMultiplier * obj.p)
+	var lineW=(parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p))
 	var lsmX=parseFloat(obj.lsmX)
 	var lsmY=parseFloat(obj.lsmY)
 	var smX=parseFloat(obj.smX)
@@ -1109,7 +1109,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			//quick change of velocity, draw a straight line
 			canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier, obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 			
-			canto(canvasid).beginPath().moveTo(obj.psX*redrawMultiplier,obj.psY*redrawMultiplier).lineTo(lsmX*redrawMultiplier, lsmY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+			canto(canvasid).beginPath().moveTo(parseFloat(obj.psX)*redrawMultiplier,parseFloat(obj.psY)*redrawMultiplier).lineTo(lsmX*redrawMultiplier, lsmY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 			
 		}else{
 			//draw a curved line with stroke
