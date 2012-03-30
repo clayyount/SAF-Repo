@@ -1102,7 +1102,7 @@ if(parseFloat(obj.s)){
 	
 	if(parseFloat(obj.ld)){
 		//brush stroke is starting, draw a straight line
-canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,obj.smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
+canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,smY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 	}else{
 	//if (false) {
 		if (obj.vX*obj.lvX + obj.vY*obj.lvY < 0 || parseInt(obj.lvc)) {	
