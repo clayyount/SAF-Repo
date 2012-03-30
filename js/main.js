@@ -1125,7 +1125,6 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.lineWidth=lineW;
 			ctx.strokeStyle="red";
 			ctx.lineCap="round";
-			ctx.closePath();
 			ctx.stroke();
 			
 	
