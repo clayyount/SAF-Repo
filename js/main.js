@@ -1122,11 +1122,12 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.beginPath();
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
 			ctx.quadraticCurveTo(controlX* redrawMultiplier,controlY* redrawMultiplier,(smX )*redrawMultiplier, (obj.smY)* redrawMultiplier)
-			ctx.closePath();
+			
 			ctx.lineWidth=lineW;
-			ctx.lineStyle="red";
+			ctx.strokeStyle="red";
 			ctx.lineCap="round";
 			ctx.stroke();
+			ctx.closePath();
 	
 	//just in case I can't figure out the overlapping...
 	//.stroke({lineWidth:0, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"})
