@@ -1139,12 +1139,12 @@ var lineW=(parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p))
 
 //canto(canvasid).beginPath().moveTo(obj.lsmX,obj.lsmY).lineTo(obj.smX,obj.smY).stroke({lineWidth: (obj.bs * obj.p), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).endPath();
 ctx.beginPath()
-ctx.moveTo(obj.lsmX,obj.lsmY)
-ctx.lineTo(obj.smX,obj.smY)
 ctx.lineWidth=(obj.bs * obj.p)
 ctx.lineCap="round";
-ctx.strokeStyle="rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")";
-ctx.endPath();
+ctx.strokeStyle="black";
+ctx.moveTo(obj.lsmX,obj.lsmY)
+ctx.lineTo(obj.smX,obj.smY)
+ctx.closePath();
 ctx.stroke();
 
 }
