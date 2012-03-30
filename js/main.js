@@ -1102,7 +1102,7 @@ if(parseFloat(obj.s)){
 	
 	if(parseFloat(obj.ld)){
 		//brush stroke is starting, draw a straight line
-canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,smY*redrawMultiplier).closePath().stroke({lineWidth: lineW, lineCap:"none", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
+canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).lineTo(smX*redrawMultiplier,smY*redrawMultiplier).closePath().stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 	}else{
 	//if (false) {
 		if (parseFloat(obj.vX)*parseFloat(obj.lvX) + parseFloat(obj.vY)*parseFloat(obj.lvY) < 0 || parseInt(obj.lvc)) {	
@@ -1120,7 +1120,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
 			ctx.quadraticCurveTo(controlX* redrawMultiplier,controlY* redrawMultiplier,(smX )*redrawMultiplier, (obj.smY)* redrawMultiplier)
 			ctx.lineWidth=lineW;
-			ctx.strokeStyle="blue";
+			ctx.strokeStyle="rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")";
 			ctx.lineCap="round";
 			ctx.stroke();
 			ctx.closePath()
