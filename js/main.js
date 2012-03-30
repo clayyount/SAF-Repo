@@ -1118,7 +1118,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			
 			ctx.beginPath();
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
-			ctx.quadraticCurveTo(roundNumber((controlX* redrawMultiplier),2),roundNumber((controlY* redrawMultiplier),2),roundNumber(((smX )*redrawMultiplier),2), roundNumber(((obj.smY)* redrawMultiplier)),2)
+			ctx.quadraticCurveTo(roundNumber((controlX* redrawMultiplier),2),roundNumber((controlY* redrawMultiplier),2),roundNumber((smX*redrawMultiplier),2),roundNumber((smY*redrawMultiplier),2);
 			ctx.lineWidth=roundNumber(lineW,2);
 			ctx.strokeStyle="rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")";
 			ctx.lineCap="round";
