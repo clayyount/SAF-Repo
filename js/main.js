@@ -1100,6 +1100,11 @@ if(parseFloat(obj.s)){
 	var lsmY=parseFloat(obj.lsmY)
 	var smX=parseFloat(obj.smX)
 	var smY=parseFloat(obj.smY)
+	debug("lineW="+lineW)
+	debug("lsmX="+lsmX)
+	debug("lsmY="+lsmY)
+	debug("smX="+smX)
+	debug("smY="+smY)
 	
 	if(parseFloat(obj.ld)){
 		debug("line down")
