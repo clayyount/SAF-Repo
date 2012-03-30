@@ -1142,7 +1142,7 @@ ctx.beginPath()
 ctx.moveTo(obj.lsmX,obj.lsmY)
 ctx.lineTo(obj.smX,obj.smY)
 ctx.lineWidth=(obj.bs * obj.p)
-ctx.lineCap:"round";
+ctx.lineCap="round";
 ctx.strokeStyle="rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")";
 ctx.endPath();
 ctx.stroke();
