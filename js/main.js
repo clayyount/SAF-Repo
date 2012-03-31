@@ -1137,7 +1137,8 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			}else{
 				*/
 			ctx.lineCap="round";
-			ctx.lineWidth=1;
+			ctx.lineWidth=roundNumber(lineW,2);
+			ctx.strokeStyle="blue";
 			ctx.beginPath();
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
 			ctx.lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier)
@@ -1145,7 +1146,8 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.closePath()
 			
 			debug('ctx.lineCap="round";');
-			debug('ctx.lineWidth=1;')
+			debug('ctx.lineWidth='+lineW+';')
+			debug('ctx.strokeStyle="blue";')
 			debug('ctx.beginPath();');
 			debug('ctx.moveTo('+((lsmX)* redrawMultiplier)+','+ ((lsmY)* redrawMultiplier)+')')
 			debug('ctx.lineTo('+(parseFloat(obj.smX)*redrawMultiplier)+','+(parseFloat(obj.smY)*redrawMultiplier)+')');
