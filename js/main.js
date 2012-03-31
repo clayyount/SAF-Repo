@@ -1122,7 +1122,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
 			ctx.quadraticCurveTo(roundNumber((controlX* redrawMultiplier),0),roundNumber((controlY* redrawMultiplier),0),roundNumber((smX*redrawMultiplier),0),roundNumber((smY*redrawMultiplier),0));
 			ctx.stroke();
-			ctx.closePath();
+			//ctx.closePath();
 			
 			debug("ctx.beginPath();");
 			debug("ctx.moveTo("+((lsmX)* redrawMultiplier)+","+((lsmY)* redrawMultiplier)+");")
@@ -1141,7 +1141,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
 			ctx.lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier)
 			ctx.stroke();
-			ctx.closePath()
+			//ctx.closePath()
 			
 			//canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).closePath().stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 			}
