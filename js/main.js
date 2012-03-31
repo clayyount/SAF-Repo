@@ -1094,7 +1094,7 @@ if(parseFloat(obj.s)){
 	//controlY1 = obj.lsmY + L0Sin0 + controlVecY;
 	//controlX2 = obj.lsmX - L0Cos0 + controlVecX;
 	//controlY2 = obj.lsmY - L0Sin0 + controlVecY;
-	var lineW=(parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p))
+	var lineW=roundNumber((parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)),2)
 	var lsmX=parseFloat(obj.lsmX)
 	var lsmY=parseFloat(obj.lsmY)
 	var smX=parseFloat(obj.smX)
@@ -1137,7 +1137,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			}else{
 				*/
 			ctx.lineCap="round";
-			ctx.lineWidth=roundNumber(lineW,2);
+			ctx.lineWidth=lineW;
 			ctx.strokeStyle="blue";
 			ctx.beginPath();
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
