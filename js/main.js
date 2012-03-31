@@ -1150,7 +1150,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			debug('ctx.strokeStyle="blue";')
 			debug('ctx.beginPath();');
 			debug('ctx.moveTo('+((lsmX)* redrawMultiplier)+','+ ((lsmY)* redrawMultiplier)+')')
-			debug('ctx.lineTo('+(parseFloat(obj.smX)*redrawMultiplier)+','+(parseFloat(obj.smY)*redrawMultiplier)+')');
+			debug('ctx.lineTo('+(parseFloat(smX)*redrawMultiplier)+','+(parseFloat(smY)*redrawMultiplier)+')');
 			debug('ctx.stroke();');
 			debug('ctx.closePath();');
 			
