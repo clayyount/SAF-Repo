@@ -1138,7 +1138,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 				*/
 			ctx.lineCap="round";
 			ctx.lineWidth=lineW;
-			ctx.strokeStyle="rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")";
+			ctx.strokeStyle="blue";
 			ctx.beginPath();
 			ctx.moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier)
 			ctx.lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier)
