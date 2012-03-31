@@ -1146,13 +1146,13 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.closePath()
 			
 			debug('ctx.lineCap="round";');
-			debug('ctx.lineWidth=lineW;')
+			debug('ctx.lineWidth='+lineW+';')
 			debug('ctx.strokeStyle="blue";')
 			debug('ctx.beginPath();');
 			debug('ctx.moveTo('+((lsmX)* redrawMultiplier)+','+ ((lsmY)* redrawMultiplier)+')')
 			debug('ctx.lineTo('+(parseFloat(obj.smX)*redrawMultiplier)+','+(parseFloat(obj.smY)*redrawMultiplier)+')');
 			debug('ctx.stroke();');
-			debug('ctx.closePath()');
+			debug('ctx.closePath();');
 			
 			
 			
