@@ -1112,10 +1112,11 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			canto(canvasid).beginPath().moveTo(parseFloat(obj.psX)*redrawMultiplier,parseFloat(obj.psY)*redrawMultiplier).lineTo(lsmX*redrawMultiplier, lsmY*redrawMultiplier).stroke({lineWidth: lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).closePath();
 			
 		}else{
+			canto(canvasid).beginPath().moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier).quadraticCurveTo(controlX* redrawMultiplier,controlY* redrawMultiplier,(smX )*redrawMultiplier, (obj.smY)* redrawMultiplier).stroke({lineWidth:lineW, lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).closePath()
 			/*
 			if(dist>15){
 			//draw a curved line with stroke
-			//canto(canvasid).beginPath().moveTo((lsmX)* redrawMultiplier, (lsmY)* redrawMultiplier).quadraticCurveTo(controlX* redrawMultiplier,controlY* redrawMultiplier,(smX )*redrawMultiplier, (obj.smY)* redrawMultiplier).stroke({lineWidth:lineW, lineCap:"round", strokeStyle: "red"})
+			
 			ctx.lineWidth=roundNumber(lineW,2);
 			ctx.strokeStyle="rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")";
 			ctx.lineCap="round";
@@ -1149,7 +1150,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			
 			
 			
-			canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).closePath();
+			//canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"}).closePath();
 			//}
 		
 	//just in case I can't figure out the overlapping...
