@@ -1135,7 +1135,7 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			debug('ctx.closePath();');
 			
 			}else{
-				*/
+				
 			ctx.lineCap="round";
 			ctx.lineWidth=lineW;
 			ctx.strokeStyle="blue";
@@ -1145,18 +1145,11 @@ canto(canvasid).beginPath().moveTo(lsmX*redrawMultiplier,lsmY*redrawMultiplier).
 			ctx.stroke();
 			ctx.closePath()
 			
-			debug('ctx.lineCap="round";');
-			debug('ctx.lineWidth='+lineW+';')
-			debug('ctx.strokeStyle="blue";')
-			debug('ctx.beginPath();');
-			debug('ctx.moveTo('+((lsmX)* redrawMultiplier)+','+ ((lsmY)* redrawMultiplier)+')')
-			debug('ctx.lineTo('+(parseFloat(smX)*redrawMultiplier)+','+(parseFloat(smY)*redrawMultiplier)+')');
-			debug('ctx.stroke();');
-			debug('ctx.closePath();');
+			*/
 			
 			
 			
-			//canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).closePath().stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
+			canto(canvasid).beginPath().moveTo(parseFloat(obj.lsmX)*redrawMultiplier,parseFloat(obj.lsmY)*redrawMultiplier).lineTo(parseFloat(obj.smX)*redrawMultiplier,parseFloat(obj.smY)*redrawMultiplier).closePath().stroke({lineWidth: (parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)), lineCap:"round", strokeStyle: "rgba("+ obj.bc.r+", "+ obj.bc.g+", "+ obj.bc.b+", "+ brushAlpha+")"});
 			//}
 		
 	//just in case I can't figure out the overlapping...
