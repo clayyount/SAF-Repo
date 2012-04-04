@@ -1094,11 +1094,11 @@ if(parseFloat(obj.s)){
 	//controlY1 = obj.lsmY + L0Sin0 + controlVecY;
 	//controlX2 = obj.lsmX - L0Cos0 + controlVecX;
 	//controlY2 = obj.lsmY - L0Sin0 + controlVecY;
-	var lineW=roundNumber((parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p)),0)
-	var lsmX=parseInt(obj.lsmX)
-	var lsmY=parseInt(obj.lsmY)
-	var smX=parseInt(obj.smX)
-	var smY=parseInt(obj.smY)
+	var lineW=(parseFloat(obj.bs)*redrawMultiplier * parseFloat(obj.p))
+	var lsmX=parseFloat(obj.lsmX)
+	var lsmY=parseFloat(obj.lsmY)
+	var smX=parseFloat(obj.smX)
+	var smY=parseFloat(obj.smY)
 	
 	if(parseFloat(obj.ld)){
 		//brush stroke is starting, draw a straight line
