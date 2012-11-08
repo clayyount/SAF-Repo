@@ -285,8 +285,12 @@ function setResize(){
 			canvasFactor=2
 			$(window).bind('resize',resize)
 		}else if(navigator.userAgent.match(/safari/i)){
-			debug(navigator.userAgent)
-			canvasFactor=1
+			var retina = window.devicePixelRatio > 1;
+			if(retina){
+				canvasFactor=1
+			}else{
+				canvasFactor=2
+			}
 			$(window).bind('resize',resize)
 		}
 		$.mobile.orientationChangeEnabled=false;
