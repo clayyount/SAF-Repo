@@ -224,6 +224,18 @@ returnStr+=']'
 }
 
 */
+function isPluginLoaded(){
+	var retVersion = "";
+	var pluginVersion = getWacomPlugin().version;
+	//alert("pluginVersion: [" + pluginVersion + "]");
+	
+	if ( pluginVersion != undefined )
+	{
+	     		retVersion = pluginVersion;
+	}
+	
+	return retVersion;
+}
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.	
 var loadVersion = isPluginLoaded();
@@ -867,34 +879,32 @@ function roundNumber(num, dec) {
 function mousedown(evt){
 	setConfirmUnload(true);
 	evt.preventDefault();
-alert("mouse down! dragging="+dragging)
+
 	if(!dragging){
-alert("mouse down2!")
+
 		lineDown=1
 		var ev = evt || window.event;
 		var mouseX = (ev.pageX?(ev.pageX) : (ev.clientX + document.body.scrollLeft))- canvasPos.x
 		var mouseY = (ev.pageY?(ev.pageY) : (ev.clientY + document.body.scrollTop))- canvasPos.y
-alert("mouse down3!")
+
 		curX = Math.floor((ev.pageX?ev.pageX : ev.clientX) - canvasPos.x)*(currentZoomLevel);
 		curY = Math.floor((ev.pageY?ev.pageY : ev.clientY) - canvasPos.y)*(currentZoomLevel);
 		startX = lastX = smoothedMouseX = lastSmoothedMouseX = curX;
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
-alert("mouse down4!")
+
 		if (isPluginLoaded() && pressureOn)
         {	
-alert("mouse down4.1!")
 			pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
-alert("mouse down4.1.2!")
 			if(pressure==0){
 			pressure=.1
 			}	
         }
         else
         {
-alert("mouse down4.2!")
+
 			pressure=1
         }
-alert("mouse down5!")
+
 		lastRotation = Math.PI/2;
 		lastMouseChangeVectorX = 0;
 		lastMouseChangeVectorY = 0;
@@ -908,7 +918,7 @@ alert("mouse down5!")
 	}else{
 		$("#canvas").css({cursor: "url(images/cursor_hand_closed.cur) 9 9, crosshair"})
 	}
-alert("mouse down end!")
+
 }
 //canvas mouseup function.
 function mouseup(evt){
