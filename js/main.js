@@ -287,6 +287,8 @@ $('#drawing').live('pageshow',function(event){
 
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
+var loadVersion = isPluginLoaded();debug("loadVersion=")
+debug(loadVersion)
 	//set the default transitions to fade because mobile safari screws up canvas drawing if 3d transitions are applied.
 	$.mobile.defaultDialogTransition="fade"
 	$.mobile.defaultPageTransition="fade"
