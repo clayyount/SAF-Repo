@@ -2,69 +2,15 @@
 <html>
    <head>
 	<title>Wacom Demo Plugin</title>
-
-    	<script type="text/javascript">
-
-		// *********************************************************************
-	// getWacomPlugin
-	//   Returns correct plugin instance depending on whether running on
-	//   Internet Explorer or Firefox (and similar: Chrome, Safari, Opera).
-	//
-	function getWacomPlugin()
-        {
-		return document.getElementById('wtPlugin');
-        }
-
-    	function isPluginLoaded()
-    	{
-		var retVersion = "";
-		var pluginVersion = getWacomPlugin().version;
-		//alert("pluginVersion: [" + pluginVersion + "]");
-
-		if ( pluginVersion != undefined )
-		{
-	       		retVersion = pluginVersion;
-		}
-
-		return retVersion;
-    	}
-
-	
-	function onLoad()
-	{
-		var loadVersion = isPluginLoaded();
-		//alert("loadVersion: [" + loadVersion + "]");
-
-		if ( loadVersion != "" )
-		{
-			alert("Loaded webplugin: " + loadVersion);
-		}
-		else
-		{
-			alert("webplugin is NOT Loaded (or undiscoverable)");
-			return;
-		}
-	}
-
-
-	</script>
-
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquerymobile.js"></script>
    </head>
    <body>
-    <!--[if IE]>
-
-    <object id='wtPlugin' classid='CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308'>
-    </object>
-
-    <![endif]--><!--[if !IE]> <-->
-
-    <object id="wtPlugin" type="application/x-wacomtabletplugin">
-          <param name="onload" value="pluginLoaded" />
-
-    </object>
-
-    <!--> <![endif]-->
-
+   <a href="#popupBasic" data-rel="popup">Open Popup</a>
+	
+	<div data-role="popup" id="popupBasic">
+		<p>This is a completely basic popup, no options set.<p>
+	</div>
    </body>
 </html>
 
