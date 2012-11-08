@@ -108,14 +108,12 @@ window.fbAsyncInit = function() {
 	FB.Event.subscribe('auth.statusChange',fblogin);
 	
 };
-
+debug("plugins");
+debug(navigator.plugins);
 function checkForWacom(){
 	//BEGIN Check Wacom plugin	
-	debug("plugins")
-	debug(navigator.plugins)
 	for(i=0;i<navigator.plugins.length;i++){
 		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
-			
 			pluginInstalled=true
 			break;
 		}
