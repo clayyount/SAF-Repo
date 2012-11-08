@@ -270,6 +270,7 @@ $('#mainmenu').live('pageinit',function(event){
 function resizesplash(){
 	splashScreenH=$(window).height();
 	splashScreenW=$(window).width();
+debug("splashScreenH="+ splashScreenH)
 	if(splashScreenH>=641){
 		$("#splash_buttonholder").css({"margin-top":"388px"})
 		$("#splashpage").css({background:"url(images/saf_logo.png) no-repeat center 20px"})
