@@ -865,9 +865,9 @@ function roundNumber(num, dec) {
 
 //canvas mousedown function.
 function mousedown(evt){
-alert("mouse down!")
 	setConfirmUnload(true);
 	evt.preventDefault();
+alert("mouse down! dragging="+dragging)
 	if(!dragging){
 		lineDown=1
 		var ev = evt || window.event;
@@ -888,6 +888,7 @@ alert("mouse down!")
         {
 			pressure=1
         }
+alert("mouse down2!")
 		lastRotation = Math.PI/2;
 		lastMouseChangeVectorX = 0;
 		lastMouseChangeVectorY = 0;
@@ -901,6 +902,7 @@ alert("mouse down!")
 	}else{
 		$("#canvas").css({cursor: "url(images/cursor_hand_closed.cur) 9 9, crosshair"})
 	}
+alert("mouse down3!")
 }
 //canvas mouseup function.
 function mouseup(evt){
