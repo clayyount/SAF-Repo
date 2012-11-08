@@ -79,7 +79,7 @@ var retVersion = "";
 var pluginVersion = getWacomPlugin().version;
 //alert(pluginVersion);
 debug("pluginVersion=")
-debug(getWacomPlugin())
+debug(pluginVersion)
 
 if ( pluginVersion != undefined )
 {
