@@ -67,7 +67,10 @@ function debug(message){
 		console.log(message);
 	}
 }
-
+function getWacomPlugin()
+{
+	return document.getElementById('wtPlugin');
+}
 function isPluginLoaded()
     	{
 		var retVersion = "";
