@@ -111,8 +111,11 @@ window.fbAsyncInit = function() {
 
 function checkForWacom(){
 	//BEGIN Check Wacom plugin	
+	debug("plugins")
+	debug(navigator.plugins)
 	for(i=0;i<navigator.plugins.length;i++){
 		if(navigator.plugins[i].name=="WacomTabletPlugin" && navigator.plugins[i].length>=1){
+			
 			pluginInstalled=true
 			break;
 		}
