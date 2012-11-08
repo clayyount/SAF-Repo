@@ -226,14 +226,15 @@ returnStr+=']'
 */
 function isPluginLoaded(){
 	var retVersion = "";
+alert("where")
 	var pluginVersion = getWacomPlugin().version;
-	alert("pluginVersion: [" + pluginVersion + "]");
-	
+alert("is")	
 	if ( pluginVersion != undefined )
 	{
+alert("the")	
 	     		retVersion = pluginVersion;
 	}
-	
+	alert("break?")	
 	return retVersion;
 }
 $(window).load(function(){
