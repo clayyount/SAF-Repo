@@ -69,23 +69,20 @@ function debug(message){
 }
 function getWacomPlugin()
 {
-// ----------- IE ----------------------- FireFox et al. ----
-	//return window.wtPlugin || document.embeds["wtPlugin"];
 	return document.getElementById('wtPlugin');
 }
 function isPluginLoaded()
-{
-var retVersion = "";
-var pluginVersion = getWacomPlugin().version;
-//alert(pluginVersion);
+    	{
+		var retVersion = "";
+		var pluginVersion = getWacomPlugin().version;
+		//alert("pluginVersion: [" + pluginVersion + "]");
 
+		if ( pluginVersion != undefined )
+		{
+	       		retVersion = pluginVersion;
+		}
 
-if ( pluginVersion != undefined )
-{
-  		retVersion = pluginVersion;
-}
-
-return retVersion;
+		return retVersion;
 }
 
 function clearLoadedPluginFlag()
@@ -135,9 +132,6 @@ function unloadMessage() {
 // Load the SDK Asynchronously
 $(document).ready(function(){
 	$("#loginprogressbar").progressbar({value: 37}).show();
-
-	debug("getWacomPlugin().penAPI.isWacom =")
-	debug(getWacomPlugin().penAPI.isWacom)
 });
 
 (function(d){
@@ -255,6 +249,8 @@ returnStr+=']'
 */
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.
+	debug("getWacomPlugin().penAPI.isWacom  =")
+	debug(getWacomPlugin().penAPI.isWacom)
 var loadVersion = isPluginLoaded();
 if ( loadVersion != "" )
 {
