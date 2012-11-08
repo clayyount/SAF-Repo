@@ -223,20 +223,7 @@ returnStr=returnStr.substr(0,returnStr.length-2)
 returnStr+=']'
 }
 
-*/
-function isPluginLoaded(){
-	var retVersion = "";
-alert("where")
-	var pluginVersion = getWacomPlugin().version;
-alert("is")	
-	if ( pluginVersion != undefined )
-	{
-alert("the")	
-	     		retVersion = pluginVersion;
-	}
-	alert("break?")	
-	return retVersion;
-}
+*/
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.	
 var loadVersion = isPluginLoaded();
@@ -893,7 +880,6 @@ function mousedown(evt){
 		startX = lastX = smoothedMouseX = lastSmoothedMouseX = curX;
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
 alert("break point")
-alert("isPluginLoaded()="+isPluginLoaded())
 		if (isPluginLoaded() && pressureOn)
         {	
 			pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;

@@ -26,19 +26,19 @@
 		return document.getElementById('wtPlugin');
         }
 
-    	function isPluginLoaded()
-    	{
-		var retVersion = "";
-		var pluginVersion = getWacomPlugin().version;
-		//alert("pluginVersion: [" + pluginVersion + "]");
-
-		if ( pluginVersion != undefined )
-		{
-	       		retVersion = pluginVersion;
+    	function isPluginLoaded(){
+			var retVersion = "";
+		alert("where")
+			var pluginVersion = getWacomPlugin().version;
+		alert("is")	
+			if ( pluginVersion != undefined )
+			{
+		alert("the")	
+			     		retVersion = pluginVersion;
+			}
+			alert("break?")	
+			return retVersion;
 		}
-
-		return retVersion;
-    	}
 
 	
 	function onLoad()
