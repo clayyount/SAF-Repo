@@ -58,6 +58,7 @@ var lastRotation=0;
 var startX=0;
 var startY=0;
 var showAll=false;
+var resizeSet=false;
 
 
 
@@ -258,7 +259,7 @@ $('#drawing').live('pageshow',function(event){
 	resize();
 });
 
-resizeSet=false
+
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
 	//set the default transitions to fade because mobile safari screws up canvas drawing if 3d transitions are applied.
@@ -267,28 +268,30 @@ $('#mainmenu').live('pageinit',function(event){
 	setResize()	
 });
 function setResize(){
-	if((navigator.userAgent.match(/chrome/i))){
-		canvasFactor=2
-		$(window).bind('resize',resize)
-	}else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)){
-		navSize=.05
-		$("#buttonHolder").hide();
-		$(".marker").css({marginTop:-15})
-		canvasFactor=1
-		$(window).bind('orientationchange',resize)
-	}else if(navigator.userAgent.match(/iPad/i)){
-		canvasFactor=1
-		$(window).bind('orientationchange',resize)
-	}else if(navigator.userAgent.match(/firefox/i)){
-		canvasFactor=2
-		$(window).bind('resize',resize)
-	}else if(navigator.userAgent.match(/safari/i)){
-		canvasFactor=1
-		$(window).bind('resize',resize)
+	if(!resizeSet){
+		if((navigator.userAgent.match(/chrome/i))){
+			canvasFactor=2
+			$(window).bind('resize',resize)
+		}else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)){
+			navSize=.05
+			$("#buttonHolder").hide();
+			$(".marker").css({marginTop:-15})
+			canvasFactor=1
+			$(window).bind('orientationchange',resize)
+		}else if(navigator.userAgent.match(/iPad/i)){
+			canvasFactor=1
+			$(window).bind('orientationchange',resize)
+		}else if(navigator.userAgent.match(/firefox/i)){
+			canvasFactor=2
+			$(window).bind('resize',resize)
+		}else if(navigator.userAgent.match(/safari/i)){
+			canvasFactor=1
+			$(window).bind('resize',resize)
+		}
+		$.mobile.orientationChangeEnabled=false;
+		resizesplash()
+		resizeSet=true;
 	}
-	$.mobile.orientationChangeEnabled=false;
-	resizesplash()
-	resizeSet=true;
 }
 
 function resizesplash(){
