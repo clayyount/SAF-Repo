@@ -865,8 +865,9 @@ function roundNumber(num, dec) {
 
 //canvas mousedown function.
 function mousedown(evt){
+alert("mouse down!")
 	setConfirmUnload(true);
-evt.preventDefault();
+	evt.preventDefault();
 	if(!dragging){
 		lineDown=1
 		var ev = evt || window.event;
