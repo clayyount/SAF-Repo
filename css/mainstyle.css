@@ -29,7 +29,7 @@ background:#333333 url(../images/bg_pattern.gif);
 #login_holder{
 	margin:auto;
 	margin-top:20px;
-
+	width:150px;
 }
 #loginProgressHolder{
 	margin:auto;
