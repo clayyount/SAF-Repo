@@ -307,7 +307,7 @@ checkForWacom()
 		canvasFactor=2
 		$(window).bind('resize',resize)
 	}else if(navigator.userAgent.match(/safari/i)){
-		canvasFactor=2
+		canvasFactor=1
 		$(window).bind('resize',resize)
 	}
 	$.mobile.orientationChangeEnabled=false;
