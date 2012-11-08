@@ -269,6 +269,7 @@ $('#mainmenu').live('pageinit',function(event){
 	splashH=700
 	splashW=700
 	//$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
+	$("#splash_buttonholder").css({"margin-top":"368px"})
 });
 
 //on drawing page init
