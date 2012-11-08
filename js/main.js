@@ -869,14 +869,17 @@ function mousedown(evt){
 	evt.preventDefault();
 alert("mouse down! dragging="+dragging)
 	if(!dragging){
+alert("mouse down2!")
 		lineDown=1
 		var ev = evt || window.event;
 		var mouseX = (ev.pageX?(ev.pageX) : (ev.clientX + document.body.scrollLeft))- canvasPos.x
 		var mouseY = (ev.pageY?(ev.pageY) : (ev.clientY + document.body.scrollTop))- canvasPos.y
+alert("mouse down3!")
 		curX = Math.floor((ev.pageX?ev.pageX : ev.clientX) - canvasPos.x)*(currentZoomLevel);
 		curY = Math.floor((ev.pageY?ev.pageY : ev.clientY) - canvasPos.y)*(currentZoomLevel);
 		startX = lastX = smoothedMouseX = lastSmoothedMouseX = curX;
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
+alert("mouse down4!")
 		if (isPluginLoaded() && pressureOn)
         {	
 			pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
@@ -888,7 +891,7 @@ alert("mouse down! dragging="+dragging)
         {
 			pressure=1
         }
-alert("mouse down2!")
+alert("mouse down5!")
 		lastRotation = Math.PI/2;
 		lastMouseChangeVectorX = 0;
 		lastMouseChangeVectorY = 0;
@@ -902,7 +905,7 @@ alert("mouse down2!")
 	}else{
 		$("#canvas").css({cursor: "url(images/cursor_hand_closed.cur) 9 9, crosshair"})
 	}
-alert("mouse down3!")
+alert("mouse down end!")
 }
 //canvas mouseup function.
 function mouseup(evt){
