@@ -70,7 +70,8 @@ function debug(message){
 function getWacomPlugin()
 {
 // ----------- IE ----------------------- FireFox et al. ----
-	return window.wtPlugin || document.embeds["wtPlugin"];
+	//return window.wtPlugin || document.embeds["wtPlugin"];
+	return document.getElementById('wtPlugin');
 }
 function isPluginLoaded()
 {
