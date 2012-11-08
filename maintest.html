@@ -23,7 +23,7 @@
 	//
 	function getWacomPlugin()
 		{
-		try{return document.getElementById('wtPlugin');}catch(e){return false;
+		return document.getElementById('wtPlugin');
 		}
 		
 		      }
@@ -31,11 +31,9 @@
     	function isPluginLoaded(){
 			var retVersion = "";
 		alert("where")
-		if(getWacomPlugin()!=false){
-					var pluginVersion = getWacomPlugin().version;
-		}else{
-		return retVersion;
-		}
+			var pluginVersion;
+			try{pluginVersion= getWacomPlugin().version}catch(e){};
+
 		alert("is")	
 			if ( pluginVersion != undefined )
 			{
