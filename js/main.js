@@ -67,29 +67,6 @@ function debug(message){
 		console.log(message);
 	}
 }
-function getWacomPlugin()
-{
-	return document.getElementById('wtPlugin');
-}
-function isPluginLoaded()
-    	{
-		var retVersion = "";
-		var pluginVersion = getWacomPlugin().version;
-		//alert("pluginVersion: [" + pluginVersion + "]");
-
-		if ( pluginVersion != undefined )
-		{
-	       		retVersion = pluginVersion;
-		}
-
-		return retVersion;
-}
-
-function clearLoadedPluginFlag()
-{
-	debug("WARNING: could not load WacomIE.cab file.");
-	loadedPlugin = 0;
-}
 
 //BEGIN Facebook Init
 window.fbAsyncInit = function() {
@@ -109,6 +86,7 @@ window.fbAsyncInit = function() {
 };
 debug("navigator.plugins")
 debug(navigator.plugins)
+/*
 function checkForWacom(){
 	//BEGIN Check Wacom plugin	
 	for(i=0;i<navigator.plugins.length;i++){
@@ -122,6 +100,7 @@ function checkForWacom(){
 	}
 	//END Check Wacom plugin
 }
+*/
 
 function unloadMessage() {
             return "Leaving this page may end your game.";

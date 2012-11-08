@@ -14,6 +14,51 @@
 <script type="text/javascript" src="js/wheelofdeath.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/jquerymobile.js"></script>
+<script type="text/javascript">
+
+		// *********************************************************************
+	// getWacomPlugin
+	//   Returns correct plugin instance depending on whether running on
+	//   Internet Explorer or Firefox (and similar: Chrome, Safari, Opera).
+	//
+	function getWacomPlugin()
+        {
+		return document.getElementById('wtPlugin');
+        }
+
+    	function isPluginLoaded()
+    	{
+		var retVersion = "";
+		var pluginVersion = getWacomPlugin().version;
+		//alert("pluginVersion: [" + pluginVersion + "]");
+
+		if ( pluginVersion != undefined )
+		{
+	       		retVersion = pluginVersion;
+		}
+
+		return retVersion;
+    	}
+
+	
+	function onLoad()
+	{
+		var loadVersion = isPluginLoaded();
+		//alert("loadVersion: [" + loadVersion + "]");
+
+		if ( loadVersion != "" )
+		{
+			alert("Loaded webplugin: " + loadVersion);
+		}
+		else
+		{
+			alert("webplugin is NOT Loaded (or undiscoverable)");
+			return;
+		}
+	}
+
+
+	</script>
 
 <style type="text/css">
 	@import url("css/wheelstyle.css");
@@ -144,7 +189,10 @@
 
     <![endif]--><!--[if !IE]> <-->
 
-    <object id="wtPlugin" type="application/x-wacomtabletplugin"></object>
+    <object id="wtPlugin" type="application/x-wacomtabletplugin">
+          <param name="onload" value="pluginLoaded" />
+
+    </object>
 
     <!--> <![endif]-->
 </body>
