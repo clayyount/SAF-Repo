@@ -306,7 +306,7 @@ debug("splashScreenH="+ splashScreenH)
 		//mid size splashscreem
 	}
 	else if(splashScreenH<484){
-		$("#splash_buttonholder, #login_holder, #loginProgressHolder").css({"margin-top":"90px"})
+		$("#splash_buttonholder, #login_holder, #loginProgressHolder").css({"margin-top":"75px"})
 		$("#splashpage").css({background:"url(images/saf_logo_small.png) no-repeat center 20px"})
 		//small size splashscreem
 	}
