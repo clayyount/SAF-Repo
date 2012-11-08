@@ -87,11 +87,6 @@ if ( pluginVersion != undefined )
 
 return retVersion;
 }
-function onLoad()
-	{
-	var loadVersion = isPluginLoaded();
-	debug("pluginVersion =")
-	debug(pluginVersion)}
 
 function clearLoadedPluginFlag()
 {
@@ -140,6 +135,10 @@ function unloadMessage() {
 // Load the SDK Asynchronously
 $(document).ready(function(){
 	$("#loginprogressbar").progressbar({value: 37}).show();
+
+	var loadVersion = isPluginLoaded();
+	debug("pluginVersion =")
+	debug(pluginVersion)
 });
 
 (function(d){
