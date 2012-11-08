@@ -268,7 +268,7 @@ $('#mainmenu').live('pageinit',function(event){
 	splashScreenW=$(window).width()-30;
 	splashH=700
 	splashW=700
-	$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
+	//$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
 });
 
 //on drawing page init
