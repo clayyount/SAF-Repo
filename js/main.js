@@ -272,16 +272,16 @@ $('#mainmenu').live('pageinit',function(event){
 	
 	if(splashScreenH>=641){
 		$("#splash_buttonholder").css({"margin-top":"388px"})
-		$("#splashpage").css({"background":"url(../images/saf_logo.png) no-repeat center 20px;"})
+		$("#splashpage").css({"background":"url(images/saf_logo.png) no-repeat center 20px;"})
 		//full size splashscreem
 	}else if(splashScreenH<641 && splashScreenH>=484 ){
 		$("#splash_buttonholder").css({"margin-top":"236px"})
-		$("#splashpage").css({"background":"url(../images/saf_logo_mid.png) no-repeat center 20px;"})
+		$("#splashpage").css({"background":"url(images/saf_logo_mid.png) no-repeat center 20px;"})
 		//mid size splashscreem
 	}
 	else if(splashScreenH<484){
 		$("#splash_buttonholder").css({"margin-top":"70px"})
-		$("#splashpage").css({"background":"url(../images/saf_logo_small.png) no-repeat center 20px;"})
+		$("#splashpage").css({"background":"url(images/saf_logo_small.png) no-repeat center 20px;"})
 		//small size splashscreem
 	}
 });
