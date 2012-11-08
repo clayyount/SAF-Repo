@@ -249,8 +249,8 @@ returnStr+=']'
 */
 $(window).load(function(){
 //firefox won't load the plugin correctly before window load.
-	debug("getWacomPlugin().penAPI.isWacom  =")
-	debug(getWacomPlugin().penAPI.isWacom)
+	debug("getWacomPlugin().penAPI.isWacom=")
+	debug(getWacomPlugin().penAPI)
 var loadVersion = isPluginLoaded();
 if ( loadVersion != "" )
 {
