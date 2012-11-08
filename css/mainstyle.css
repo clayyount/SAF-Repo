@@ -21,8 +21,7 @@ background:#333333;
 	background:url(../images/saf_logo.png) no-repeat center 20px;
 }
 #splash_buttonholder{
-top:50%;
-left:50%;
+	margin:auto;
 	width:255px;
 	height:235ps;
 }
