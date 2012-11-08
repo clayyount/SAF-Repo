@@ -303,12 +303,12 @@ function resizesplash(){
 	splashScreenH=$(window).height();
 	splashScreenW=$(window).width();
 debug("splashScreenH="+ splashScreenH)
-	if(splashScreenH>=641){
-		$("#splash_buttonholder, #login_holder, #loginProgressHolder").css({"margin-top":"408px"})
+	if(splashScreenH>=671){
+		$("#splash_buttonholder, #login_holder, #loginProgressHolder").css({"margin-top":"438px"})
 		$("#splashpage").css({background:"url(images/saf_logo.png) no-repeat center 20px"})
 
 		//full size splashscreem
-	}else if(splashScreenH<641 && splashScreenH>=524 ){
+	}else if(splashScreenH<671 && splashScreenH>=524 ){
 		$("#splash_buttonholder, #login_holder, #loginProgressHolder").css({"margin-top":"286px"})
 		$("#splashpage").css({background:"url(images/saf_logo_mid.png) no-repeat center 20px"})
 		//mid size splashscreem
