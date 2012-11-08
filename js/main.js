@@ -90,7 +90,7 @@ return retVersion;
 function onLoad()
 	{
 	var loadVersion = isPluginLoaded();
-	debug("pluginVersion=")
+	debug("pluginVersion =")
 	debug(pluginVersion)}
 
 function clearLoadedPluginFlag()
