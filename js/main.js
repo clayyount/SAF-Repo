@@ -250,10 +250,10 @@ returnStr+=']'
 
 */
 $(window).load(function(){
-//firefox won't load the plugin correctly before window load.
-	debug("getWacomPlugin().penAPI.isWacom=")
-	debug(getWacomPlugin().penAPI)
+//firefox won't load the plugin correctly before window load.	
 var loadVersion = isPluginLoaded();
+debug("loadVersion =")
+	debug(loadVersion)
 if ( loadVersion != "" )
 {
 	
@@ -287,8 +287,7 @@ $('#drawing').live('pageshow',function(event){
 
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
-var loadVersion = isPluginLoaded();debug("loadVersion=")
-debug(loadVersion)
+
 	//set the default transitions to fade because mobile safari screws up canvas drawing if 3d transitions are applied.
 	$.mobile.defaultDialogTransition="fade"
 	$.mobile.defaultPageTransition="fade"
