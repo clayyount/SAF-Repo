@@ -27,20 +27,15 @@
 
     	function isPluginLoaded(){
 			var retVersion = "";
-		alert("where")
 			var pluginVersion;
 			try{
 				pluginVersion= getWacomPlugin().version
 			}catch(e){
 			};
-
-		alert("is")	
 			if ( pluginVersion != undefined )
-			{
-		alert("the")	
-			     		retVersion = pluginVersion;
+			{	
+			    retVersion = pluginVersion;
 			}
-			alert("break?")	
 			return retVersion;
 		}
 
