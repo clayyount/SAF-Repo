@@ -138,7 +138,7 @@ $(document).ready(function(){
 
 	var loadVersion = isPluginLoaded();
 	debug("pluginVersion =")
-	debug(pluginVersion)
+	debug(loadVersion)
 });
 
 (function(d){
