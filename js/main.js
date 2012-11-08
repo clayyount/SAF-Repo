@@ -285,7 +285,7 @@ function setResize(){
 			canvasFactor=2
 			$(window).bind('resize',resize)
 		}else if(navigator.userAgent.match(/safari/i)){
-			canvasFactor=1
+			canvasFactor=2
 			$(window).bind('resize',resize)
 		}
 		$.mobile.orientationChangeEnabled=false;
