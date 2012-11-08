@@ -227,7 +227,7 @@ returnStr+=']'
 function isPluginLoaded(){
 	var retVersion = "";
 	var pluginVersion = getWacomPlugin().version;
-	//alert("pluginVersion: [" + pluginVersion + "]");
+	alert("pluginVersion: [" + pluginVersion + "]");
 	
 	if ( pluginVersion != undefined )
 	{
