@@ -21,18 +21,18 @@
 	//   Returns correct plugin instance depending on whether running on
 	//   Internet Explorer or Firefox (and similar: Chrome, Safari, Opera).
 	//
-	function getWacomPlugin()
-		{
+	function getWacomPlugin(){
 		return document.getElementById('wtPlugin');
-		}
-		
-		      }
+	}
 
     	function isPluginLoaded(){
 			var retVersion = "";
 		alert("where")
 			var pluginVersion;
-			try{pluginVersion= getWacomPlugin().version}catch(e){};
+			try{
+				pluginVersion= getWacomPlugin().version
+			}catch(e){
+			};
 
 		alert("is")	
 			if ( pluginVersion != undefined )
