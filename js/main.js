@@ -86,7 +86,7 @@ window.fbAsyncInit = function() {
 };
 debug("navigator.plugins")
 debug(navigator.plugins)
-/*
+
 function checkForWacom(){
 	//BEGIN Check Wacom plugin	
 	for(i=0;i<navigator.plugins.length;i++){
@@ -96,11 +96,11 @@ function checkForWacom(){
 		}
 	}
 	if(pluginInstalled){
-		//$("body").append('<!--[if IE]><object id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308"><param name="onload" value="pluginLoaded" /></object><![endif]--><!--[if !IE]> <--><embed id="wtPlugin" type="application/x-wacomtabletplugin" HIDDEN="TRUE" onLoad="pluginLoaded"></embed><!--> <![endif]-->');
+		$("body").append('<!--[if IE]><object id="wtPlugin" classid="CLSID:092dfa86-5807-5a94-bf3b-5a53ba9e5308"><param name="onload" value="pluginLoaded" /></object><![endif]--><!--[if !IE]> <--><embed id="wtPlugin" type="application/x-wacomtabletplugin" HIDDEN="TRUE" onLoad="pluginLoaded"></embed><!--> <![endif]-->');
 	}
 	//END Check Wacom plugin
 }
-*/
+
 
 function unloadMessage() {
             return "Leaving this page may end your game.";
@@ -280,6 +280,7 @@ $('#mainmenu').live('pageinit',function(event){
 
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
+checkForWacom()
 	debug("document ready")
 	$("#pressure").hide();
 	//Broswer specific actions
