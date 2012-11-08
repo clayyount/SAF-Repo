@@ -78,8 +78,7 @@ function isPluginLoaded()
 var retVersion = "";
 var pluginVersion = getWacomPlugin().version;
 //alert(pluginVersion);
-debug("pluginVersion=")
-debug(pluginVersion)
+
 
 if ( pluginVersion != undefined )
 {
@@ -88,6 +87,11 @@ if ( pluginVersion != undefined )
 
 return retVersion;
 }
+function onLoad()
+	{
+	var loadVersion = isPluginLoaded();
+	debug("pluginVersion=")
+	debug(pluginVersion)}
 
 function clearLoadedPluginFlag()
 {
