@@ -891,7 +891,8 @@ function mousedown(evt){
 		curY = Math.floor((ev.pageY?ev.pageY : ev.clientY) - canvasPos.y)*(currentZoomLevel);
 		startX = lastX = smoothedMouseX = lastSmoothedMouseX = curX;
 		startY = lastY = smoothedMouseY = lastSmoothedMouseY = curY;
-
+alert("break point")
+alert("isPluginLoaded()="+isPluginLoaded())
 		if (isPluginLoaded() && pressureOn)
         {	
 			pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
