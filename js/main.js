@@ -84,9 +84,6 @@ window.fbAsyncInit = function() {
 	FB.Event.subscribe('auth.statusChange',fblogin);
 	
 };
-debug("navigator.plugins")
-debug(navigator.plugins)
-
 function checkForWacom(){
 	//BEGIN Check Wacom plugin	
 	for(i=0;i<navigator.plugins.length;i++){
@@ -103,12 +100,11 @@ function checkForWacom(){
 
 
 function unloadMessage() {
-            return "Leaving this page may end your game.";
-        }
-
-        function setConfirmUnload(enabled) {
-           // window.onbeforeunload = enabled ? unloadMessage : null;
-        }
+	return "Leaving this page may end your game.";
+}
+function setConfirmUnload(enabled) {
+   // window.onbeforeunload = enabled ? unloadMessage : null;
+}
 
 // Load the SDK Asynchronously
 $(document).ready(function(){
@@ -149,7 +145,6 @@ function fblogin(response) {
 			debug("not logged into FB")
 		}
 	}
-	
 }
 
 function mecallback(response) {
@@ -266,11 +261,9 @@ $('#drawing').live('pageshow',function(event){
 
 //on mainmenu init
 $('#mainmenu').live('pageinit',function(event){
-
 	//set the default transitions to fade because mobile safari screws up canvas drawing if 3d transitions are applied.
 	$.mobile.defaultDialogTransition="fade"
 	$.mobile.defaultPageTransition="fade"
-	
 	splashScreenH=$(window).height()-30;
 	splashScreenW=$(window).width()-30;
 	splashH=700
@@ -319,7 +312,6 @@ checkForWacom()
 	canvasNav.height=canvas.height*navSizePercent;
 	ctx = canvas.getContext("2d");
  	navctx= canvasNav.getContext("2d");
- 	
  	
  	debug("drawing page initiated")
 	//Load Wheel of Death
@@ -550,11 +542,9 @@ debug("setting up socket io stuff")
  		replayStack.push(data);
     });
 }
-
 function startGame(){
 	mode="play"
 	//Add mouse events to the canvas
-	
 	//set the cursor to the #2 brush
 	$("#canvas").css({cursor: "url(images/"+currentCursor+".cur) "+cursorPosition[currentCursor]+" "+cursorPosition[currentCursor]+", crosshair"})
 	//show the page and slide the brush and marker menus	
@@ -571,7 +561,6 @@ function practiceGame(){
 function loadWatchGames(){
 	$.mobile.changePage($("#gameChooser"));
 }
-
 function getAllGames(){
 	socket.emit("getAllGames");
 }
@@ -753,7 +742,6 @@ function dragfunc(){
 		width:canvasBoxW-2,
 		height:canvasBoxH-2
 	});
-
 }
 
 //Saves a png client-side. I'll need to change this to server-side
@@ -1162,8 +1150,6 @@ function redraw2(){
 			$("#redrawprogressbar").progressbar({value: 100}).hide();
 		} 
 	});
-	
-	
 	/*
 	var tempstack=replayStack.slice(0);
 	var tslength=tempstack.length;
@@ -1171,7 +1157,6 @@ function redraw2(){
 	tempCanvas.setAttribute("id", "tempcanvas");
 	tempCanvas.height=canvas.height;
 	tempCanvas.width=canvas.width;
-	
 	//debug("tslength="+tslength)
 	tempstack.forEach(function(obj, ind, arr){	
 		drawSmoothLine(obj);
@@ -1186,20 +1171,19 @@ function redraw2(){
 	//$("#redrawprogressbar").progressbar({value: 100}).show();
 }
 
-
 function popstack(){
 	if(commandStack.length>0){
-			var currentCommand;
-			for(i=0;i<speed;i++){
-				currentCommand=commandStack.shift();
-				if(currentCommand){
-					if(currentCommand.lsmX){
-						drawSmoothLine(currentCommand)
-					}else if(currentCommand.strokeEnd){
-						updateNavigtor()
-					}
+		var currentCommand;
+		for(i=0;i<speed;i++){
+			currentCommand=commandStack.shift();
+			if(currentCommand){
+				if(currentCommand.lsmX){
+					drawSmoothLine(currentCommand)
+				}else if(currentCommand.strokeEnd){
+					updateNavigtor()
 				}
 			}
+		}
 	}
 }
 
