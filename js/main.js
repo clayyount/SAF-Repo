@@ -578,13 +578,14 @@ function newGame(){
 	debug("friendList=")
 	debug(friendList)
 	if(friendList.length>0){
-	var friendListHTML='<ul id="friendList" data-role="listview" data-theme="c">';
+	var friendListHTML='<ul id="friendList" data-role="listview" data-theme="a">';
 	friendList.forEach(function(friend){
 		friendListHTML+='<li><a href="#"><img src="http://graph.facebook.com/'+friend.userID+'/picture?type=square" />'+friend.screenname+'</a></li>'
 	})
 	friendListHTML+='</ul>'
 	$("#friendCollapsable p").html(friendListHTML);
-	$.mobile.changePage($("#gameChooser"));
+	//$.mobile.changePage($("#gameChooser"));
+$("#gameChooser").popup( 'open' )
 	try{
 	$('#gameChooser').trigger( "create" );
 	}catch(e){
