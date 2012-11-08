@@ -882,13 +882,16 @@ alert("mouse down3!")
 alert("mouse down4!")
 		if (isPluginLoaded() && pressureOn)
         {	
+alert("mouse down4.1!")
 			pressure = getWacomPlugin() ? roundNumber(getWacomPlugin().penAPI.pressure,6) : 1.0;
+alert("mouse down4.1.2!")
 			if(pressure==0){
 			pressure=.1
 			}	
         }
         else
         {
+alert("mouse down4.2!")
 			pressure=1
         }
 alert("mouse down5!")
