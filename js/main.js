@@ -264,12 +264,12 @@ $('#mainmenu').live('pageinit',function(event){
 	//set the default transitions to fade because mobile safari screws up canvas drawing if 3d transitions are applied.
 	$.mobile.defaultDialogTransition="fade"
 	$.mobile.defaultPageTransition="fade"
+	resizesplash()
+});
+
+function resizesplash(){
 	splashScreenH=$(window).height();
 	splashScreenW=$(window).width();
-	splashH=700
-	splashW=700
-	//$("#splash_content").css({marginTop:(splashScreenH/2-(splashH/2)),marginLeft:(splashScreenW/2-(splashW/2))})
-	
 	if(splashScreenH>=641){
 		$("#splash_buttonholder").css({"margin-top":"388px"})
 		$("#splashpage").css({background:"url(images/saf_logo.png) no-repeat center 20px"})
@@ -284,8 +284,7 @@ $('#mainmenu').live('pageinit',function(event){
 		$("#splashpage").css({background:"url(images/saf_logo_small.png) no-repeat center 20px"})
 		//small size splashscreem
 	}
-});
-
+}
 //on drawing page init
 $('#drawing').live('pageinit',function(event){
 checkForWacom()
@@ -632,6 +631,7 @@ function connectToGame(gameID){
 function resize(evt){
 	screenW=$(window).width()-20;
 	screenH=$(window).height()-60;
+	resizesplash()
 	$("#buttonHolder").css({width:screenW})
 	$("#canvasHolder").css({width:screenW, height:screenH})
 	screenRatio=screenW/screenH;
