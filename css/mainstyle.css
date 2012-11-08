@@ -26,13 +26,11 @@ background:#333333;
 	height:235ps;
 }
 #login_holder{
-	padding-top:440px;
-	margin-left:275px;
+	margin:auto;
 
 }
 #loginProgressHolder{
-	padding-top:460px;
-	margin-left:240px;
+	margin:auto;
 	width:220px;
 	height:20px;
 }
