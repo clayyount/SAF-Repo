@@ -308,12 +308,12 @@ debug("splashScreenH="+ splashScreenH)
 		$("#splashpage").css({background:"url(images/saf_logo.png) no-repeat center 20px"})
 
 		//full size splashscreem
-	}else if(splashScreenH<641 && splashScreenH>=494 ){
-		$("#splash_buttonholder, #login_holder, #loginProgressHolder").css({"margin-top":"266px"})
+	}else if(splashScreenH<641 && splashScreenH>=504 ){
+		$("#splash_buttonholder, #login_holder, #loginProgressHolder").css({"margin-top":"276px"})
 		$("#splashpage").css({background:"url(images/saf_logo_mid.png) no-repeat center 20px"})
 		//mid size splashscreem
 	}
-	else if(splashScreenH<484){
+	else if(splashScreenH<504){
 		$("#splash_buttonholder, #login_holder, #loginProgressHolder").css({"margin-top":"75px"})
 		$("#splashpage").css({background:"url(images/saf_logo_small.png) no-repeat center 20px"})
 		//small size splashscreem
