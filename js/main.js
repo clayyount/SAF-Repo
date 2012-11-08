@@ -77,6 +77,8 @@ function isPluginLoaded()
 var retVersion = "";
 var pluginVersion = getWacomPlugin().version;
 //alert(pluginVersion);
+debug("pluginVersion=")
+debug(pluginVersion)
 
 if ( pluginVersion != undefined )
 {
@@ -108,8 +110,6 @@ window.fbAsyncInit = function() {
 	FB.Event.subscribe('auth.statusChange',fblogin);
 	
 };
-debug("plugins");
-debug(navigator.plugins);
 function checkForWacom(){
 	//BEGIN Check Wacom plugin	
 	for(i=0;i<navigator.plugins.length;i++){
