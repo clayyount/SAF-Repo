@@ -136,9 +136,8 @@ function unloadMessage() {
 $(document).ready(function(){
 	$("#loginprogressbar").progressbar({value: 37}).show();
 
-	var loadVersion = isPluginLoaded();
-	debug("pluginVersion =")
-	debug(loadVersion)
+	debug("getWacomPlugin().penAPI.isWacom =")
+	debug(getWacomPlugin().penAPI.isWacom)
 });
 
 (function(d){
