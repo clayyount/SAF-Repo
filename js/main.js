@@ -265,6 +265,27 @@ $('#mainmenu').live('pageinit',function(event){
 	$.mobile.defaultDialogTransition="fade"
 	$.mobile.defaultPageTransition="fade"
 	resizesplash()
+if((navigator.userAgent.match(/chrome/i))){
+		canvasFactor=2
+		$(window).bind('resize',resize)
+	}else if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)){
+		navSize=.05
+		$("#buttonHolder").hide();
+		$(".marker").css({marginTop:-15})
+		canvasFactor=1
+		$(window).bind('orientationchange',resize)
+	}else if(navigator.userAgent.match(/iPad/i)){
+		canvasFactor=1
+		$(window).bind('orientationchange',resize)
+	}else if(navigator.userAgent.match(/firefox/i)){
+		canvasFactor=2
+		$(window).bind('resize',resize)
+	}else if(navigator.userAgent.match(/safari/i)){
+		canvasFactor=1
+		$(window).bind('resize',resize)
+	}
+	$.mobile.orientationChangeEnabled=false;
+	
 });
 
 function resizesplash(){
