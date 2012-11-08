@@ -28,12 +28,14 @@ background:#333333;
 }
 #login_holder{
 	margin:auto;
+	margin-top:20px;
 
 }
 #loginProgressHolder{
 	margin:auto;
 	width:220px;
 	height:20px;
+	margin-top:20px;
 }
 #wheel_content{
 	height:200px;
