@@ -22,14 +22,14 @@
 	//   Internet Explorer or Firefox (and similar: Chrome, Safari, Opera).
 	//
 	function getWacomPlugin()
-        {
+		      {
 		return document.getElementById('wtPlugin');
-        }
+		      }
 
     	function isPluginLoaded(){
 			var retVersion = "";
 		alert("where")
-			var pluginVersion = getWacomPlugin().version;
+			var pluginVersion = getWacomPlugin().version || undefined;
 		alert("is")	
 			if ( pluginVersion != undefined )
 			{
