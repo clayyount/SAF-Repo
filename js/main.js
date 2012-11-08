@@ -285,6 +285,7 @@ function setResize(){
 			canvasFactor=2
 			$(window).bind('resize',resize)
 		}else if(navigator.userAgent.match(/safari/i)){
+			debug(navigator.userAgent)
 			canvasFactor=1
 			$(window).bind('resize',resize)
 		}
