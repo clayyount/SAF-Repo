@@ -5,6 +5,7 @@ var commandStack = [];
 var userStack = [];
 var gameList = [];
 var friendList=[];
+var friendsOnline=[];
 var lobby=[];
 var userID;
 var gameID;
@@ -576,7 +577,7 @@ debug("setting up socket io stuff")
 		lobby = data.lobby;
 		debug("here's the lobby");	
 		debug(lobby);
-		var friendsOnline=[];
+		friendsOnline=[];
 		for(i=0;i<friendList.length;i++){
 			if(lobby.indexOf(friendList[i].userID)!=-1){
 				friendsOnline.push(friendList[i]);
