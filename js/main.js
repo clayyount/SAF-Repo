@@ -5,6 +5,7 @@ var commandStack = [];
 var userStack = [];
 var gameList = [];
 var friendList=[];
+var lobby=[];
 var userID;
 var gameID;
 var socket;
@@ -572,9 +573,12 @@ debug("setting up socket io stuff")
  		replayStack.push(data);
     });
 	socket.on('returnLobby', function(data) {
-		var friendsOnline= data.lobby.diff(friendList)
-		debug("here's the lobby")		
-		debug(friendsOnline)
+		lobby = data.lobby;
+		debug("here's the lobby");	
+		debug(lobby);
+		var friendsOnline = lobby.diff(friendList);
+		debug("here's your frineds in the lobby");		
+		debug(friendsOnline);
     });
 }
 
