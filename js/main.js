@@ -600,8 +600,9 @@ function updateLobby(arr){
 			friendListHTML+='</ul>'
 			$("#friendCollapsable p").html(friendListHTML);
 			
-		}else if(friendsOnline.length==0){
-			friendListHTML+="No friends online"
+		}else{
+			friendListHTML="No friends online";
+			$("#friendCollapsable p").html(friendListHTML);
 		}
 			try{
 				$('#gameChooser').trigger( "create" );
