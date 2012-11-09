@@ -570,6 +570,10 @@ debug("setting up socket io stuff")
     	commandStack.push(data);
  		replayStack.push(data);
     });
+	socket.on('returnLobby', function(data) {
+		debug("here's the lobby")
+    	debug(data.lobby)
+    });
 }
 function startGame(){
 	mode="play"
@@ -633,6 +637,9 @@ function joinGame(gameID){
 }
 function joinLobby(){
 	socket.emit("joinLobby",{userID:userID})
+}
+function checkLobby(){
+	socket.emit("checkLobby")
 }
 function leaveGame(){
 	socket.emit("leaveGame",{gameID:currentGame, userID:userID})
@@ -709,7 +716,7 @@ newLevel= showAllZoomLevel
 	var navOffsetX=(navX)-(canvasBoxW/2)
 	var navOffsetY=(navY)-(canvasBoxH/2)
 	currentZoomLevel= newlevel
-	// set to draggable so the animate function can properly set the left/top of canvas. figure out why this is the case...
+	// set to draggable so the animate function can properly set the left/top of canvas. figure out why this is the case…
 	$("#canvas").draggable({drag:dragfunc})
 	$("#canvas").animate({
 		left:offsetX,
