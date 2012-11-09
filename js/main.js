@@ -576,23 +576,18 @@ debug("setting up socket io stuff")
 		lobby = data.lobby;
 		debug("here's the lobby");	
 		debug(lobby);
-		var friendsOnline = lobby.diff(friendList);
+		var friendsOnline=[];
+		for(i=0;i<friendList.length;i++){
+			if(lobby.indexOf(friendList[i].userID)!=-1){
+				friendsOnline.push(friendList[i].userID);
+			}
+		}
 		debug("here's your frineds in the lobby");		
 		debug(friendsOnline);
     });
 }
 
-Array.prototype.diff = function(arr2) {
-    var ret = [];
-    this.sort();
-    arr2.sort();
-    for(var i = 0; i < this.length; i += 1) {
-        if(arr2.indexOf( this[i] ) > -1){
-            ret.push( this[i] );
-        }
-    }
-    return ret;
-};
+
 
 function startGame(){
 	mode="play"
