@@ -593,17 +593,18 @@ function updateLobby(arr){
 		debug("here's your friends in the lobby");		
 		debug(friendsOnline);
 		if(friendsOnline.length>0){
-		var friendListHTML='<ul id="friendList" data-role="listview" data-theme="a">';
-		friendsOnline.forEach(function(friend){
-			friendListHTML+='<li><a href="#" onclick="alert(\''+friend.screenname+'\')"><img src="http://graph.facebook.com/'+friend.userID+'/picture?type=square" />'+friend.screenname+'</a></li>'
-		})
-		friendListHTML+='</ul>'
-		$("#friendCollapsable p").html(friendListHTML);
-		try{
-		$('#gameChooser').trigger( "create" );
-		}catch(e){
-			debug("!e")
-			debug(e)
+			var friendListHTML='<ul id="friendList" data-role="listview" data-theme="a">';
+			friendsOnline.forEach(function(friend){
+				friendListHTML+='<li><a href="#" onclick="alert(\''+friend.screenname+'\')"><img src="http://graph.facebook.com/'+friend.userID+'/picture?type=square" />'+friend.screenname+'</a></li>'
+			})
+			friendListHTML+='</ul>'
+			$("#friendCollapsable p").html(friendListHTML);
+			try{
+			$('#gameChooser').trigger( "create" );
+			}catch(e){
+				debug("!e")
+				debug(e)
+			}
 		}
 }
 
@@ -644,7 +645,7 @@ function deleteGames(){
 function newGame(){
 	joinLobby()
 	//$.mobile.changePage($("#gameChooser"));
-$("#gameChooser").popup( 'open' )
+	$("#gameChooser").popup( 'open' )
 	try{
 	$('#gameChooser').trigger( "create" );
 	}catch(e){
