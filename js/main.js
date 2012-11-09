@@ -555,8 +555,8 @@ debug("setting up socket io stuff")
 		startGame();
     });
 	socket.on('inviteRequest', function(data){
-     	if(data.invite.friendID==userID){
-			debug("invite request!")
+     	if(data.invite.friend.userID==userID){
+			
 			debug(data);
 		}
     });
@@ -601,7 +601,7 @@ function updateLobby(arr){
 		if(friendsOnline.length>0){
 			var friendListHTML='<ul id="friendList" data-role="listview" data-theme="a">';
 			friendsOnline.forEach(function(friend){
-				friendListHTML+='<li><a href="#" onclick="inviteGame(\''+friend.userID+'\');"><img src="http://graph.facebook.com/'+friend.userID+'/picture?type=square" />'+friend.screenname+'</a></li>'
+				friendListHTML+='<li><a href="#" onclick="inviteGame(\''+friend+'\');"><img src="http://graph.facebook.com/'+friend.userID+'/picture?type=square" />'+friend.screenname+'</a></li>'
 			})
 			friendListHTML+='</ul>'
 			$("#friendCollapsable p").html(friendListHTML);
@@ -664,9 +664,9 @@ function newGame(){
 	}
 	//createGame()
 }
-function inviteGame(friendID){
+function inviteGame(friend){
 	gameID=String(Math.round((Math.random()*1000000)))
-	socket.emit("inviteGame",{gameID:gameID,userID:userID,friendID:friendID})
+	socket.emit("inviteGame",{gameID:gameID,userID:userID,friend:friend})
 }
 function createGame(){
 	gameID=String(Math.round((Math.random()*1000000)))
