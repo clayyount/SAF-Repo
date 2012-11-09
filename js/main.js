@@ -629,6 +629,7 @@ function deleteGames(){
 	socket.emit("deleteGames")
 }
 function newGame(){
+	joinLobby()
 	if(friendsOnline.length>0){
 	var friendListHTML='<ul id="friendList" data-role="listview" data-theme="a">';
 	friendsOnline.forEach(function(friend){
