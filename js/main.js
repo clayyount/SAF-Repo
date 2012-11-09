@@ -132,6 +132,7 @@ function fblogin(response) {
 			debug("fblogin connected");
 			$("#login_holder").hide();
 			userID = response.authResponse.userID;
+			joinLobby();
 			fbAccessToken = response.authResponse.accessToken;
 			FB.api('/me', mecallback);
 		} else if (response.status === 'not_authorized') {
@@ -629,6 +630,9 @@ function createGame(){
 }
 function joinGame(gameID){
 	socket.emit("joinGame",{gameID:gameID, userID:userID})
+}
+function joinLobby(){
+	socket.emit("joinLobby",{userID:userID})
 }
 function leaveGame(){
 	socket.emit("leaveGame",{gameID:currentGame, userID:userID})
