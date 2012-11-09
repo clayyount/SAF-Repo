@@ -43,7 +43,7 @@ background:#333333 url(../images/bg_pattern.gif);
 
 #onlineFriendsContent{
 	overflow-y:auto;
-	height:200px;
+	max-height:200px;
 }
 
 .blackBG{
