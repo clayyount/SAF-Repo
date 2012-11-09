@@ -574,10 +574,14 @@ debug("setting up socket io stuff")
  		replayStack.push(data);
     });
 	socket.on("lobbyJoined", function(data){
-		checkLobby();
+		updateLobby(data)
 	})
 	socket.on('returnLobby', function(data) {
-		lobby = data.lobby;
+		updateLobby(data)
+    });
+}
+function updateLobby(arr){
+		lobby = arr.lobby;
 		debug("here's the lobby");	
 		debug(lobby);
 		friendsOnline=[];
@@ -588,7 +592,6 @@ debug("setting up socket io stuff")
 		}
 		debug("here's your friends in the lobby");		
 		debug(friendsOnline);
-    });
 }
 
 
