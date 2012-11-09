@@ -605,6 +605,8 @@ function updateLobby(arr){
 				debug("!e")
 				debug(e)
 			}
+		}else if(friendsOnline.length==0){
+			friendListHTML+="No friends online"
 		}
 }
 
