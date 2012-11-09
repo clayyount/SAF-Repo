@@ -599,15 +599,16 @@ function updateLobby(arr){
 			})
 			friendListHTML+='</ul>'
 			$("#friendCollapsable p").html(friendListHTML);
+			
+		}else if(friendsOnline.length==0){
+			friendListHTML+="No friends online"
+		}
 			try{
-			$('#gameChooser').trigger( "create" );
+				$('#gameChooser').trigger( "create" );
 			}catch(e){
 				debug("!e")
 				debug(e)
 			}
-		}else if(friendsOnline.length==0){
-			friendListHTML+="No friends online"
-		}
 }
 
 
