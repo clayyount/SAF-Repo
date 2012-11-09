@@ -41,7 +41,7 @@ background:#333333 url(../images/bg_pattern.gif);
 	height:200px;
 }
 
-#onlineFriendsContent{
+#friendCollapsable .ui-collapsible-content{
 	overflow-y:auto;
 	max-height:200px;
 }
