@@ -132,7 +132,7 @@ function fblogin(response) {
 			debug("fblogin connected");
 			$("#login_holder").hide();
 			userID = response.authResponse.userID;
-			joinLobby();
+			
 			fbAccessToken = response.authResponse.accessToken;
 			FB.api('/me', mecallback);
 		} else if (response.status === 'not_authorized') {
@@ -171,6 +171,7 @@ function mecallback(response) {
 			debug(response)
 			debug("friendList=")
 			debug(friendList);
+			joinLobby();
 	});
 	//$('.profilepic').html('<img src="http://graph.facebook.com/'+userID+'/picture" />');
 	//$('.profilename').html(response.name)
@@ -571,10 +572,24 @@ debug("setting up socket io stuff")
  		replayStack.push(data);
     });
 	socket.on('returnLobby', function(data) {
-		debug("here's the lobby")
-    	debug(data.lobby)
+		var friendsOnline= data.lobby.diff(friendList)
+		debug("here's the lobby")		
+		debug(friendsOnline)
     });
 }
+
+Array.prototype.diff = function(arr2) {
+    var ret = [];
+    this.sort();
+    arr2.sort();
+    for(var i = 0; i < this.length; i += 1) {
+        if(arr2.indexOf( this[i] ) > -1){
+            ret.push( this[i] );
+        }
+    }
+    return ret;
+};
+
 function startGame(){
 	mode="play"
 	//Add mouse events to the canvas
