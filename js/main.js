@@ -652,7 +652,6 @@ function newGame(){
 		debug("!e")
 		debug(e)
 	}
-	}
 	//createGame()
 }
 function createGame(){
