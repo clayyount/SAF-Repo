@@ -556,8 +556,17 @@ debug("setting up socket io stuff")
     });
 	socket.on('inviteRequest', function(data){
      	if(data.invite.friend.userID==userID){
-			
 			debug(data);
+			$("#invite").popup( 'open' )
+			var inviteHTML="";
+			inviteHTML+=data.invite.friend.screenname+" sent you an invite!"
+			$("#inviteContent . inviteMessage").html(inviteHTML);
+			try{
+				$('#invite').trigger( "create" );
+				}catch(e){
+					debug("!e")
+					debug(e)
+				}
 		}
     });
 	socket.on('userSet', function(data) {
