@@ -569,7 +569,8 @@ debug("setting up socket io stuff")
 					debug(e)
 				}
 			$("#gameChooser").popup( 'close' )
-			$("#invite").popup( 'open' )
+			setTimeout( function(){ $("#invite").popup( 'open' ) }, 100 );
+			
 		}
     });
 	socket.on('userSet', function(data) {
