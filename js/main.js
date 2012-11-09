@@ -573,6 +573,9 @@ debug("setting up socket io stuff")
     	commandStack.push(data);
  		replayStack.push(data);
     });
+	socket.on("lobbyJoined", function(data){
+		checkLobby();
+	})
 	socket.on('returnLobby', function(data) {
 		lobby = data.lobby;
 		debug("here's the lobby");	
