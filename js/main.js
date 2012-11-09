@@ -568,6 +568,7 @@ debug("setting up socket io stuff")
 					debug("!e")
 					debug(e)
 				}
+			$("#gameChooser").popup( 'close' )
 			$("#invite").popup( 'open' )
 		}
     });
