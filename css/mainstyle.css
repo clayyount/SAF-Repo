@@ -43,8 +43,8 @@ background:#333333 url(../images/bg_pattern.gif);
 
 #friendCollapsable .ui-collapsible-content{
 	overflow-y:auto;
-	-webkit-overflow-scrolling: touch;
-	max-height:150px;
+	max-height:125px;
+	-webkit-overflow-scrolling:touch;
 }
 
 .blackBG{
