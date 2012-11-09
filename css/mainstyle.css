@@ -42,7 +42,7 @@ background:#333333 url(../images/bg_pattern.gif);
 }
 
 #gameChooserContent{
-	overflow:scroll-y;
+	overflow-y:auto;
 	height:200px;
 }
 
