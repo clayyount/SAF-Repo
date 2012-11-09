@@ -666,7 +666,7 @@ function newGame(){
 }
 function inviteGame(friendID, friendName){
 debug("friend")
-debug(friend)
+debug(friendName)
 	gameID=String(Math.round((Math.random()*1000000)))
 	socket.emit("inviteGame",{gameID:gameID,userID:userID,friend:{userID:friendID,screenname:friendName}})
 }
