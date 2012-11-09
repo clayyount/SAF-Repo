@@ -230,3 +230,7 @@ background-color:#000000;
 #brush_size_4{background:url(../images/brush_size_4.png) no-repeat top left;}
 #brush_size_5{background:url(../images/brush_size_5.png) no-repeat top left;}
 #brush_size_6{background:url(../images/brush_size_6.png) no-repeat top left;}
+
+.ui-li-has-thumb{
+	min-height:29px;
+}
