@@ -579,10 +579,10 @@ debug("setting up socket io stuff")
 		var friendsOnline=[];
 		for(i=0;i<friendList.length;i++){
 			if(lobby.indexOf(friendList[i].userID)!=-1){
-				friendsOnline.push(friendList[i].userID);
+				friendsOnline.push(friendList[i]);
 			}
 		}
-		debug("here's your frineds in the lobby");		
+		debug("here's your friends in the lobby");		
 		debug(friendsOnline);
     });
 }
@@ -622,11 +622,9 @@ function deleteGames(){
 	socket.emit("deleteGames")
 }
 function newGame(){
-	debug("friendList=")
-	debug(friendList)
-	if(friendList.length>0){
+	if(friendsOnline.length>0){
 	var friendListHTML='<ul id="friendList" data-role="listview" data-theme="a">';
-	friendList.forEach(function(friend){
+	friendsOnline.forEach(function(friend){
 		friendListHTML+='<li><a href="#"><img src="http://graph.facebook.com/'+friend.userID+'/picture?type=square" />'+friend.screenname+'</a></li>'
 	})
 	friendListHTML+='</ul>'
