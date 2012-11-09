@@ -561,13 +561,14 @@ debug("setting up socket io stuff")
 			var inviteHTML="";
 			inviteHTML+=data.invite.friend.screenname+" sent you an invite!"
 			$("#inviteContent .inviteMessage").html(inviteHTML);
-			$("#invite").popup( 'open' )
+			
 			try{
 				$('#invite').trigger( "create" );
 				}catch(e){
 					debug("!e")
 					debug(e)
 				}
+			$("#invite").popup( 'open' )
 		}
     });
 	socket.on('userSet', function(data) {
