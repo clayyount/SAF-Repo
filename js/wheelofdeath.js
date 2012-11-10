@@ -62,7 +62,7 @@ function debug(message){
 					}
 				}
 				alterInterval++;
-			},60)
+			},30)
 			
 		}
 		drawWheel = function (index){
