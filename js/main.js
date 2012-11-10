@@ -563,7 +563,7 @@ debug("setting up socket io stuff")
 			inviteHTML+=data.invite.friend.screenname+' sent you an invite!'
 			inviteHTML+='<div id="inviteButtonHolder" data-role="content">'
 			inviteHTML+='<a onclick="joinGame(\''
-			inviteHTML+=data.invitegameID
+			inviteHTML+=data.invite.gameID
 			inviteHTML+='\')" id="acceptInviteButton" data-role="button"  data-icon="star">Start Game</a>'
 			inviteHTML+='</div>'
 			$("#inviteContent .inviteMessage").html(inviteHTML);
