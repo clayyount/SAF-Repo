@@ -557,11 +557,12 @@ debug("setting up socket io stuff")
 	socket.on('inviteRequest', function(data){
      	if(data.invite.friend.userID==userID){
 			debug(data);
-			
 			var inviteHTML="";
-			inviteHTML+=data.invite.friend.screenname+" sent you an invite!"
+			inviteHTML+=data.invite.friend.screenname+' sent you an invite!'
+			inviteHTML+='<div id="inviteButtonHolder" data-role="content">'
+			inviteHTML+='<a onClick="joinGame('+data.gameID+')" id="acceptInviteButton" data-role="button"  data-icon="star">Start Game</a>'
+			inviteHTML+='</div>'
 			$("#inviteContent .inviteMessage").html(inviteHTML);
-			
 			try{
 				$('#invite').trigger( "create" );
 				}catch(e){
@@ -678,8 +679,6 @@ function newGame(){
 	//createGame()
 }
 function inviteGame(friendID, friendName){
-debug("friend")
-debug(friendName)
 	gameID=String(Math.round((Math.random()*1000000)))
 	socket.emit("inviteGame",{gameID:gameID,userID:userID,friend:{userID:friendID,screenname:friendName}})
 }
