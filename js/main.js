@@ -509,7 +509,8 @@ debug("setting up socket io stuff")
         debug("game joined")
 		debug(data);
     });
-	socket.on('checkGame', function(data){
+	
+/*socket.on('checkGame', function(data){
 		var gameListHtml='';
 		for(var i=0;i<friendList.length;i++){
 			debug("array index="+data.players.indexOf(friendList[i].userID))
@@ -519,6 +520,7 @@ debug("setting up socket io stuff")
 		}
 		$("#gamesList").html(gameListHtml)
     });
+*/
 	socket.on('gameleft', function(data){
         debug("game left")
 		debug(data);
@@ -560,9 +562,7 @@ debug("setting up socket io stuff")
 			var inviteHTML="";
 			inviteHTML+=data.invite.friend.screenname+' sent you an invite!'
 			inviteHTML+='<div id="inviteButtonHolder" data-role="content">'
-			inviteHTML+='<a onClick="joinGame(\''
-			inviteHTML+=data.gameID
-			inviteHTML+='\')" id="acceptInviteButton" data-role="button"  data-icon="star">Start Game</a>'
+			inviteHTML+='<a onclick=\'new function(){joinGame("'+data.gameID+'")};\' id=\'acceptInviteButton\' data-role=\'button\'  data-icon=\'star\'>Start Game</a>'
 			inviteHTML+='</div>'
 			$("#inviteContent .inviteMessage").html(inviteHTML);
 			try{
