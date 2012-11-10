@@ -505,10 +505,6 @@ debug("setting up socket io stuff")
         debug("logged in")
 		debug(data);
     });
-	socket.on('gameJoined', function(data){
-        debug("game joined")
-		debug(data);
-    });
 	
 /*socket.on('checkGame', function(data){
 		var gameListHtml='';
@@ -640,10 +636,12 @@ function updateLobby(arr){
 
 function startGame(){
 	mode="play"
+	debug("starting game!!")
 	//Add mouse events to the canvas
 	//set the cursor to the #2 brush
 	$("#canvas").css({cursor: "url(images/"+currentCursor+".cur) "+cursorPosition[currentCursor]+" "+cursorPosition[currentCursor]+", crosshair"})
-	//show the page and slide the brush and marker menus	
+	//show the page and slide the brush and marker menus
+	$.mobile.changePage($("#drawing"));	
 }
 function watchGame(){
 	mode="watch"
